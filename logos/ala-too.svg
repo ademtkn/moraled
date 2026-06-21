@@ -1,0 +1,5 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#4CAF50" rx="10"/>
+  <text x="60" y="55" font-family="Arial" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Ala-Too</text>
+  <text x="60" y="80" font-family="Arial" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Academy</text>
+</svg>

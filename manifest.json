@@ -1,0 +1,20 @@
+{
+  "short_name": "MoralEd",
+  "name": "MoralEd - Character Education in Action",
+  "icons": [
+    {
+      "src": "icons/game.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/story.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4F46E5",
+  "background_color": "#ffffff"
+}
