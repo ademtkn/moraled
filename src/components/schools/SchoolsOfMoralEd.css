@@ -1,0 +1,65 @@
+.schools-moraled {
+  background: #fefae0;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.schools-moraled h2 {
+  font-size: 42px;
+  color: #0a9396;
+  margin-bottom: 20px;
+}
+
+.schools-moraled p {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.school-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.school-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.school-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.school-card h3 {
+  font-size: 22px;
+  color: #0a9396;
+  margin-bottom: 8px;
+}
+
+.school-card p {
+  font-size: 17px;
+  color: #444;
+}
+
+.video-wrapper {
+  margin-top: 16px;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}

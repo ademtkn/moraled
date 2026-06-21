@@ -1,0 +1,6 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2196F3" rx="10"/>
+  <text x="60" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Bishkek</text>
+  <text x="60" y="70" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">International</text>
+  <text x="60" y="90" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">School</text>
+</svg>

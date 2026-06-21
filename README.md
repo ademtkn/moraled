@@ -1,3 +1,47 @@
+# MoralEd - Moral Education Platform
+
+A values-based education platform built with React, featuring multi-language support and modern web technologies.
+
+## ✨ Features
+
+- 🌍 **Multi-language Support** (English, Turkish)
+- 📱 **Responsive Design**
+- ⚡ **Fast Performance**
+- 🎨 **Modern UI/UX**
+- 🔄 **Dynamic Content**
+
+## 🌐 Internationalization (i18n)
+
+This project uses `react-i18next` for multi-language support with a modern dropdown selector. 
+
+- **Default Language:** English (EN) 🇬🇧
+- **Available Languages:** English (EN), Turkish (TR) 🇹🇷
+- Language preference is saved in localStorage
+- Elegant dropdown menu in header for easy language switching
+
+For detailed documentation on adding new languages or translations, see [I18N_GUIDE.md](./I18N_GUIDE.md).
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+The app will open at [http://localhost:3000](http://localhost:3000)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

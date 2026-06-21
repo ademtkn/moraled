@@ -1,0 +1,93 @@
+MORALED-SİTE
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── icons
+│   │   ├── game.png
+│   │   ├── song.png
+│   │   └── story.png
+│   ├── images
+│   │   ├── about-illustration.jpg
+│   │   ├── beliefs-illustration.jpg
+│   │   ├── beliefs-illustration.png
+│   │   ├── cambridge.jpg
+│   │   ├── gallery1.jpg
+│   │   ├── gallery2.jpg
+│   │   ├── gallery3.jpg
+│   │   ├── gallery4.jpg
+│   │   ├── gallery5.jpg
+│   │   ├── gallery6.jpg
+│   │   ├── gallery7.jpg
+│   │   ├── harmony.jpg
+│   │   ├── hero-bg.jpg
+│   │   ├── our-story.jpg
+│   │   ├── partner-gvn.png
+│   │   ├── partner-kef.png
+│   │   ├── partner-yci.png
+│   │   ├── sunrise.jpg
+│   │   └── whole-child-success.svg
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── logos
+│   │   ├── edubridge.png
+│   │   ├── kef.png
+│   │   └── yci.png
+│   ├── manifest.json
+│   ├── patterns
+│   │   └── texture-light.svg
+│   ├── robots.txt
+│   ├── videos
+│   │   └── hero.mp4
+│   └── waves
+│       ├── bottom-wave.svg
+│       └── top-wave.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── assets
+│   │   ├── hero-bg.jpg
+│   │   └── logo.svg
+│   ├── components
+│   │   ├── Footer.css
+│   │   ├── Footer.js
+│   │   ├── gallery
+│   │   │   ├── GallerySlider.css
+│   │   │   └── GallerySlider.js
+│   │   ├── Header.css
+│   │   ├── Header.js
+│   │   ├── partners
+│   │   │   ├── PartnersSection.css
+│   │   │   └── PartnersSection.js
+│   │   ├── schools
+│   │   │   ├── SchoolsOfMoralEd.css
+│   │   │   └── SchoolsOfMoralEd.js
+│   │   ├── seminars
+│   │   │   ├── SeminarSection.css
+│   │   │   └── SeminarSection.js
+│   │   ├── WaveBottom.js
+│   │   └── WaveTop.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── pages
+│   │   ├── About.css
+│   │   ├── About.js
+│   │   ├── Contact.css
+│   │   ├── Contact.js
+│   │   ├── Features.css
+│   │   ├── Features.js
+│   │   ├── Home.css
+│   │   ├── Home.js
+│   │   ├── MoralEd.css
+│   │   ├── MoralEd.js
+│   │   ├── Partners.css
+│   │   ├── Partners.js
+│   │   ├── Team.css
+│   │   └── Team.js
+│   ├── reportWebVitals.js
+│   └── setupTests.js
