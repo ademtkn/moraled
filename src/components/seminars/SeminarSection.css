@@ -1,12 +1,12 @@
 .seminar-section {
-  background: linear-gradient(to bottom, #e0f7f1, #fefae0);
+  background: linear-gradient(to bottom, #fdf3e7, #fdf3e7);
   padding: 100px 20px;
   text-align: center;
 }
 
 .seminar-section h2 {
-  font-size: 42px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 40px;
 }
 
@@ -42,13 +42,13 @@
 }
 
 .seminar-card h3 {
-  font-size: 20px;
-  color: #0a9396;
+  font-size: 22px;
+  color: #045b57;
   margin-bottom: 10px;
 }
 
 .seminar-card p {
-  font-size: 17px;
+  font-size: 16px;
   color: #555;
 }
 
@@ -60,22 +60,4 @@
   margin-top: 40px;
 }
 
-.seminar-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(to right, #0a9396, #94d2bd);
-  color: #fff;
-  font-size: 20px;
-  padding: 16px 32px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.seminar-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}

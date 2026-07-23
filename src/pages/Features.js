@@ -8,22 +8,22 @@ function Features() {
   const { t } = useTranslation();
   const features = [
     {
-      icon: '🌱',
+      icon: 'fas fa-child',
       title: t('features.feature_1_title'),
       description: t('features.feature_1_desc'),
     },
     {
-      icon: '🎨',
+      icon: 'fas fa-palette',
       title: t('features.feature_2_title'),
       description: t('features.feature_2_desc'),
     },
     {
-      icon: '📊',
+      icon: 'fas fa-chart-line',
       title: t('features.feature_3_title'),
       description: t('features.feature_3_desc'),
     },
     {
-      icon: '🤝',
+      icon: 'fas fa-handshake',
       title: t('features.feature_4_title'),
       description: t('features.feature_4_desc'),
     },
@@ -41,7 +41,7 @@ function Features() {
           <div className="features-grid">
             {features.map((feature, index) => (
               <div className="feature-card" key={index}>
-                <span className="feature-icon">{feature.icon}</span>
+                <span className="feature-icon"><i className={feature.icon}></i></span>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>

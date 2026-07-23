@@ -1,8 +1,8 @@
 .footer {
-  background: linear-gradient(to right, #0a9396, #94d2bd);
+  background: linear-gradient(to right, #045b57, #ecc9ab);
   color: #fff;
   padding: 60px 20px 30px;
-  font-family: 'Segoe UI', sans-serif;
+  
 }
 
 .footer__top {
@@ -41,7 +41,8 @@
 
 .footer__links h4,
 .footer__social h4 {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 

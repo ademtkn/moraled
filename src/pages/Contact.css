@@ -1,5 +1,5 @@
 .contact-hero {
-  background: linear-gradient(to right, #0a9396, #94d2bd);
+  background: linear-gradient(to right, #045b57, #ecc9ab);
   color: #fff;
   padding: 80px 20px;
   text-align: center;
@@ -29,12 +29,12 @@
 
 .info-block i {
   font-size: 32px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 10px;
 }
 
 .info-block h3 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 8px;
 }
 
@@ -47,7 +47,7 @@
 .contact-form h2 {
   font-size: 36px;
   margin-bottom: 30px;
-  color: #0a9396;
+  color: #045b57;
 }
 
 .contact-form form {
@@ -59,26 +59,21 @@
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   padding: 14px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-family: inherit;
+  color: #333;
+  background: #fff;
 }
 
-.contact-form button {
-  background: #0a9396;
-  color: #fff;
-  font-size: 18px;
+.contact-form .btn-primary {
+  width: 100%;
   padding: 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.contact-form button:hover {
-  background: #007f7f;
+  font-size: 18px;
 }
 
 

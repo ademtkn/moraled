@@ -1,0 +1,85 @@
+.scope-section {
+  padding: 100px 24px 80px;
+  background-color: #f5f7fa;
+}
+
+.scope-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.scope-wrapper h1 {
+  color: #005f73;
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.scope-intro {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #444;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.scope-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.scope-table th {
+  background-color: #0a9396;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.scope-table td {
+  padding: 18px 20px;
+  border: 1px solid rgba(10, 147, 150, 0.12);
+  vertical-align: top;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.scope-table tr.scope-row-shaded td {
+  background-color: #e6f5f5;
+}
+
+.scope-pillar {
+  font-weight: 700;
+  color: #005f73;
+}
+
+@media (max-width: 900px) {
+  .scope-table, .scope-table thead, .scope-table tbody, .scope-table th, .scope-table td, .scope-table tr {
+    display: block;
+  }
+
+  .scope-table thead {
+    display: none;
+  }
+
+  .scope-table tr {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(10, 147, 150, 0.12);
+  }
+
+  .scope-table td {
+    border: none;
+    border-bottom: 1px solid rgba(10, 147, 150, 0.1);
+  }
+}

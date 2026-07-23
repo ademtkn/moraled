@@ -20,7 +20,7 @@ export default function Footer() {
 
         <div className="footer__links">
           <h4>{t('footer.explore')}</h4>
-          <a href="/about">{t('nav.about')}</a>
+          <a href="/">{t('nav.about')}</a>
           <a href="/team">{t('nav.team')}</a>
           <a href="/partners">{t('nav.partners')}</a>
           <a href="/contact">{t('nav.contact')}</a>

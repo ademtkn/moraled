@@ -1,12 +1,12 @@
 .partners-section {
-    background: linear-gradient(to bottom, #e0f7f1, #fefae0);
+    background: linear-gradient(to bottom, #fdf3e7, #fdf3e7);
     padding: 100px 20px;
     text-align: center;
 }
   
 .partners-wrapper h2 {
-    font-size: 40px;
-    color: #0a9396;
+    font-size: 36px;
+    color: #045b57;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease forwards;
     opacity: 0;
@@ -53,7 +53,7 @@
   
 .partner-card h3 {
     font-size: 28px;
-    color: #0a9396;
+    color: #045b57;
     margin-bottom: 12px;
 }
   
@@ -72,28 +72,54 @@
 .partner-values ul {
     list-style: none;
     padding: 0;
-    font-size: 22px;
+    font-size: 20px;
     color: #444;
     line-height: 2;
+}
+.partner-values li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+.partner-values li i {
+  color: #0a9396;
+  font-size: 20px;
+  width: 24px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.partner-values li::before {
+  content: none;
 }
   
 .partner-values li::before {
     content: '•';
-    color: #0a9396;
+    color: #045b57;
     font-size: 24px;
     margin-right: 8px;
 }
-
+.pillars li i,
+.partner-values li i,
+.partner-benefits li i {
+  color: #0a9396;
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
 /* Impact Together */
 .impact-together {
-    background: #fefae0;
+    background: #fdf3e7;
     padding: 80px 20px;
     text-align: center;
 }
   
 .impact-together h3 {
-    font-size: 38px;
-    color: #0a9396;
+    font-size: 36px;
+    color: #045b57;
     margin-bottom: 40px;
 }
   
@@ -122,27 +148,27 @@
 }
   
 .impact-box h4 {
-    font-size: 24px;
+    font-size: 22px;
     color: #333;
 }
   
 .impact-box p {
-    font-size: 17px;
+    font-size: 16px;
     color: #555;
 }
 
 /* Partner Voices */
 
 .partner-voices {
-  background: linear-gradient(to right, #e0f7f1, #fefae0);
+  background: linear-gradient(to right, #fdf3e7, #fdf3e7);
   padding: 80px 20px;
   text-align: center;
-  font-family: 'Georgia', serif;
+  
 }
 
 .partner-voices h3 {
   font-size: 36px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 30px;
 }
 
@@ -159,14 +185,14 @@
 
 /* How We Collaborate */
 .collaborate-section {
-  background: linear-gradient(to bottom, #e0f7f1, #fefae0);
+  background: linear-gradient(to bottom, #fdf3e7, #fdf3e7);
   padding: 100px 20px;
   text-align: center;
 }
 
 .collaborate-section h2 {
-  font-size: 44px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 60px;
   animation: fadeInUp 1s ease forwards;
   opacity: 0;
@@ -199,31 +225,31 @@
   font-size: 40px;
   display: block;
   margin-bottom: 20px;
-  color: #0a9396;
+  color: #045b57;
 }
 
 .collab-card h3 {
-  font-size: 24px;
+  font-size: 22px;
   color: #333;
   margin-bottom: 12px;
 }
 
 .collab-card p {
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
   line-height: 1.7;
 }
 
 /* Become a Partner */
 .become-partner-section {
-  background: linear-gradient(to right, #0a9396, #94d2bd);
+  background: linear-gradient(to right, #045b57, #ecc9ab);
   color: #fff;
   padding: 100px 20px;
   text-align: center;
 }
 
 .become-partner-section h2 {
-  font-size: 44px;
+  font-size: 36px;
   margin-bottom: 30px;
   animation: fadeInUp 1s ease forwards;
   opacity: 0;
@@ -254,9 +280,6 @@
 }
 
 .partner-cta {
-  background: #fefae0;
-  color: #0a9396;
-  font-size: 20px;
   padding: 16px 32px;
   border-radius: 10px;
   text-decoration: none;
@@ -267,7 +290,7 @@
 }
 
 .partner-cta:hover {
-  background-color: #e0f7f1;
+  background-color: #fdf3e7;
   transform: scale(1.05);
 }
 

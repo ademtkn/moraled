@@ -9,6 +9,11 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [navDropdown, setNavDropdown] = useState(null);
+
+  const toggleNavDropdown = (name) => {
+    setNavDropdown(navDropdown === name ? null : name);
+  };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -42,15 +47,46 @@ export default function Header() {
             <Logo className="logo-svg" />
           </div>
 
-          <nav className="nav">
-            <NavLink to="/" end>{t('nav.home')}</NavLink>
-            <NavLink to="/about">{t('nav.about')}</NavLink>
+         <nav className="nav">
+            <NavLink to="/" end>{t('nav.about')}</NavLink>
             <NavLink to="/team">{t('nav.team')}</NavLink>
-            <NavLink to="/partners">{t('nav.partners')}</NavLink>
-            <NavLink to="/features">{t('nav.features')}</NavLink>
-            <NavLink to="/moralEd">{t('nav.moraled')}</NavLink>
+
+            <div className="nav-dropdown">
+              <button
+                className="nav-dropdown__button"
+                onClick={() => toggleNavDropdown('curriculum')}
+                onBlur={() => setTimeout(() => setNavDropdown(null), 200)}
+              >
+                Curriculum <span className="nav-dropdown__arrow">{navDropdown === 'curriculum' ? '▲' : '▼'}</span>
+              </button>
+              {navDropdown === 'curriculum' && (
+                <div className="nav-dropdown__menu">
+                  <NavLink to="/features" className="nav-dropdown__item">{t('nav.features')}</NavLink>
+                  <NavLink to="/scope-and-sequence" className="nav-dropdown__item">Scope &amp; Sequence</NavLink>
+                  <NavLink to="/moralEd" className="nav-dropdown__item">{t('nav.moraled')}</NavLink>
+                </div>
+              )}
+            </div>
+
+            <div className="nav-dropdown">
+              <button
+                className="nav-dropdown__button"
+                onClick={() => toggleNavDropdown('schools')}
+                onBlur={() => setTimeout(() => setNavDropdown(null), 200)}
+              >
+                For Schools <span className="nav-dropdown__arrow">{navDropdown === 'schools' ? '▲' : '▼'}</span>
+              </button>
+             {navDropdown === 'schools' && (
+                <div className="nav-dropdown__menu">
+                  <NavLink to="/for-schools" className="nav-dropdown__item">For Schools</NavLink>
+                  <NavLink to="/faq" className="nav-dropdown__item">FAQ</NavLink>
+                  <NavLink to="/partners" className="nav-dropdown__item">{t('nav.partners')}</NavLink>
+                </div>
+              )}
+            </div>
+
             <NavLink to="/contact">{t('nav.contact')}</NavLink>
-            
+
             <div className="language-dropdown">
               <button 
                 className="language-dropdown__button"
@@ -81,13 +117,18 @@ export default function Header() {
 
           {open && (
           <nav className="mobile-nav">
-            <NavLink to="/" onClick={() => setOpen(false)}>{t('nav.home')}</NavLink>
-            <NavLink to="/about" onClick={() => setOpen(false)}>{t('nav.about')}</NavLink>
+            <NavLink to="/" onClick={() => setOpen(false)}>{t('nav.about')}</NavLink>
             <NavLink to="/team" onClick={() => setOpen(false)}>{t('nav.team')}</NavLink>
-            <NavLink to="/partners" onClick={() => setOpen(false)}>{t('nav.partners')}</NavLink>
+
+            <span className="mobile-nav__label">Curriculum</span>
             <NavLink to="/features" onClick={() => setOpen(false)}>{t('nav.features')}</NavLink>
+            <NavLink to="/scope-and-sequence" onClick={() => setOpen(false)}>Scope &amp; Sequence</NavLink>
             <NavLink to="/moralEd" onClick={() => setOpen(false)}>{t('nav.moraled')}</NavLink>
-            <NavLink to="/contact" onClick={() => setOpen(false)}>{t('nav.contact')}</NavLink>
+
+            <span className="mobile-nav__label">For Schools</span>
+            <NavLink to="/for-schools" onClick={() => setOpen(false)}>For Schools</NavLink>
+            <NavLink to="/faq" onClick={() => setOpen(false)}>FAQ</NavLink>
+            <NavLink to="/partners" onClick={() => setOpen(false)}>{t('nav.partners')}</NavLink>
             
             <div className="language-dropdown mobile">
               <div className="language-dropdown__title">{t('common.language')}</div>
