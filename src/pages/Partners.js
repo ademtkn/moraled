@@ -48,10 +48,10 @@ function Partners() {
           <div className="partner-values">
             <h3>{t('partners.why_partner_title')}</h3>
             <ul>
-              <li>{t('partners.why_1')}</li>
-              <li>{t('partners.why_2')}</li>
-              <li>{t('partners.why_3')}</li>
-              <li>{t('partners.why_4')}</li>
+              <li><i className="fas fa-handshake"></i> {t('partners.why_1')}</li>
+              <li><i className="fas fa-globe"></i> {t('partners.why_2')}</li>
+              <li><i className="fas fa-chart-line"></i> {t('partners.why_3')}</li>
+              <li><i className="fas fa-graduation-cap"></i> {t('partners.why_4')}</li>
             </ul>
           </div>
         </div>
@@ -103,22 +103,22 @@ function Partners() {
         <h2>{t('partners.collaborate_title')}</h2>
         <div className="collaborate-steps">
           <div className="collab-card">
-            <span>🤝</span>
+            <span><i className="fas fa-handshake"></i></span>
             <h3>{t('partners.collab_1_title')}</h3>
             <p>{t('partners.collab_1_desc')}</p>
           </div>
           <div className="collab-card">
-            <span>🧠</span>
+            <span><i className="fas fa-pen-ruler"></i></span>
             <h3>{t('partners.collab_2_title')}</h3>
             <p>{t('partners.collab_2_desc')}</p>
           </div>
           <div className="collab-card">
-            <span>🎓</span>
+            <span><i className="fas fa-graduation-cap"></i></span>
             <h3>{t('partners.collab_3_title')}</h3>
             <p>{t('partners.collab_3_desc')}</p>
           </div>
           <div className="collab-card">
-            <span>📊</span>
+            <span><i className="fas fa-chart-line"></i></span>
             <h3>{t('partners.collab_4_title')}</h3>
             <p>{t('partners.collab_4_desc')}</p>
           </div>
@@ -133,12 +133,12 @@ function Partners() {
           {t('partners.become_intro')}
         </p>
         <ul className="partner-benefits">
-          <li>{t('partners.benefit_1')}</li>
-          <li>{t('partners.benefit_2')}</li>
-          <li>{t('partners.benefit_3')}</li>
-          <li>{t('partners.benefit_4')}</li>
+          <li><i className="fas fa-check"></i> {t('partners.benefit_1')}</li>
+          <li><i className="fas fa-check"></i> {t('partners.benefit_2')}</li>
+          <li><i className="fas fa-check"></i> {t('partners.benefit_3')}</li>
+          <li><i className="fas fa-check"></i> {t('partners.benefit_4')}</li>
         </ul>
-        <a href="/contact" className="partner-cta">{t('partners.become_cta')}</a>
+        <a href="/contact" className="btn-primary">{t('partners.become_cta')}</a>
       </section>
 
 

@@ -1,6 +1,6 @@
 /* MorralEd Hero Section */
 .moraled-hero {
-  background: linear-gradient(to right, #0a9396, #94d2bd);
+  background: linear-gradient(to right, #045b57, #ecc9ab);
   color: #fff;
   padding: 100px 20px;
   text-align: center;
@@ -14,7 +14,7 @@
 }
 
 .moraled-hero p {
-  font-size: 24px;
+  font-size: 20px;
   max-width: 800px;
   margin: 0 auto;
   animation: fadeInUp 1.2s ease forwards;

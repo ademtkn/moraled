@@ -54,22 +54,22 @@ function Team() {
         <h3>{t('team.unite_title')}</h3>
         <div className="values-grid">
           <div className="value-card">
-            <span className="value-icon">🧠</span>
+            <span className="value-icon"><i className="fas fa-book-open"></i></span>
             <h4>{t('team.value_1_title')}</h4>
             <p>{t('team.value_1_desc')}</p>
           </div>
           <div className="value-card">
-            <span className="value-icon">💛</span>
+            <span className="value-icon"><i className="fas fa-heart"></i></span>
             <h4>{t('team.value_2_title')}</h4>
             <p>{t('team.value_2_desc')}</p>
           </div>
           <div className="value-card">
-            <span className="value-icon">🎨</span>
+            <span className="value-icon"><i className="fas fa-palette"></i></span>
             <h4>{t('team.value_3_title')}</h4>
             <p>{t('team.value_3_desc')}</p>
           </div>
           <div className="value-card">
-            <span className="value-icon">🤝</span>
+            <span className="value-icon"><i className="fas fa-handshake"></i></span>
             <h4>{t('team.value_4_title')}</h4>
             <p>{t('team.value_4_desc')}</p>
           </div>
@@ -78,7 +78,7 @@ function Team() {
 
       <div className="join-mission">
         <h3>{t('team.join_title')}</h3>
-        <a href="/contact" className="join-button">{t('team.join_button')}</a>
+        <a href="/contact" className="btn-primary">{t('team.join_button')}</a>
       </div>
 
 

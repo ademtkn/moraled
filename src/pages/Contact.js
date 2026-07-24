@@ -57,8 +57,16 @@ function Contact() {
         <form ref={form} onSubmit={sendEmail}>
           <input type="text" name="user_name" placeholder={t('contact.form_name')} required />
           <input type="email" name="user_email" placeholder={t('contact.form_email')} required />
+          <input type="text" name="school_name" placeholder={t('contact.form_school_name')} required />
+          <select name="role" defaultValue="" required>
+            <option value="" disabled>{t('contact.form_role_placeholder')}</option>
+            <option value="Teacher">{t('contact.form_role_teacher')}</option>
+            <option value="Administrator">{t('contact.form_role_administrator')}</option>
+            <option value="Principal">{t('contact.form_role_principal')}</option>
+            <option value="Other">{t('contact.form_role_other')}</option>
+          </select>
           <textarea name="message" placeholder={t('contact.form_message')} rows="5" required></textarea>
-          <button type="submit">{t('contact.form_button')}</button>
+          <button type="submit" className="btn-primary">{t('contact.form_button')}</button>
         </form>
       </section>
       <Footer />

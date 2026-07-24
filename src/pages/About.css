@@ -1,13 +1,13 @@
 .about-section {
   padding: 80px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  
 }
 
 /* OUR STORY */
 .story-section {
-  background: linear-gradient(to right, #fdf6e3, #e0f7f1);
+  background: linear-gradient(to right, #fdf6e3, #fdf3e7);
   padding: 100px 20px;
-  font-family: 'Georgia', serif;
+  
 }
 
 .story-wrapper {
@@ -27,8 +27,8 @@
 }
 
 .story-text h2 {
-  font-size: 32px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 20px;
 }
 
@@ -80,8 +80,8 @@
 
 /* OUR MISSION */
 .mission-section {
-  background: linear-gradient(135deg, #0a9396, #94d2bd);
-  color: #fefae0;
+  background: linear-gradient(135deg, #045b57, #ecc9ab);
+  color: #fdf3e7;
   padding: 100px 20px;
   text-align: center;
   position: relative;
@@ -109,18 +109,18 @@
 .mission-wrapper h2 {
   font-size: 36px;
   margin-bottom: 20px;
-  color: #fefae0;
+  color: #fdf3e7;
 }
 
 .mission-lead {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   font-style: italic;
   margin-bottom: 20px;
 }
 
 .mission-body {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.8;
   color: #fff;
 }
@@ -130,8 +130,8 @@
   background: #ffffff;
   padding: 100px 20px;
   text-align: center;
-  border-top: 4px solid #94d2bd;
-  border-bottom: 4px solid #94d2bd;
+  border-top: 4px solid #ecc9ab;
+  border-bottom: 4px solid #ecc9ab;
 }
 
 .vision-wrapper {
@@ -142,13 +142,13 @@
 }
 
 .vision-wrapper h2 {
-  font-size: 40px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 30px;
 }
 
 .vision-wrapper p {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.8;
   color: #444;
   font-weight: 500;
@@ -157,14 +157,14 @@
 
 /* OUR FRAMEWORK */
 .framework-section {
-  background: #fefae0;
+  background: #fdf3e7;
   padding: 100px 20px;
   text-align: center;
 }
 
 .framework-wrapper h2 {
   font-size: 36px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 40px;
 }
 
@@ -193,24 +193,24 @@
   font-size: 32px;
   display: block;
   margin-bottom: 16px;
-  color: #0a9396;
+  color: #045b57;
 }
 
 .framework-card h3 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 12px;
   color: #333;
 }
 
 .framework-card p {
-  font-size: 15px;
+  font-size: 16px;
   color: #555;
   line-height: 1.6;
 }
 
 /* OUR BELIEFS */
 .beliefs-section {
-  background: radial-gradient(circle at top, #e0f7f1, #fefae0);
+  background: radial-gradient(circle at top, #fdf3e7, #fdf3e7);
   padding: 100px 20px;
   font-family: 'Georgia', serif;
 }
@@ -235,7 +235,7 @@
 
 .beliefs-text h2 {
   font-size: 36px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 30px;
 }
 
@@ -295,8 +295,8 @@
 }
 
 .timeline-wrapper h2 {
-  font-size: 40px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 50px;
 }
 
@@ -315,7 +315,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #94d2bd;
+  background: #ecc9ab;
 }
 
 .timeline-item {
@@ -334,7 +334,7 @@
 .timeline-item:nth-child(5) { animation-delay: 1s; }
 
 .timeline-icon {
-  background: #0a9396;
+  background: #045b57;
   color: #fff;
   font-size: 24px;
   padding: 14px;
@@ -350,7 +350,7 @@
 }
 
 .timeline-content p {
-  font-size: 17px;
+  font-size: 16px;
   color: #555;
   line-height: 1.7;
 }

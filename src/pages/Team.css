@@ -1,19 +1,19 @@
 .team-section {
-    background: linear-gradient(to bottom, #e0f7f1, #fefae0);
+    background: linear-gradient(to bottom, #fdf3e7, #fdf3e7);
     padding: 100px 20px;
     text-align: center;
 }
   
 .team-wrapper h2 {
-    font-size: 40px;
-    color: #0a9396;
+    font-size: 36px;
+    color: #045b57;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease forwards;
     opacity: 0;
 }
   
 .team-intro {
-    font-size: 18px;
+    font-size: 20px;
     color: #555;
     margin-bottom: 40px;
     max-width: 700px;
@@ -54,13 +54,13 @@
 }
   
 .team-card h3 {
-    font-size: 20px;
-    color: #0a9396;
+    font-size: 22px;
+    color: #045b57;
     margin-bottom: 8px;
 }
   
 .team-card p {
-    font-size: 15px;
+    font-size: 16px;
     color: #555;
 }
   
@@ -80,14 +80,14 @@
 /* team-values */
 
 .team-values {
-    background: linear-gradient(to right, #fefae0, #e0f7f1);
+    background: linear-gradient(to right, #fdf3e7, #fdf3e7);
     padding: 80px 20px;
     text-align: center;
 }
   
 .team-values h3 {
     font-size: 36px;
-    color: #0a9396;
+    color: #045b57;
     margin-bottom: 40px;
     animation: fadeInUp 1s ease forwards;
     opacity: 0;
@@ -154,7 +154,7 @@
     font-size: 36px;
     display: block;
     margin-bottom: 16px;
-    color: #0a9396;
+    color: #045b57;
 }
   
 .value-card h4 {
@@ -185,7 +185,7 @@
 .join-mission {
     text-align: center;
     padding: 60px 20px;
-    background: linear-gradient(to right, #94d2bd, #0a9396);
+    background: linear-gradient(to right, #ecc9ab, #045b57);
     color: #fff;
 }
   
@@ -195,20 +195,5 @@
     font-weight: 500;
 }
   
-.join-button {
-    display: inline-block;
-    background-color: #fefae0;
-    color: #0a9396;
-    font-size: 18px;
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-  
-.join-button:hover {
-    background-color: #e0f7f1;
-    transform: scale(1.05);
-}
+
   

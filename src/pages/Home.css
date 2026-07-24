@@ -48,57 +48,42 @@
   animation: fadeInUp 1s ease;
 }
 
-.cta-button {
-  padding: 14px 32px;
-  background-color: #ffb703;
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 17px;
-  cursor: pointer;
-  animation: pulse 2s infinite;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.cta-button:hover {
-  background-color: #fb8500;
-  transform: scale(1.05);
-}
 
 
 /* VALUES SECTION */
 .core-values {
-  background: linear-gradient(to right, #e0f7f1, #fefae0);
+  background: linear-gradient(to right, #fdf3e7, #fdf3e7);
   padding: 80px 20px;
   text-align: center;
 }
 
 .core-values h2 {
-  font-size: 32px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 10px;
 }
 
 .core-values-sub {
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   margin-bottom: 40px;
 }
 
 .core-values-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .value-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 30px 20px;
-  width: 240px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  border-top: 6px solid #ffb703;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-top: 3px solid #0a9396;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeInUp 0.8s ease;
 }
@@ -109,35 +94,36 @@
 }
 
 .value-card i {
-  color: #fb8500;
-  margin-bottom: 12px;
+  color: #0a9396;
+  margin-bottom: 8px;
   transition: transform 0.3s ease;
 }
 
-.value-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.value-card:hover i {
+  transform: scale(1.1);
+}
+
+.value-card__month {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: #0a9396;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+.value-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #045b57;
 }
 
 .value-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
 }
 
-.value-card:hover i {
-  transform: scale(1.2) rotate(-5deg);
-}
-
-@media (max-width: 600px) {
-  .value-card {
-    width: 100%;
-  }
-}
-
-.core-values-grid {
-  animation: fadeIn 0.8s ease;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -150,7 +136,7 @@
 /* QUOTE SECTION */
 .quote-section {
   position: relative;
-  background: linear-gradient(to right, #0a9396, #94d2bd);
+  background: linear-gradient(to right, #045b57, #ecc9ab);
   color: white;
   text-align: center;
   padding: 40px 20px;
@@ -183,8 +169,8 @@
 }
 
 .quote-highlight {
-  background: #ffb703;
-  color: #0a9396;
+  background: #f2b705;
+  color: #045b57;
   padding: 4px 10px;
   border-radius: 6px;
   font-weight: 700;
@@ -204,20 +190,7 @@
 }
 
   /* CTA Butonu */
-.quote-button {
-  padding: 12px 24px;
-  background-color: #ffb703;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.quote-button:hover {
-  background-color: #fb8500;
-}
 
 
   /* Kavisli SVG dalgalar */
@@ -275,7 +248,7 @@
 .samples {
   padding: 80px 20px;
   text-align: center;
-  background: linear-gradient(to right, #f6f1f1, #e3f2fd); /* Yeni pastel geçiş */
+  background: linear-gradient(to right, #faf1e6, #f7e6d4); /* Yeni pastel geçiş */
   border-top: 2px dashed #ccc; /* Bölüm ayrımı için çizgi */
   position: relative;
 }
@@ -288,19 +261,19 @@
   transform: translateX(-50%);
   width: 60px;
   height: 6px;
-  background-color: #ffb703;
+  background-color: #f2b705;
   border-radius: 3px;
 }
 
 .samples h2 {
-  font-size: 32px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 10px;
   font-weight: 800;
 }
 
 .samples-sub {
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   margin-bottom: 40px;
 }
@@ -339,32 +312,19 @@
 }
 
 .sample-card h3 {
-  font-size: 20px;
-  color: #0a9396;
+  font-size: 22px;
+  color: #045b57;
   margin-bottom: 8px;
 }
 
 .sample-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
   margin-bottom: 16px;
 }
 
-.sample-button {
-  padding: 10px 20px;
-  background-color: #ffb703;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.sample-button:hover {
-  background-color: #fb8500;
-  transform: scale(1.05);
-}
+
 
 
 /* WHOLE CHILD SUCCESS */
@@ -374,7 +334,7 @@
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
-  background: linear-gradient(to right, #fefae0, #e0f7f1);
+  background: linear-gradient(to right, #fdf3e7, #fdf3e7);
   gap: 40px;
   text-align: left;
   position: relative;
@@ -389,7 +349,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 6px;
-  background-color: #219ebc;
+  background-color: #223843;
   border-radius: 3px;
 }
 
@@ -400,18 +360,25 @@
 
 .whole-child h2 {
   font-size: 36px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 16px;
   font-weight: 800;
 }
 
 .whole-child p {
-  font-size: 17px;
+  font-size: 20px;
   color: #444;
   margin-bottom: 24px;
   line-height: 1.6;
 }
-
+.pillars li i,
+.partner-values li i,
+.partner-benefits li i {
+  color: #0a9396;
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
 .pillars {
   list-style: none;
   padding: 0;
@@ -466,31 +433,9 @@
   flex-wrap: wrap;
 }
 
-.pillars-button {
-  padding: 12px 24px;
-  background-color: #ffb703;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  animation: pulse 2s infinite;
-}
 
-.pillars-button:hover {
-  background-color: #fb8500;
-  transform: scale(1.05);
-}
 
-.pillars-button.secondary {
-  background-color: #219ebc;
-  color: white;
-}
 
-.pillars-button.secondary:hover {
-  background-color: #126782;
-}
 
     /* Animasyonlar */
 @keyframes fadeInUp {
@@ -514,7 +459,7 @@
 
 /* TESTIMONIALS SECTION */
 .testimonials {
-  background: linear-gradient(to right, #f6f1f1, #e3f2fd); /* Yeni pastel geçiş */
+  background: linear-gradient(to right, #faf1e6, #f7e6d4); /* Yeni pastel geçiş */
   padding: 80px 20px;
   text-align: center;
   position: relative;
@@ -523,14 +468,14 @@
 }
 
 .testimonials h2 {
-  font-size: 32px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 10px;
   font-weight: 800;
 }
 
 .testimonial-sub {
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   margin-bottom: 40px;
 }
@@ -543,7 +488,7 @@
 }
 
 .testimonial-card {
-  background: #fefae0;
+  background: #fdf3e7;
   padding: 24px;
   border-radius: 12px;
   max-width: 300px;
@@ -574,22 +519,7 @@
   margin-top: 40px;
 }
 
-.testimonial-button {
-  padding: 12px 24px;
-  background-color: #ffb703;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  animation: pulse 2s infinite;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.testimonial-button:hover {
-  background-color: #fb8500;
-  transform: scale(1.05);
-}
 
   /* Animasyonlar */
 @keyframes fadeInUp {
@@ -615,7 +545,7 @@
 .explore-value-section {
   padding: 80px 20px;
   text-align: center;
-  background: linear-gradient(to right, #fefae0, #e0f7f1); /* Whole Child Success ile uyumlu */
+  background: linear-gradient(to right, #fdf3e7, #fdf3e7); /* Whole Child Success ile uyumlu */
   position: relative;
   border-top: 2px dashed #ccc;
 }
@@ -628,33 +558,12 @@
   transform: translateX(-50%);
   width: 60px;
   height: 6px;
-  background-color: #219ebc;
+  background-color: #223843;
   border-radius: 3px;
 }
 
-.value-button {
-  background: #e0f7f1;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #0a9396;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
 
-.value-button:hover {
-  background: #94d2bd;
-  color: white;
-  transform: scale(1.05);
-}
 
-.value-button.active {
-  background: #0a9396;
-  color: white;
-  transform: scale(1.08);
-}
 
 .value-description {
   max-width: 600px;
@@ -679,15 +588,15 @@
 
 /* IMPACT STATISTICS */
 .impact-stats {
-  background: linear-gradient(to right, #e0f7f1, #fefae0);
+  background: linear-gradient(to right, #fdf3e7, #fdf3e7);
   padding: 80px 20px;
   text-align: center;
   border-top: 2px dashed #ccc;
 }
 
 .impact-stats h2 {
-  font-size: 32px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 40px;
   font-weight: 800;
 }
@@ -718,7 +627,7 @@
 }
 
 .impact-card i {
-  color: #ffb703;
+  color: #f2b705;
   margin-bottom: 12px;
   animation: bounce 2s infinite;
 }
@@ -731,7 +640,7 @@
 
 /* CALL TO ACTION */
 .cta-banner {
-  background: linear-gradient(to right, #ffb703, #fb8500);
+  background: linear-gradient(to right, #f2b705, #e07856);
   color: white;
   text-align: center;
   padding: 80px 20px;
@@ -752,7 +661,7 @@
 }
 
 .cta-banner h2 {
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 16px;
   font-weight: 800;
 }
@@ -766,7 +675,7 @@
 .cta-button {
   padding: 14px 28px;
   background-color: white;
-  color: #fb8500;
+  color: #e07856;
   border: none;
   border-radius: 8px;
   font-weight: 700;

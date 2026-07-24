@@ -1,12 +1,12 @@
 .schools-moraled {
-  background: #fefae0;
+  background: #fdf3e7;
   padding: 100px 20px;
   text-align: center;
 }
 
 .schools-moraled h2 {
-  font-size: 42px;
-  color: #0a9396;
+  font-size: 36px;
+  color: #045b57;
   margin-bottom: 20px;
 }
 
@@ -39,12 +39,12 @@
 
 .school-card h3 {
   font-size: 22px;
-  color: #0a9396;
+  color: #045b57;
   margin-bottom: 8px;
 }
 
 .school-card p {
-  font-size: 17px;
+  font-size: 16px;
   color: #444;
 }
 

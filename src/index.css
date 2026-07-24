@@ -5,8 +5,67 @@ body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* ============================
+   UNIFIED BUTTON SYSTEM
+   ============================ */
+.btn-primary,
+.btn-outline {
+  display: inline-block;
+  padding: 15px 34px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.2;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #0a9396;
+  color: #ffffff;
+  border: 1.5px solid #0a9396;
+}
+
+.btn-primary:hover {
+  background-color: #07736f;
+  border-color: #07736f;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #0a9396;
+  border: 1.5px solid #0a9396;
+}
+
+.btn-outline:hover {
+  background-color: #0a9396;
+  color: #ffffff;
+}
+
+.btn-hero {
+  padding: 18px 40px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary:disabled,
+.btn-outline:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

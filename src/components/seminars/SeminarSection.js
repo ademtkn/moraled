@@ -41,8 +41,8 @@ const SeminarSection = () => {
         ))}
       </div>
       <div className="seminar-actions">
-        <a href="/seminars/register" className="seminar-btn">📋 Register</a>
-        <a href="/seminars/verify" className="seminar-btn">🎓 Verify Certificate</a>
+        <a href="/seminars/register" className="btn-primary">Register</a>
+        <a href="/seminars/verify" className="btn-outline">Verify Certificate</a>
       </div>
     </section>
   );
