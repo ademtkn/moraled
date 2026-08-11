@@ -43,9 +43,9 @@ export default function Header() {
     <>
       <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
         <div className="header__inner">
-          <div className="logo">
-            <Logo className="logo-svg" />
-          </div>
+          <NavLink to="/" className="logo" aria-label="Home">
+              <Logo className="logo-svg" />
+          </NavLink>
 
          <nav className="nav">
             <NavLink to="/" end>{t('nav.about')}</NavLink>
