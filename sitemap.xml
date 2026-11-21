@@ -33,6 +33,10 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://moraled.com/scope-and-sequence/high-school</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://moraled.com/materials</loc>
     <priority>0.7</priority>
   </url>
