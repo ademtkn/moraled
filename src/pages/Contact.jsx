@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Contact.css';
 import Header from '../components/Header';
@@ -8,24 +8,38 @@ import emailjs from '@emailjs/browser';
 
 function Contact() {
   const { t } = useTranslation();
-  const form = useRef();
+  const form = useRef(null);
+  // Lock in a ref: state updates are async, so a fast double click / Enter could pass a state check twice.
+  const sending = useRef(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
-    emailjs.sendForm(
-      'service_jyu0j3s',     // ← EmailJS panelinden alacaksın
-      'template_fanurrp',    // ← EmailJS panelinden alacaksın
-      form.current,
-      'TX7gtshANTTyGan6u'      // ← EmailJS panelinden alacaksın
-    )
-    .then(() => {
-      alert(t('contact.alert_success'));
-    })
-    .catch(() => {
-      alert(t('contact.alert_error'));
-    });
+    if (sending.current) return;
+    sending.current = true;
+    setStatus('sending');
+    try {
+      // EmailJS service, template and public key (from the EmailJS dashboard).
+      await emailjs.sendForm('service_jyu0j3s', 'template_fanurrp', form.current, 'TX7gtshANTTyGan6u');
+      form.current.reset();
+      setStatus('success');
+    } catch {
+      setStatus('error'); // keep what the user typed so they can retry
+    } finally {
+      sending.current = false;
+    }
   };
+
+  // A new message after a successful send: hide the old confirmation once the user edits again.
+  const clearSuccess = () => {
+    if (status === 'success') setStatus('idle');
+  };
+
+  const isSending = status === 'sending';
+  const statusText =
+    status === 'success' ? t('contact.alert_success')
+      : status === 'error' ? t('contact.alert_error', { email: t('contact.email_text') })
+        : '';
 
   return (
     <>
@@ -61,7 +75,7 @@ function Contact() {
 
         <section className="contact-form">
           <h2>{t('contact.form_title')}</h2>
-          <form ref={form} onSubmit={sendEmail}>
+          <form ref={form} onSubmit={sendEmail} onInput={clearSuccess} aria-busy={isSending}>
             <label htmlFor="contact-name" className="sr-only">{t('contact.form_name')}</label>
             <input id="contact-name" type="text" name="user_name" placeholder={t('contact.form_name')} required />
 
@@ -83,7 +97,11 @@ function Contact() {
             <label htmlFor="contact-message" className="sr-only">{t('contact.form_message')}</label>
             <textarea id="contact-message" name="message" placeholder={t('contact.form_message')} rows="5" required></textarea>
 
-            <button type="submit" className="btn-primary">{t('contact.form_button')}</button>
+            {/* aria-disabled (not disabled) keeps keyboard focus on the button while sending; the ref lock blocks resubmits. */}
+            <button type="submit" className="btn-primary" aria-disabled={isSending}>
+              {t(isSending ? 'contact.form_sending' : 'contact.form_button')}
+            </button>
+            <p className="contact-status" data-state={status} role="status">{statusText}</p>
           </form>
         </section>
       </main>

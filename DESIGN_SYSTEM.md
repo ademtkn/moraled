@@ -161,6 +161,12 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 
 ## 9. Durum ve yol haritası
 
+### Contact formu geri bildirimi — 22 Kasım 2026 (K09)
+
+- `alert()` yerine form içinde `<p class="contact-status" role="status">`; durumlar `idle | sending | success | error` (`data-state`). Başarı: `--c-success-100` zemin + `--c-success-600` sol kenar; hata: `--c-danger-*`; metin her zaman `--c-ink`.
+- **Desen (yeni formlarda da kullanın):** çift gönderim için `useRef` kilidi; düğmede `disabled` yerine `aria-disabled` (odak kaybolmaz); canlı bölge baştan DOM'da; hatada değerler korunur. Sertifika yardım formu (K05) hâlâ `disabled` kullanıyor — dokunulmadı.
+- Mock EmailJS ile 3 dil × 2 genişlik 66/66; build/lint/test temiz. **Commit kullanıcı onayı bekliyor.** Ayrıntı: WORK_LOG K09.
+
 ### Coming-soon sertifika illüstrasyonları — 22 Kasım 2026 (K08)
 
 - Kullanıcı isteği: yapım aşaması sayfasında **orijinal sertifikalar ve üzerindeki yazılar görünmesin**. `#cs-certificates` bölümündeki iki PNG örneği yerine **metinsiz satır içi SVG** illüstrasyon: fildişi “Partner” ve lacivert “Distinguished” (altın çerçeve, guilloche, mühür/kurdele, yalnızca MoralEd işareti; ad/tarih/imza yazısı yok). Not ve alt metinler üç dilde “illüstrasyon, gerçek belge değil” olarak güncellendi.

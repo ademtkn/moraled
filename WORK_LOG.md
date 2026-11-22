@@ -6,7 +6,8 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K08, Claude, 22 Kasım ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit `af845f5` + push; **deploy kullanıcı onayı bekliyor** (canlıda hâlâ orijinal örnekler var). Sıradaki iş: açık iş 1 — Contact formu (kullanıcı onayladı).
+- **Son durum (K09, Claude, 22 Kasım ~22:15):** Açık iş 1 (Contact formu) tamamlandı ve mock EmailJS ile test edildi; **çalışma ağacında, commit kullanıcı onayı bekliyor** (izin denetimi). Sıradaki iş: açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
+- **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit `af845f5` + push; **deploy kullanıcı onayı bekliyor** (canlıda hâlâ orijinal örnekler var).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
 - **Ürün:** Kırgızistan okullarına yönelik gerçek site, `src/`. Kullanıcının istediği takvim düzeltmesi ile raporun 2 ve 3. içerik işleri tamamlandı; kullanıcının yerel incelemesi bekleniyor.
 - **Son tamamlanan iş:** K05 — sertifika numarasıyla sorgu, okul listesi, belge görüntüleme/paylaşma, üç tasarım örneği ve coming-soon üzerinde iki örnek. Kullanıcının yerel incelemesine hazır; yeni aktif geliştirme yok.
@@ -193,6 +194,22 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Commit / deploy:** Commit `af845f5` + push yapıldı. **Deploy yapılmadı:** `gh-pages` yayını izin denetimine takıldı (kural 7: kullanıcı onayı). Canlı coming-soon hâlâ 21:18'deki dış deploy'un orijinal sertifika örneklerini gösteriyor. Kullanıcı onaylarsa: `npm run deploy` (yalnız coming-soon; CNAME `www.moraled.com` korunur).
 
+### K09 Contact formu: gönderim durumu ve sayfa içi geri bildirim
+
+**Tarih / çalışan:** 22 Kasım 2026 ~22:00–22:15 / Claude. **Kullanıcı talebi:** K08 öncesinde “Evet onaylıyorum” — açık iş 1'e geçiş. **Durum:** tamamlandı.
+
+**Yapılan (`src/pages/Contact.jsx`):** `alert()` kaldırıldı. Durum makinesi `idle | sending | success | error`; çift gönderimi `useRef` kilidi engelliyor (state eşzamansız olduğundan hızlı çift tıklama/Enter'da state kontrolü yetmez). Gönderilirken düğme “Жөнөтүлүүдө… / Отправка… / Sending…” der, `aria-disabled="true"` ve form `aria-busy` olur — `disabled` bilinçli olarak kullanılmadı, çünkü odaklı düğme disabled olunca klavye odağı `body`'ye düşer. Başarıda form temizlenir ve yeşil kenarlı bildirim çıkar; kullanıcı yeniden yazmaya başlayınca eski onay kaybolur. Hatada girilen değerler korunur, mesaj e-posta adresini (`contact.email_text`, `{{email}}`) gösterir. Bildirim her zaman DOM'da olan `<p role="status">` içinde (canlı bölge sonradan eklenirse duyurulmayabilir).
+
+**Metinler:** `contact.form_sending` yeni (3 dil); `contact.alert_success/alert_error` emojisiz ve sayfa içine uygun yeniden yazıldı; RU düğmedeki 📨 ve KG düğmedeki baştaki boşluk kaldırıldı. Parite 751 anahtar × 3 dil.
+
+**Stil (`src/pages/Contact.css`):** `.contact-status` + `[data-state=success|error]` (tokenlar: `--c-success-100/600`, `--c-danger-100/600`; metin `--c-ink`, renk yalnızca zemin ve sol kenarda → kontrast güvenli), `[aria-disabled=true]` düğme için bekleme imleci.
+
+**Doğrulama:** EmailJS `page.route` ile taklit edildi (1,5 sn gecikme; 200 ve 500 yanıtları) — gerçek e-posta gönderilmedi. 3 dil × 1440/390 px × 11 kontrol = **66/66 geçti**: boş başlangıç, gönderilirken etiket/aria, Enter + tıklama + alan içi Enter ile üçlü gönderimde **tek istek**, başarıda mesaj + temiz form + düğmenin geri dönmesi, düzenleyince mesajın kalkması, hatada e-postalı mesaj + korunan değerler, hatadan sonra yeniden deneme, axe 0 (boş/başarı/hata), `alert` 0, JS hatası 0, taşma yok. Ayrıca klavye odağı gönderim sırasında ve sonrasında düğmede kaldı. `npm run lint` 0; `test:certificates` 6/6; `npm run build` uyarısız (20 rota → 21 HTML; `build/` tam site çıktısı — yayımlamayın).
+
+**Kalan:** Gerçek EmailJS teslimi test edilmedi (kullanıcı isterse kendi adresiyle bir deneme). Görünür etiketler hâlâ yalnızca placeholder + `sr-only` label (axe geçiyor; görünür etiket ayrı bir tasarım kararı). Sonraki iş: açık iş 2 (Header mobil menü odak tuzağı, FAQ `aria-expanded`/`aria-controls`).
+
+**Commit / deploy:** **Commit yapılmadı** — commit komutu izin denetimine takıldı (kural 7: kullanıcı onayı). Değişiklikler çalışma ağacında: `src/pages/Contact.jsx`, `src/pages/Contact.css`, `src/locales/{kg,ru,en}/translation.json`, bu kayıt ve `DESIGN_SYSTEM.md`. Onaydan sonra bunlar tek commit olarak eklenip push edilir. Deploy yok (tam site yayında değil).
+
 ## Değişikliklerin dosya haritası
 
 Dosyalar depo köküne göredir. Aşağıdaki ürün değişiklikleri başlangıç `400fc97` commit'inden sonraki yerel çalışmadır.
@@ -256,7 +273,7 @@ Bu liste planı kaydeder; aşağıdaki geliştirmeler henüz uygulanmadı. Başl
 
 | Sıra / durum | İş ve ilgili yer | Tamamlanma ölçütü / sonraki adım |
 |---|---|---|
-| 1 — Contact açık, sertifika tamamlandı | Formlar: `src/pages/Contact.jsx`; sertifika yardım formu K05 ile düzeltildi | Gönderiliyor durumu, eşzamanlı tekrar isteğinin engellenmesi, başarılı iletişim formunun temizlenmesi, alert yerine sayfa içinde erişilebilir başarı/hata geri bildirimi. İlk adım Contact submit işleyicisini okumak; başarı/hata/yavaş yanıt/çift tıklamayı mock ile doğrulamak. Gerçek e-posta gönderilmez. |
+| 1 — tamamlandı (K09) | Formlar: `src/pages/Contact.jsx`; sertifika yardım formu K05 ile düzeltildi | Gönderiliyor durumu, ref kilidiyle tek istek, başarıda temizleme, `role="status"` ile sayfa içi başarı/hata (hata e-posta adresini gösterir). Mock EmailJS ile 66/66. Gerçek teslim test edilmedi. |
 | 2 — başlanmadı | Klavye/ARIA: `src/components/Header.jsx`, `Header.css`, `src/pages/FAQ.jsx`, üç dil | Mobil menüde odak içeride kalır, arka sayfa klavyeye kapanır, kapanınca uygun yere döner; Esc korunur. SSS düğmeleri `aria-expanded`/`aria-controls` ile yanıtlarına bağlanır. Menü erişilebilir adları üç dile taşınır; klavye ve axe ile kontrol edilir. |
 | 3 — başlanmadı | Gönüllü başvurusu: `StudentVolunteers.jsx` → `Contact.jsx` | Genel formdaki zorunlu mesleki rol/okul alanları öğrenci akışına uygun ele alınır; başvuru amacı taşınır veya görünür yönlendirme netleşir. Mevcut bağlantı yalnızca genel iletişim sayfasını açıyor. |
 | 4 — gerçek girdi gerekli | Görseller ve dil/pedagoji | Kullanıcıdan izinli okul/sınıf fotoğrafları; KG/RU/EN ve özellikle mevcut 5–11. sınıf önerilerinin uzman kontrolü. Yeni görsellerde Picture + optimizasyon. Kişi profili/alıntı istemek varsayılan devam adımı değildir; kullanıcı kişisiz içerik seçti. |

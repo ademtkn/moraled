@@ -63,3 +63,35 @@
   padding: 14px;
   font-size: 18px;
 }
+
+/* Gönderim durumu: alert() yerine sayfa içinde, ekran okuyucuya role="status" ile duyurulur. */
+.contact-form .btn-primary[aria-disabled="true"] {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-status {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--c-ink);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.contact-status:empty {
+  padding: 0;
+  border: 0;
+}
+
+.contact-status[data-state="success"] {
+  background: var(--c-success-100);
+  border-left-color: var(--c-success-600);
+}
+
+.contact-status[data-state="error"] {
+  background: var(--c-danger-100);
+  border-left-color: var(--c-danger-600);
+}

@@ -165,8 +165,9 @@
     "form_email": "Your Email",
     "form_message": "Your Message",
     "form_button": "Send Message",
-    "alert_success": "✅ Thank you! Your message has been received.",
-    "alert_error": "❌ Failed to send message. Please try again."
+    "form_sending": "Sending…",
+    "alert_success": "Thank you! Your message has been sent.",
+    "alert_error": "The message could not be sent. Please try again or email us directly: {{email}}"
   },
   "team": {
     "title": "School and family collaboration",
