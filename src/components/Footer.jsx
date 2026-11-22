@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
 import { FaInstagram, FaYoutube, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
-import Logo from '../assets/logo.svg?react';
+import logoUrl from '../assets/logo/moraled-stacked-dark.png';
 
 const COLUMNS = [
   {
@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo" aria-label={t('footer.brand_name')}>
-              <Logo />
+              <img src={logoUrl} alt="MoralEd — Character Education" width="937" height="720" loading="lazy" />
             </Link>
             <p className="footer__tagline">{t('footer.brand_tagline')}</p>
             <ul className="footer__contact">

@@ -26,27 +26,15 @@
   border-bottom: 1px solid var(--c-line-dark);
 }
 
-/* Logo: lacivert bölümler beyaz, mavi bölümler açık mavi */
+/* Logo: koyu zemin sürümü (lacivert → beyaz, mavi korunur) — scripts/build-logo-assets.py */
 .footer__logo {
   display: inline-block;
 }
 
-.footer__logo svg {
+.footer__logo img {
   display: block;
   width: auto;
-  height: 66px;
-}
-
-.footer__logo .cls-1,
-.footer__logo .cls-4,
-.footer__logo .cls-5 {
-  fill: #ffffff;
-}
-
-.footer__logo .cls-2,
-.footer__logo .cls-3 {
-  fill: var(--c-sky-300);
-  stroke: none;
+  height: 104px;
 }
 
 .footer__tagline {

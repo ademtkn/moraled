@@ -42,15 +42,15 @@
   flex: none;
 }
 
-.logo-svg {
+.logo-img {
   display: block;
   width: auto;
-  height: 58px;
+  height: 50px;
   transition: height 0.25s var(--ease);
 }
 
-.header--scrolled .logo-svg {
-  height: 52px;
+.header--scrolled .logo-img {
+  height: 46px;
 }
 
 /* ---------- Masaüstü menü ---------- */
@@ -405,9 +405,9 @@
 }
 
 @media (max-width: 480px) {
-  .logo-svg,
-  .header--scrolled .logo-svg {
-    height: 46px;
+  .logo-img,
+  .header--scrolled .logo-img {
+    height: 40px;
   }
 }
 

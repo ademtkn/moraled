@@ -12,7 +12,7 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(ROOT, 'build');
 
 // Only these files from public/ are published (CNAME keeps the moraled.com custom domain).
-const PUBLIC_FILES = ['CNAME', 'favicon.svg', 'icon.svg', 'og-image.jpg'];
+const PUBLIC_FILES = ['CNAME', 'favicon-32.png', 'favicon-48.png', 'apple-touch-icon.png', 'og-image.jpg'];
 
 function comingSoonFiles() {
   let outDir = OUT; // follows --outDir when building elsewhere (e.g. a scratch folder)

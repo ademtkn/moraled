@@ -37,6 +37,7 @@ npm run deploy:full  # tam site (yalnızca kullanıcı "siteyi aç" dediğinde)
 4. İç sayfa başlığı için `<section className="ad-hero"><h1/><p/></section>` deseni kullanılır; sayfa içeriği `<main className="inner-page">` içinde olmalı. Kart/ızgara/CTA görünümü `src/styles/inner.css`'teki ortak kart dillerinden gelir — yeni kart sınıfını oradaki listeye ekleyin (DESIGN_SYSTEM.md §6).
 5. Kırgızca **ң ө ү** glif testi yapılmadan font eklenmez.
 5a. Görseller `<Picture>` bileşeniyle eklenir (`src/components/Picture.jsx`); yeni görselden sonra `python3 scripts/optimize-images.py` çalıştırılır. İç bağlantılar `<a href>` değil `<Link to>`.
+5c. Logo yalnızca `src/assets/logo/` varyantlarından kullanılır (açık zemin: `moraled-horizontal.png`, koyu zemin: `*-dark.png`); kaynak logo değişirse `python3 scripts/build-logo-assets.py` çalıştırılır.
 5b. Erişilebilirlik 0 ihlalde tutulur (axe, WCAG 2.1 AA): beyaz zeminde küçük turuncu metin `--c-sun-700`, başlık seviyeleri atlanmaz, her form alanının etiketi olur.
 6. Uydurma istatistik, alıntı, referans ya da fotoğraf eklenmez; gerçek veri kullanıcıdan istenir.
 7. Dosya silme, commit ve deploy kullanıcı onayı olmadan yapılmaz. Site şu an **yapım aşaması modunda**: `coming-soon/` dışındaki hiçbir şey yayınlanmaz; `deploy:full` yalnızca kullanıcı açıkça isterse çalıştırılır.

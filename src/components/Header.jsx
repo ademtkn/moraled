@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Header.css';
-import Logo from '../assets/logo.svg?react';
+import logoUrl from '../assets/logo/moraled-horizontal.png';
 
 const LANGUAGES = [
   { code: 'kg', name: 'Кыргызча' },
@@ -150,7 +150,7 @@ export default function Header() {
       <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
         <div className="header__inner">
           <NavLink to="/" end className="logo" aria-label={t('nav.about')}>
-            <Logo className="logo-svg" />
+            <img className="logo-img" src={logoUrl} alt="MoralEd" width="798" height="240" />
           </NavLink>
 
           <nav className="nav" aria-label="Main">

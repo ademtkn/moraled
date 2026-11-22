@@ -171,8 +171,7 @@
 .cs-logo {
   display: block;
   width: auto;
-  height: 52px;
-  filter: brightness(0) invert(1);
+  height: 50px;
 }
 
 .cs-lang {
@@ -637,8 +636,7 @@
 .cs-footer__logo {
   display: block;
   width: auto;
-  height: 54px;
-  filter: brightness(0) invert(1);
+  height: 104px;
 }
 
 .cs-footer__tagline {
@@ -808,7 +806,11 @@
   }
 
   .cs-logo {
-    height: 42px;
+    height: 40px;
+  }
+
+  .cs-footer__logo {
+    height: 88px;
   }
 
   .cs-lang__btn {
