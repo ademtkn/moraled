@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.resolve(ROOT, process.argv[2] || 'build');
-const SITE_URL = 'https://moraled.com';
+const SITE_URL = 'https://www.moraled.com';
 const SITE_NAME = 'MoralEd';
 const LANG = 'kg'; // default site language (i18n fallbackLng)
 

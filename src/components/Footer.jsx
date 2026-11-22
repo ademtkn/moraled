@@ -90,7 +90,7 @@ export default function Footer() {
 
           <div className="footer__social">
             <a
-              href="https://www.instagram.com/edu.moralvalues/"
+              href="https://www.instagram.com/moraled.kg/"
               target="_blank"
               rel="noreferrer"
               aria-label={t('footer.instagram')}

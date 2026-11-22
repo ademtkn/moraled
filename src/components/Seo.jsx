@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { htmlLang } from '../i18n';
 
 const SITE_NAME = 'MoralEd';
-const SITE_URL = 'https://moraled.com';
+const SITE_URL = 'https://www.moraled.com';
 // 1200×630 social card (public/og-image.jpg) — regenerate with scripts/og-image.html
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 

@@ -205,7 +205,7 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - [x] Doğrulama: 18 sayfa × 1440/390px Vite ↔ CRA piksel karşılaştırması aynı (tek fark: form açılır okunda 2px tarayıcı çizim gürültüsü, stiller birebir aynı); axe 0 ihlal; etkileşimler (SPA geçişi, dil, pencere, içeriğe geç, galeri) hatasız.
 
 > ✅ **Canlı site (22 Kasım 2026):** moraled.com yayında — **yapım aşaması modu** (yalnızca `coming-soon/` sayfası). 21–22 Kasım'da site kapalıydı ("Site not found"): alan adı hiçbir repoya atanmamıştı; yeni gh-pages yayını (`CNAME=moraled.com`) alan adını `ademtkn/moraled`'e bağladı. HTTPS (Let's Encrypt) ve http→https yönlendirmesi çalışıyor.
-> ⚠️ **www.moraled.com** için DNS kaydı yok (GoDaddy, `domaincontrol.com`). Kullanıcı GoDaddy DNS'e `CNAME  www → ademtkn.github.io` eklemeli; GitHub sonra www'yi otomatik olarak moraled.com'a yönlendirir.
+> ✅ **Birincil alan adı www.moraled.com** (22 Kasım 2026, kullanıcı kararı): GoDaddy'de `www CNAME → ademtkn.github.io` + apex A kayıtları; GitHub Pages custom domain = `www.moraled.com`, `public/CNAME` = `www.moraled.com` (yayınlar bunu korur), moraled.com → www'ye yönlenir. Tüm canonical/OG/sitemap adresleri `https://www.moraled.com`. (Apex birincilken sertifika www'yi kapsamıyordu; birincili www yapmak yeni sertifikayı tetikledi.)
 
 ### Yapım aşaması sayfası — yayında (22 Kasım 2026)
 
