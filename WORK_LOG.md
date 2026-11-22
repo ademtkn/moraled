@@ -1,6 +1,6 @@
 # MoralEd çalışma ve devir kaydı
 
-**Son güncelleme:** 22 Kasım 2026, Bişkek tarihi. **Kaydı tutan:** Codex.
+**Son güncelleme:** 22 Kasım 2026 ~23:45, Bişkek tarihi. **Kaydı tutanlar:** Codex (K00–K05), Claude (K06–K13).
 
 Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, doğrulamaları ve sıradaki adımı bulacağı çalışma kaydıdır. Yeni bir işe başlarken güncel durumu okuyun; işe başladıktan sonra, önemli bir aşamada ve çalışmayı bırakmadan önce kaydı güncelleyin. Tamamlanan kayıtları koruyun.
 
@@ -12,12 +12,12 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 - **K09 (Claude, ~22:15):** Contact formu tamamlandı, mock EmailJS ile 66/66.
 - **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde orijinal belgeler yerine metinsiz SVG illüstrasyonlar (`af845f5`).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
-- **Ürün:** Kırgızistan okullarına yönelik gerçek site, `src/`. Kullanıcının istediği takvim düzeltmesi ile raporun 2 ve 3. içerik işleri tamamlandı; kullanıcının yerel incelemesi bekleniyor.
-- **Son tamamlanan iş:** K05 — sertifika numarasıyla sorgu, okul listesi, belge görüntüleme/paylaşma, üç tasarım örneği ve coming-soon üzerinde iki örnek. Kullanıcının yerel incelemesine hazır; yeni aktif geliştirme yok.
-- **Dal / başlangıç HEAD:** `redesign/vite-coming-soon` / `400fc97`. Aşağıdaki Codex değişiklikleri çalışma ağacında; henüz commit edilmedi. Git durumu her devralmada yeniden kontrol edilmeli.
-- **Yayın:** Commit, merge veya deploy yapılmadı. K05 ile `coming-soon/` yerelde güncellendi; canlı sürüme aktarılmadı. Tam sitenin açılması için kullanıcının açık talimatı gerekiyor.
-- **Yerel kontrol:** Gerçek site `http://localhost:3000/verify-certificate`, coming-soon `http://localhost:3001/#cs-certificates`; ikisi de son kontrolde HTTP 200. Gerekirse `npm start` ve `npm run dev:soon` ile açın. Mevcut süreçleri incelemeden durdurmayın.
-- **Devam noktası:** Gerçek sertifika kaydı 0; onaylı alıcı/numara/tarih/belge dosyası geldiğinde CERTIFICATES.md adımlarıyla eklenir. Öğretmen/öğrenciye özel şablonlar ve verme koşulları ayrıca netleştirilecek. Genel Contact formu ile mobil menü/SSS işleri açık.
+- **Anlık durum (22 Kasım ~23:45, K13'te yenilendi — eski K05 dönemi satırlarının yerine):**
+  - **Dal:** `redesign/vite-coming-soon`, son kod commit'i `1e2f5fb`, `origin` ile eşit. `main`'e merge edilmedi (GitHub'daki `main` hâlâ eski CRA kodu). Her devralmada `git status` / `git log` yeniden kontrol edilir; bu depoda paralel oturumlar (Codex, ikinci Claude) çalışabiliyor.
+  - **Yayın:** Canlıda yalnızca coming-soon (gh-pages `cb178a2`, ~22:20): http://www.moraled.com 200, apex → www 301, sertifika bölümünde metinsiz illüstrasyonlar. **https://www.moraled.com** GitHub sertifikasını bekliyor (`dns_changed`, talep 21:24) — alan adını tekrar kaldırıp eklemeyin. Tam site yayında değil; `deploy:full` yalnız kullanıcı açıkça isterse.
+  - **Tamamlanan açık işler:** 1 Contact formu (K09), 2 mobil menü/SSS erişilebilirliği (K11), 3 öğrenci gönüllü başvurusu (K12). Sertifika orijinalleri sitede gösterilmiyor (K08/K10) ve `design-references/certificates/`'te (K11).
+  - **Kullanıcı girdisi bekleyenler:** izinli okul/sınıf fotoğrafları; KG/RU ana dil + pedagoji kontrolü; materyal/etkinlik/şarkı verisi; gerçek sertifika kayıtları (şu an 0), verme koşulları ve öğretmen/öğrenci şablonları; **gerçek EmailJS teslim denemesi** (formlar yalnız mock ile test edildi).
+  - **Yerel kontrol:** `npm start` → http://localhost:3000 (`/contact`, `/contact?topic=volunteer`, `/faq`, `/verify-certificate`); `npm run dev:soon` → http://localhost:3001. Mevcut süreçleri incelemeden durdurmayın.
 
 ## Kullanıcı kararları ve çalışma sınırları
 
@@ -30,6 +30,8 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 7. Dosya silme, commit ve deploy için kullanıcı onayı gerekir. `npm run deploy` yalnızca coming-soon; `npm run deploy:full` yalnızca kullanıcı tam siteyi açmayı açıkça istediğinde kullanılabilir.
 8. Kullanıcı, yapılan ve planlanan bütün işlerin sonraki ajanlara aktarılmasını istedi. Bu kayıt ile `DESIGN_SYSTEM.md` §9 her çalışma sonunda güncellenir; duraklama veya limit kesintisinde de kalınan adım yazılır.
 9. Okul, öğretmen ve öğrencilere kullanıcının paylaştığı stile uygun sertifikalar verilecek; düzenlenen belgelerin sitede görülebilmesi hedefleniyor. Ekli üç görsel tasarım referansıdır; içindeki ad/tarih/imza ve “One Year” gerçek kayıt veya bütün belgelere uygulanacak kural olarak kabul edilmez.
+10. **Commit + push kalıcı onaylı (22 Kasım 2026, K12 sonrası):** kullanıcı Claude'a “bundan sonrakileri de commit et” dedi. Tamamlanıp doğrulanan işler, WORK_LOG kaydıyla birlikte `redesign/vite-coming-soon`'a commit edilip push edilir. **Dosya silme, `main`'e merge ve deploy hâlâ her seferinde ayrı onay ister** (madde 7).
+11. **Sertifika orijinalleri gösterilmez (22 Kasım 2026):** kullanıcının örnek sertifikalarındaki gerçek okul adı/tarih/imza sitede ve coming-soon'da görünmez; örnek olarak yalnızca metinsiz illüstrasyonlar (`CertificateArt.jsx`, coming-soon satır içi SVG) kullanılır. Orijinaller `design-references/certificates/`'te, yayınlanmaz.
 
 ## Belgelerin görevleri
 
@@ -265,6 +267,17 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 **Kalan:** Gerçek EmailJS teslimi test edilmedi — kullanıcı kendi adresiyle bir deneme yapmalı (gönüllü e-postasında ilk satırlar konu ve onay). Başvuruların kayıt/yanıt süreci (kim, ne kadar sürede yanıtlar) kullanıcı kararı.
 
 **Commit / deploy:** İlk deneme izin denetimine takıldı; kullanıcı onayıyla (“Evet commit et ve push et, bundan sonrakileri de commit et”) bu kayıtla birlikte commit + push. Deploy yok (tam site yayında değil).
+
+### K13 Kayıtların ve Claude belleğinin güncellenmesi
+
+**Tarih / çalışan:** 22 Kasım 2026 ~23:40 / Claude. **Kullanıcı talebi:** “Evet commit et ve push et, bundan sonrakileri de commit et. Bu işlemlerden sonra yaptığın işlemleri kayıt altına al, Claude hangi işler yaptığını bilsin.” **Durum:** tamamlandı.
+
+- K12 commit + push: `1e2f5fb`.
+- Bu dosyanın “Güncel durum” bölümündeki eski K05 dönemi satırları (“commit edilmedi”, “deploy yapılmadı” vb.) güncel anlık durumla değiştirildi; K kayıtları korunuyor. Kullanıcı kararlarına 10 (commit + push kalıcı onay; silme/merge/deploy ayrı onay) ve 11 (sertifika orijinalleri gösterilmez) eklendi; `AGENTS.md` kural 7'ye aynı not.
+- Claude'un kalıcı belleği (`~/.claude-kisisel/projects/…/memory/`) güncellendi: proje durumu (K06–K13 özeti, dal, yayın, www sertifikası), kalıcı commit onayı ve devir kuralları. Bu bellek yalnızca Claude içindir; diğer ajanlar için tek doğru kaynak bu dosya + `DESIGN_SYSTEM.md` §9.
+- **Açık kalan:** www HTTPS sertifikası (Claude oturumundaki izleyici ~00:30'a kadar çalışıyor; onaylanırsa `https_enforced` açar). Onaylanmazsa sonraki adım: GitHub Pages ayarlarında durumu kontrol etmek, gerekirse GitHub desteğine başvurmak — alan adını yeniden ekleme döngüsüne girmemek.
+
+**Commit / deploy:** Belge commit'i + push (kalıcı onay). Deploy yok.
 
 ## Değişikliklerin dosya haritası
 
