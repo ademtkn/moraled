@@ -14,7 +14,8 @@ Canlı site: **https://moraled.com**
 - 🎯 **İnteraktif örnek kaynaklar**: hikâye (The Honest Fox), şarkı (Kindness Anthem),
   değer quiz'i (Value Quest) — üçü de tamamen üç dilde
 - 🎥 Seminer videoları, fotoğraf galerisi, partner okul karuseli
-- ✉️ EmailJS ile iletişim + sertifika doğrulama formları
+- 🏅 Numara ile sertifika sorgulama, okul belgeleri listesi ve tasarım örnekleri — [kayıt ekleme rehberi](./CERTIFICATES.md)
+- ✉️ EmailJS ile iletişim + sertifika yardım formları
 - 🔍 Sayfa bazlı SEO (başlık, açıklama, OG/Twitter, canonical) — dile göre değişir
 - 🚀 GitHub Pages + moraled.com özel alan adı (SPA derin link desteği)
 
@@ -26,6 +27,7 @@ piermontpress.us, kivaprogram.net.
 
 - Tasarım kararları, kurallar, güncel durum ve yol haritası: **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)**
 - Yapay zekâ ajanları ve yeni geliştiriciler için çalışma rehberi: **[AGENTS.md](./AGENTS.md)**
+- Yapılan işler, dosya haritası, doğrulamalar, kalınan nokta ve sonraki adımlar: **[WORK_LOG.md](./WORK_LOG.md)** — her çalışmada güncellenir.
 
 ## 🚧 Yapım aşaması modu (Kasım 2026)
 
@@ -39,7 +41,7 @@ Site açılışında: `npm run deploy:full`.
 
 ## 🌐 Diller (i18n)
 
-- **Dosyalar:** `src/locales/{en,kg,ru}/translation.json` (her biri 678 anahtar, tam parite)
+- **Dosyalar:** `src/locales/{en,kg,ru}/translation.json` (her biri 750 anahtar, diziler dahil 787 son değer; tam parite)
 - **Yapılandırma:** `src/i18n.js` — `fallbackLng: 'kg'`, dil tercihi `localStorage`'da
 - Dil değiştirince `<html lang>` ve SEO başlıkları otomatik güncellenir
 - Yeni anahtar ekleme rehberi: [I18N_GUIDE.md](./I18N_GUIDE.md)
@@ -54,6 +56,7 @@ npm start         # geliştirme sunucusu (Vite) → http://localhost:3000
 npm run build     # üretim build'i → build/ (+ rota başına HTML, scripts/generate-route-html.js)
 npm run preview   # build/ klasörünü yerelde sun → http://localhost:4173
 npm run lint      # ESLint (hook kuralları, kullanılmayan değişkenler)
+npm run test:certificates  # sertifika şeması, geçerlilik ve Bişkek gün sınırı
 npm run deploy    # YALNIZCA "yapım aşamasında" sayfasını yayınlar (build:soon + gh-pages)
 npm run deploy:full   # tam siteyi yayınlar — site açılışında kullanılacak
 npm run dev:soon  # yapım aşaması sayfası → http://localhost:3001
@@ -65,6 +68,10 @@ python3 scripts/optimize-images.py   # görsel ekledikten sonra: WebP + telefon 
 - `src/pages/` — 17 sayfa (rota haritası `src/App.jsx`; ana sayfa dışındakiler ayrı JS parçası olarak yüklenir)
 - `src/components/` — Header, Footer, Seo, galeri, partnerler, seminerler, örnek kaynaklar
 - `src/data/ageTopics.js` — sınıf bazlı aylık konu planları (kg/ru/en)
+- `src/data/curriculumCalendar.js` — ana sayfa, ay rozeti ve tüm müfredat sayfaları için ortak takvim
+- `public/certificates/registry.json` — yalnızca yayım onaylı gerçek sertifika kayıtları (şu an boş)
+- `CERTIFICATES.md` — sertifika kayıt/dosya ekleme ve açık erişim modeli
+- `CONTENT_SOURCES.md` — Kırgızistan referansları ve yeni konuların kaynak/uyarlama kayıtları
 - `src/locales/` — çeviri dosyaları
 - `src/components/Picture.jsx` + `src/data/imageManifest.json` — WebP/srcset görseller (`scripts/optimize-images.py` üretir)
 - `src/styles/page-styles.js` — tüm sayfa CSS'lerinin sabit global sırası (kod bölmeye rağmen kaskad korunur)

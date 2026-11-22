@@ -94,7 +94,7 @@ Yeni font eklemeden önce `Жаңы муун үчүн баалуулуктарг
 | `.chip` | Fotoğraf üstü koyu etiket (Piermont) |
 | **Header** (`components/Header.js`) | Logo · menü · `KG RU EN` dil seçici · turuncu "İletişim" CTA. ≤1180px hamburger menü. Esc açılır menüleri kapatır. |
 | **Footer** (`components/Footer.js`) | Lacivert; logo CSS ile beyaz/açık maviye boyanır (`.footer__logo .cls-*`); 3 bağlantı sütunu; SSS / Sertifika doğrula / Gizlilik hap bağlantıları; sosyal daireler. İç bağlantılar `<Link>` (tam sayfa yenileme yok). |
-| **İç sayfa hero'su** | Sayfanın başına `<section className="ad-hero"><h1/><p/></section>` yazmak yeterli. `polish.css` içindeki `section[class*="-hero"]` kuralı lacivert bant + turuncu çizgi + sağda yaprak fotoğraf + güneş diskini otomatik uygular. Fotoğraf: `polish.css`'e `.ad-hero { --hero-img: url('./assets/heroes/foto.jpg'); }` ekleyin. |
+| **İç sayfa hero'su** | Sayfanın başına `<section className="<sayfa>-hero"><h1/><p/></section>` yazmak yeterli (`<sayfa>` = gerçek ad, ör. `certificate-hero`; harfiyen `ad-hero` yazılmaz — fotoğraf eşlemesi kopar). `polish.css` içindeki `section[class*="-hero"]` kuralı lacivert bant + turuncu çizgi + sağda yaprak fotoğraf + güneş diskini otomatik uygular. Fotoğraf: `polish.css`'e `.ad-hero { --hero-img: url('./assets/heroes/foto.jpg'); }` ekleyin. |
 | **Ana sayfa** (`pages/About.js` + `pages/Home.css`) | Bölümler: masthead → tanım bandı → değer takvimi → keşfet bento → çerçeve → örnek kaynaklar → bütüncül gelişim → gençlerin sesi → partnerler → CTA paneli |
 | **Partner şeridi** (`components/partners`) | Ana sayfa ve `/moraled`'de; logolar beyaz dairelerde, sonsuz kayar |
 | **Logo** (`src/assets/logo/`, 22 Kasım 2026) | Yeni logo: M'den doğan çocuk figürü + açık kitap, "MoralEd" + "CHARACTER EDUCATION" (lacivert `#002068` + mavi `#0078f0`). Kaynak `moraled-logo-source.png`; varyantlar `python3 scripts/build-logo-assets.py` ile üretilir: `moraled-horizontal(.png/-dark)` header için (simge + yazı, altyazısız), `moraled-stacked(.png/-dark)` footer/büyük kullanım için; `-dark` = lacivert beyaza döner, mavi kalır (koyu zemin). Favicon/PWA ikonları `public/favicon-32/48.png`, `apple-touch-icon.png`, `icon-192/512.png`. Eski `src/assets/logo.svg` ve teal `favicon.svg` artık kullanılmıyor. Koyu zeminde CSS `filter` ile beyazlatma yapmayın — `-dark` dosyasını kullanın. |
@@ -108,7 +108,7 @@ Yeni font eklemeden önce `Жаңы муун үчүн баалуулуктарг
 
 | Kart dili | Görünüm | Kullanıldığı sınıflar |
 |---|---|---|
-| **A · Açık ikon kartı** | Beyaz, 24px köşe, ince çizgi; sol üstte açık mavi ikon dairesi (hover'da turuncuya döner); sola hizalı metin | `.value-card` `.feature-card` `.features-benefit-card` `.age-band-card` `.materials-card` `.research-method-card` `.bullying-tip-card` `.climate-work-card` `.volunteers-role-card` `.events-card` `.info-block` `.seminar-card` |
+| **A · Açık ikon kartı** | Beyaz, 24px köşe, ince çizgi; sol üstte açık mavi ikon dairesi (hover'da turuncuya döner); sola hizalı metin | `.value-card` `.feature-card` `.features-benefit-card` `.age-band-card` `.materials-card` `.research-method-card` `.bullying-tip-card` `.climate-work-card` `.volunteers-role-card` `.events-card` `.info-block` `.seminar-card` `.cert-audience-card` `.cert-school-card` |
 | **B · Lacivert özellik kartı** | Lacivert zemin, solda beyaz daire ikon, yatay (Qundylyq) | `.bullying-form-card` `.volunteers-benefit-card` |
 | **C · Numaralı adım** | A kartı + sağ üstte turuncu "01"; kartlar arasında kesik bağlantı çizgisi | `.how-it-works-step` `.volunteers-step` |
 | **D · Alıntı** | Lacivert bantta cam kart (liderler) · turuncu sol çizgili satır (kaynaklar) | `.leader-testimonial-card` · `.research-citation-card` |
@@ -155,11 +155,53 @@ Vite → CRA geçişinde 18 sayfa × 2 genişlik piksel karşılaştırmasıyla 
 
 ## 8. Bu çalışmada eklenen çeviri anahtarları
 
-`home.hero_eyebrow`, `home.hero_button_2`, `home.hero_badge`, `home.stat_values`, `home.stat_grades`, `home.stat_bands`, `home.stat_languages`, `home.explore_title`, `home.explore_subtitle`, `home.resources_eyebrow`, `home.framework_cta`, `common.skip_to_content` (Faz 3), `common.load_error_title`, `common.load_error_text`, `common.retry` (Faz 4) — üç dilde de var (parite: 682 anahtar). KG/RU metinleri yapay zekâ yazdı; ana dili konuşan biri kontrol etmeli.
+`home.hero_eyebrow`, `home.hero_button_2`, `home.hero_badge`, `home.stat_values`, `home.stat_grades`, `home.stat_bands`, `home.stat_languages`, `home.explore_title`, `home.explore_subtitle`, `home.resources_eyebrow`, `home.framework_cta`, `common.skip_to_content` (Faz 3), `common.load_error_title`, `common.load_error_text`, `common.retry` (Faz 4) — üç dilde de var (Faz 1–4 sırasında parite: 682 anahtar; güncel sertifika çalışması sonrası 750 anahtar / 787 son değer). KG/RU metinleri yapay zekâ yazdı; ana dili konuşan biri kontrol etmeli.
 
 Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı · 3 dil) müfredatın kendisinden gelir. **Uydurma istatistik eklemeyin**; gerçek etki rakamları (okul/öğretmen/öğrenci sayısı) kullanıcıdan alınmalıdır.
 
 ## 9. Durum ve yol haritası
+
+### Sertifika merkezi ve coming-soon örnekleri — 22 Kasım 2026
+
+- Kullanıcı kararı: **numarayla sorgulama, okul belgeleri ayrıca listelenebilir**. `/verify-certificate` aynı rota üzerinde genişletildi: okul/öğretmen/öğrenci türleri, kayıt durumu, belge açma, paylaşılabilir bağlantı ve yalnızca okul kayıtlarının listesi.
+- Üç kullanıcı tasarımı gerçek sitede örnek etiketiyle büyütülebilir galeride; coming-soon'a iki örnek ve KG/RU/EN gelecek özellik açıklaması eklendi. Görseldeki okul adı, imza, tarih ve “One Year” gerçek sertifika kaydına veya genel koşula dönüştürülmedi. Asıllar korundu; Picture için WebP/640px üretildi.
+- `public/certificates/registry.json` şu an **0 gerçek kayıt** içeriyor. Şema/dosya doğrulaması tam site build'ine eklendi. Ayrıntılı ekleme yöntemi ve açık statik erişim sınırları: [CERTIFICATES.md](./CERTIFICATES.md). Gerçek kayıtlar, belge verme koşulları ve ayrı öğretmen/öğrenci şablonları kullanıcı girdisi bekliyor.
+- Sertifika yardım formunda tekrar gönderim kilidi, disabled/gönderiliyor durumu, sayfa içinde başarı/hata ve başarı sonrası temizleme eklendi. Genel Contact formu bu aşamada değiştirilmedi. Gizlilik metnine sertifika formu ve açık kayıt kapsamı eklendi.
+- Coming-soon rozeti ve kayan değer sırası da ortak `curriculumCalendar.js` verisine bağlandı; eski bağımsız sıra düzeltilmiş oldu. Yeni arayüzün boşlukları için `tokens.css` içine `--space-*` ölçeği eklendi. Yeni sayfa/rota/font yok; mevcut CSS yükleme sırası korundu.
+- İki build ve lint temiz; altı kalıcı test geçti. KG/RU/EN × 1440/390px üzerinde 30 görünüm, 18 galeri penceresi ve 42 davranış kontrolü başarılı; axe/JS hatası/kırık görsel/taşma yok. Gerçek e-posta gönderilmedi. Son tür kontrolü sonrası build/lint/testler yeniden temiz; geliştirme adresleri 3000/3001, ayrıntılı devir K05 kaydında. Commit/deploy yapılmadı.
+
+### Kalıcı çalışma kaydı — 22 Kasım 2026
+
+- Sonraki ajanlar için [WORK_LOG.md](./WORK_LOG.md) oluşturuldu: önceki çalışmalar, kullanıcı kararları, değişen dosyalar, doğrulama sonuçları, kalınan nokta ve önerilen devam sırası burada tutuluyor.
+- `AGENTS.md` okuma/güncelleme kuralı ve `.cursor/rules/work-log.mdc` her işin başlangıcında, önemli aşamalarda ve bitiş/kesinti öncesinde kayıt tutulmasını istiyor. Bu bölüm ürün durumunu, çalışma kaydı ayrıntılı devir bilgisini taşır.
+- Takvim ve 2/3 içerik işleri yerel incelemeye hazır. Form/klavye düzeltmelerine henüz başlanmadı. Bu kayıt düzenlemesinde ürün kodu, commit ve yayın değişikliği yok.
+- Kayıt düzeni doğrulandı: 33 yerel belge bağlantısı sağlam, Cursor kuralı her oturum için etkin, `git diff --check` temiz. Önceki ürün build/lint ve tarayıcı sonuçları tarihleri/kapsamlarıyla çalışma kaydına aktarıldı.
+
+### Kırgızistan odağında içerik — 2 ve 3. maddeler tamamlandı (22 Kasım 2026)
+
+- **3. sınıf Şubat/Nisan:** iki boş ay dolduruldu. Çevreye özen ve birlikte bir sınıf işi düzenleme konuları KG/RU/EN'de eklendi; `adapted: true` ve görünür **MoralEd: Кыргызстан үчүн сунуш** etiketiyle eski KAO başlıklarından ayrılıyor. Toplam **248 konu / 99 dolu sınıf-ay hücresi**. Esas alınan kaynak ve sayfalar: [CONTENT_SOURCES.md](./CONTENT_SOURCES.md).
+- **Kaynak önceliği:** kullanıcıdaki 1. referans (2021–2040 eğitim programı) ve 5. referans (Education of Value kitapları). Resmî programın Bakanlıktaki iki dilli PDF kopyası, özellikle PDF s.18 / basılı KG s.16 ve RU s.15 incelendi. 3. sınıf kitabında s.7–9 ve 67–75 yeni konuların dayanağı. Piermont, KiVa ve Character.org ek yaklaşım kaynakları; resmî onay, lisans/ortaklık veya MoralEd saha sonucu iddiası oluşturulmuyor.
+- **Kullanıcı kararı:** kişilere atfedilmeyen program içeriği. Ana sayfa/Our Story alıntıları, ekip ve gönüllü profilleri kaldırılıp sınıf uygulamaları, öğretmen–aile–öğrenci rolleri ve gönüllülük ilkeleriyle değiştirildi. İsim ve alıntı çeviri anahtarları da üç dilden çıkarıldı; dosya/fotoğraf silinmedi.
+- **Yerel içerik:** kaynaklar sayfası `/research` yeniden düzenlendi; ulusal program ve kullanılan kitap önce geliyor. Çok dillilik, kapsayıcılık, güvenli ortam ve aile katılımı işlendi. ABD bursu/üniversite başvurusu hizmet saati, otomatik referans ve kesin hazır paket/rapor vaatleri öneri ve okulun koşullarına göre görüşülecek içerikle değiştirildi. Çeviri paritesi **694 anahtar / diziler dahil 731 son değer**.
+- **Kalan içerik işleri:** ana dili konuşan editör/eğitim uzmanı kontrolü ve gerçek sınıf fotoğrafları/izinleri. Şarkı ses kaydı, formlar ve klavye erişilebilirliği önceki ayrı iş listesinde devam ediyor. Coming-soon, commit ve deploy kapsam dışında.
+- **Doğrulama:** build uyarısız (20 rota → 21 HTML), lint 0 hata/uyarı. Değişen 11 rota × KG/RU/EN × 1440/390px = **66 kontrolde** axe/JS hatası/kırık görsel/yatay taşma/ham çeviri anahtarı yok; son metin düzeltmeleri için ana sayfa, Features ve genel müfredat **18 ek kontrolden** geçti. 1181px menü üç dilde çakışmıyor. `localhost:3000` üzerinde iki yeni konu etiketi, kaynak bağlantısı ve RU dil değişimi doğrulandı. Testler `/tmp/moraled-content-qa/` ve `/tmp/moraled-content-qa-final/` altında; geliştirme sunucusu kullanıcı için açık.
+
+### Müfredat takvimi — tamamlandı (22 Kasım 2026)
+
+- **Tek kaynak:** `src/data/curriculumCalendar.js`; ana sayfa takvimi, ayın değeri rozeti, genel müfredat tablosu ve dört yaş bandı aynı veriyi kullanıyor. Mevcut sınıf konu verilerinin sırası esas alındı: **Eyl bakım/şefkat → Eki saygı → Kas güvenilirlik → Ara sorumluluk → Oca adalet → Şub vatandaşlık → Mar azim → Nis liderlik → May öz disiplin.** Eski `GRADE_ORDER_PILLARS` kaldırıldı; ikonlar, açıklamalar ve beceriler doğru değeri izliyor, mevsim renkleri ay sırasında kalıyor.
+- Öğrenme hedeflerindeki sabit ay adları KG/RU/EN'de **“ayın sonunda”** anlamına gelecek şekilde düzenlendi; böylece hedef metni eski bir ayı göstermiyor. Mevcut sınıf konuları/odak metinleri ve üç dilin anahtar paritesi korundu. Yaz aylarında rozet Eylül'ü gösteriyor.
+- **Doğrulama:** build uyarısız (20 rota → 21 HTML), lint 0 hata/uyarı; altı ilgili rota × üç dil × 1440/390px = **36 kontrolde** ay/değer sırası, açıklamalar, beceriler, hedefler ve sınıf konuları doğru; axe/JS hatası/yatay taşma yok. **12 ay için rozet ve vurgulanan kart** tarayıcıda doğrulandı; tarih yardımcısının 24 ay sınırı kontrolü geçti. `http://localhost:3000` geliştirme görünümü de doğrulandı.
+- Kullanıcı yerelde kontrol edecek. Coming-soon değiştirilmedi; commit/deploy yapılmadı. Şubat/Nisan konu boşlukları ve kişilere atıflar sonraki içerik çalışmasında giderildi (yukarıda). Form/erişilebilirlik maddeleri ayrı iş listesinde.
+
+### Gerçek site incelemesi — 22 Kasım 2026
+
+Kullanıcının yeni çalışma kapsamı **`src/` altındaki tam site**; coming-soon tasarımı çalışma kapsamı dışında. Güncel ayrıntılı rapor: [MORALED_PROJE_RAPORU.md](./MORALED_PROJE_RAPORU.md). İncelenen HEAD `400fc97`, dal `redesign/vite-coming-soon`; uzak `main` hâlâ `3ba0241` (beş commit geride). Bu incelemede ürün kodu, commit, merge veya deploy yapılmadı.
+
+- **Yeniden doğrulandı:** build uyarısız (20 rota → 21 HTML), lint 0 hata/uyarı, npm audit 0 açık. Chromium'da 20 içerik rotası + 404 × KG/RU/EN × 1440/390px = 126 kontrolde axe/JS hatası/kırık görsel/yatay taşma yok. Üç modal × üç dil × iki genişlik = 18 kontrolde odak, Esc ve axe temiz.
+- **Takvim farkı (inceleme bulgusu, ardından düzeltildi):** ana sayfa/genel müfredat takvimi ile sınıf ayrıntıları Ekim, Kasım, Aralık, Şubat ve Nisan aylarında farklı değer gösteriyordu. Yukarıdaki takvim çalışmasıyla ortak kaynağa bağlandı.
+- **İçerik:** ortaokul/lise artık dolu; 1–11. sınıflarda 246 konu başlığı var. 3. sınıf Şubat/Nisan konu listeleri boş. KG/RU dil ve eğitim uzmanı kontrolü, gerçek fotoğraflar, kişi/alıntı ve hizmet vaatlerinin teyidi bekliyor. Çeviri paritesi 682 anahtar / diziler dahil 719 son değer olarak doğrulandı.
+- **İşlev:** mobil menü açıkken Tab odağı arka sayfaya kaçıyor; FAQ düğmelerinde `aria-expanded`/`aria-controls` yok. Formlarda gönderiliyor durumu/tekrar gönderim engeli yok; Contact başarıdan sonra temizlenmiyor (EmailJS yanıtları taklit edildi, gerçek e-posta gönderilmedi). Sertifika manuel e-posta talebi; materyaller/etkinlikler tanıtım düzeyinde; şarkı örneği ses çalmıyor, sözleri vurguluyor.
+- **Yayın:** yaklaşık 13.19–13.28 Bişkek saatinde www için HTTPS sertifika adı uyuşmazlığı gözlendi; www `*.github.io` sertifikası sundu. Apex sertifikası geçerli ve HTTP 301 ile www'ye yönleniyor; hata hedef www bağlantısında oluşuyor. CNAME www olarak doğru; sertifika hazırlığı ayrıca kontrol edilmeli. Aşağıdaki önceki “HTTPS çalışıyor” notları bu yeni gözlemle birlikte okunmalı.
 
 ### Faz 1 — tamamlandı (21 Kasım 2026)
 
@@ -205,7 +247,7 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - [x] Doğrulama: 18 sayfa × 1440/390px Vite ↔ CRA piksel karşılaştırması aynı (tek fark: form açılır okunda 2px tarayıcı çizim gürültüsü, stiller birebir aynı); axe 0 ihlal; etkileşimler (SPA geçişi, dil, pencere, içeriğe geç, galeri) hatasız.
 
 > ✅ **Canlı site (22 Kasım 2026):** moraled.com yayında — **yapım aşaması modu** (yalnızca `coming-soon/` sayfası). 21–22 Kasım'da site kapalıydı ("Site not found"): alan adı hiçbir repoya atanmamıştı; yeni gh-pages yayını (`CNAME=moraled.com`) alan adını `ademtkn/moraled`'e bağladı. HTTPS (Let's Encrypt) ve http→https yönlendirmesi çalışıyor.
-> ✅ **Birincil alan adı www.moraled.com** (22 Kasım 2026, kullanıcı kararı): GoDaddy'de `www CNAME → ademtkn.github.io` + apex A kayıtları; GitHub Pages custom domain = `www.moraled.com`, `public/CNAME` = `www.moraled.com` (yayınlar bunu korur), moraled.com → www'ye yönlenir. Tüm canonical/OG/sitemap adresleri `https://www.moraled.com`. (Apex birincilken sertifika www'yi kapsamıyordu; birincili www yapmak yeni sertifikayı tetikledi.)
+> ✅ **Birincil alan adı www.moraled.com** (22 Kasım 2026, kullanıcı kararı): GoDaddy'de `www CNAME → ademtkn.github.io` + apex A kayıtları; GitHub Pages custom domain = `www.moraled.com`, `public/CNAME` = `www.moraled.com` (yayınlar bunu korur), moraled.com → www'ye yönlenir. Tüm canonical/OG/sitemap adresleri `https://www.moraled.com`. (Apex birincilken sertifika www'yi kapsamıyordu; birincili www yapmak yeni sertifikayı tetikledi.) **22 Kasım 21:45 itibarıyla** iki ad için sertifika talebi GitHub'da bekliyor (`dns_changed`); bu sürede https://www.moraled.com uyarı veriyor, HTTP ve apex yönlendirmesi çalışıyor. Ayrıntı: WORK_LOG.md K07.
 
 ### Yapım aşaması sayfası — yayında (22 Kasım 2026)
 

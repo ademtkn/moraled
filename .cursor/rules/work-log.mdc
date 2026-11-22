@@ -1,0 +1,13 @@
+---
+description: MoralEd çalışmalarının ve devam adımlarının kalıcı kaydı
+alwaysApply: true
+---
+
+# Çalışma ve devir kaydı
+
+- Depodaki `AGENTS.md` kurallarını ve `WORK_LOG.md` güncel durumunu işe başlarken oku.
+- Her yeni işin kapsamını ve planını `WORK_LOG.md` içine başlangıçta kaydet.
+- Anlamlı aşamalarda yapılanları, dosyaları, gerçek test sonuçlarını ve kalanı güncelle.
+- Bitirirken veya ara/limit kesintisi öncesinde kalınan noktayı ve sonraki ilk somut adımı yaz.
+- Tamamlanan işlerin geçmişini koru; yapılmamış işleri tamamlandı olarak gösterme.
+- `DESIGN_SYSTEM.md` §9 durumunu da güncelle. Ayrıntılı yöntem `WORK_LOG.md` içindedir.
