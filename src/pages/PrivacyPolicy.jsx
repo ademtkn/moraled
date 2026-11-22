@@ -45,6 +45,9 @@ function PrivacyPolicy() {
               {t('privacy.third_party_text')}
             </p>
 
+            <h2>{t('privacy.certificates_title')}</h2>
+            <p>{t('privacy.certificates_text')}</p>
+
             <h2>{t('privacy.cookies_title')}</h2>
             <p>
               {t('privacy.cookies_text')}

@@ -10,12 +10,13 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build && node scripts/generate-route-html.js",
+    "build": "node scripts/validate-certificates.js && vite build && node scripts/generate-route-html.js",
     "preview": "vite preview",
     "dev:soon": "vite --config vite.soon.config.js",
     "build:soon": "vite build --config vite.soon.config.js",
     "preview:soon": "vite preview --config vite.soon.config.js",
     "lint": "eslint .",
+    "test:certificates": "node --test scripts/certificates.test.js",
     "deploy": "npm run build:soon && gh-pages -d build",
     "deploy:full": "npm run build && gh-pages -d build"
   },

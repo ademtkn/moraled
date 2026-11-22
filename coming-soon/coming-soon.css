@@ -782,6 +782,31 @@
   color: var(--c-sun-400);
 }
 
+/* Certificate preview: the images are examples, not published award records. */
+.cs-cert-nav { display: inline-block; margin-top: var(--space-6); color: var(--c-sun-300); font-size: var(--fs-small); font-weight: 600; text-underline-offset: var(--space-1); }
+.cs-cert-section { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); align-items: center; gap: var(--space-12); margin-top: var(--space-10); padding-block: var(--section-y); border-top: 1px solid var(--c-line-dark); scroll-margin-top: var(--space-8); }
+.cs-cert-eyebrow { margin: 0 0 var(--space-4); color: var(--c-sun-300); font: 700 var(--fs-small) var(--font-display); }
+.cs-cert-copy h2 { margin: 0 0 var(--space-6); max-width: 16ch; color: var(--c-white); font: 800 var(--fs-h2) / 1.15 var(--font-display); }
+.cs-cert-lead { margin: 0 0 var(--space-6); max-width: 54ch; color: var(--c-sky-100); font-size: var(--fs-body); line-height: 1.8; }
+.cs-cert-audiences { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0 0 var(--space-6); padding: 0; list-style: none; }
+.cs-cert-audiences li { padding: var(--space-2) var(--space-4); border: 1px solid var(--c-line-dark); border-radius: var(--r-pill); color: var(--c-white); font-size: var(--fs-small); }
+.cs-cert-note { max-width: 56ch; color: var(--c-sky-200); font-size: var(--fs-small); line-height: 1.7; }
+.cs-cert-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); padding-bottom: var(--space-8); }
+.cs-cert-card { min-width: 0; margin: 0; padding: var(--space-2); background: var(--c-white); border-radius: var(--r-sm); box-shadow: var(--shadow-lg); }
+.cs-cert-card:nth-child(2) { transform: translateY(var(--space-8)); }
+.cs-cert-card img { display: block; width: 100%; height: auto; }
+.cs-cert-card figcaption { display: grid; gap: var(--space-2); padding: var(--space-4) var(--space-2); color: var(--c-navy-900); font-size: var(--fs-small); line-height: 1.5; }
+.cs-cert-card figcaption span { color: var(--c-sun-700); font-weight: 600; }
+@media (max-width: 1024px) {
+  .cs-cert-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .cs-cert-copy h2 { max-width: 22ch; }
+  .cs-cert-gallery { max-width: 620px; }
+}
+@media (max-width: 600px) {
+  .cs-cert-gallery { grid-template-columns: minmax(0, 1fr); width: min(100%, 320px); gap: var(--space-6); margin-inline: auto; padding-bottom: 0; }
+  .cs-cert-card:nth-child(2) { transform: none; }
+}
+
 /* =====================================================================
    DUYARLI
    ===================================================================== */

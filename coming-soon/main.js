@@ -2,21 +2,14 @@ import '../src/styles/tokens.css';
 import '../src/index.css';
 import './coming-soon.css';
 import { STRINGS } from './strings.js';
+import { CURRICULUM_CALENDAR, getCurrentCurriculumMonth } from '../src/data/curriculumCalendar.js';
 
 // Same storage key as the full site (i18next), so a visitor's language carries over at launch.
 const KEY = 'i18nextLng';
 const htmlLang = (lang) => (lang === 'kg' ? 'ky' : lang); // 'kg' is the app code; Kyrgyz is 'ky'
 
-// School year: September (0) … May (8). In summer show September's value.
-function monthIndex(date = new Date()) {
-  const m = date.getMonth(); // 0 = January
-  if (m >= 8) return m - 8;
-  if (m <= 4) return m + 4;
-  return 0;
-}
-
 function renderValues(s) {
-  const items = s.values.map((v) => `<li>${v}</li>`).join('');
+  const items = CURRICULUM_CALENDAR.map((entry) => s.values[entry.pillar - 1]).map((v) => `<li>${v}</li>`).join('');
   // First list is read by screen readers; the copy only makes the loop seamless.
   document.querySelectorAll('[data-values]').forEach((ul) => {
     ul.innerHTML = items;
@@ -34,12 +27,15 @@ function apply(lang) {
   document.querySelectorAll('[data-lang]').forEach((btn) => {
     btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
   });
-  const i = monthIndex();
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    el.alt = s[el.dataset.i18nAlt];
+  });
+  const currentMonth = getCurrentCurriculumMonth();
   document.querySelectorAll('[data-month-value]').forEach((el) => {
-    el.textContent = s.values[i];
+    el.textContent = s.values[currentMonth.pillar - 1];
   });
   document.querySelectorAll('[data-month-name]').forEach((el) => {
-    el.textContent = s.months[i];
+    el.textContent = s.months[currentMonth.index];
   });
   renderValues(s);
   document.documentElement.lang = htmlLang(lang);
