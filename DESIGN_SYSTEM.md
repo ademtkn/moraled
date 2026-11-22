@@ -201,7 +201,8 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - [x] `<html lang>` artık `ky` (önceden `kg` = Kongo dili kodu).
 - [x] Doğrulama: 18 sayfa × 1440/390px Vite ↔ CRA piksel karşılaştırması aynı (tek fark: form açılır okunda 2px tarayıcı çizim gürültüsü, stiller birebir aynı); axe 0 ihlal; etkileşimler (SPA geçişi, dil, pencere, içeriğe geç, galeri) hatasız.
 
-> ⚠️ **Canlı site (22 Kasım 2026 itibarıyla kapalı):** moraled.com "Site not found · GitHub Pages" (404) dönüyor. DNS doğru; ama alan adı hiçbir repoya atanmış değil (Aigerim'in reposu bırakmış, `ademtkn/moraled` almamış; gh-pages dalında `CNAME=moraled.com` var). Çözüm (kullanıcı yapmalı): GitHub → `ademtkn/moraled` → Settings → Pages → Custom domain: `moraled.com` → Save → "Enforce HTTPS".
+> ✅ **Canlı site (22 Kasım 2026):** moraled.com yayında — **yapım aşaması modu** (yalnızca `coming-soon/` sayfası). 21–22 Kasım'da site kapalıydı ("Site not found"): alan adı hiçbir repoya atanmamıştı; yeni gh-pages yayını (`CNAME=moraled.com`) alan adını `ademtkn/moraled`'e bağladı. HTTPS (Let's Encrypt) ve http→https yönlendirmesi çalışıyor.
+> ⚠️ **www.moraled.com** için DNS kaydı yok (GoDaddy, `domaincontrol.com`). Kullanıcı GoDaddy DNS'e `CNAME  www → ademtkn.github.io` eklemeli; GitHub sonra www'yi otomatik olarak moraled.com'a yönlendirir.
 
 ### Yapım aşaması sayfası — yayında (22 Kasım 2026)
 
