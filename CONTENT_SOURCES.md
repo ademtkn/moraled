@@ -39,6 +39,6 @@ Yeni metinlerde okulun dili, köy/şehir bağlamı, aile veya kamkorcu katılım
 
 ## Sertifika tasarım referansları
 
-22 Kasım 2026'da kullanıcı üç MoralEd sertifika PNG'si sağladı: Partner School, School of Character ve Distinguished School of Character. Asıllar `public/images/certificates/` altında korunur; site için WebP/640px varyantları üretildi. Üçü gerçek site galerisinde, ikisi coming-soon'da açıkça tasarım örneği olarak sunulur.
+22 Kasım 2026'da kullanıcı üç MoralEd sertifika PNG'si sağladı: Partner School, School of Character ve Distinguished School of Character. Asıllar `design-references/certificates/` altında yalnızca referans olarak korunur (K11; sitede yayınlanmaz). Üzerlerindeki gerçek ad/tarih/imza nedeniyle sitede ve coming-soon'da bunların yerine metinsiz illüstrasyonlar gösterilir (K08, K10).
 
 Görsellerdeki Asylkech adı, imza, tarih ve “One Year” verilmiş sertifika kanıtı, onaylanmış okul ödülü veya bütün belgelere uygulanan kural olarak alınmadı. Gerçek kayıt listesi boş. Kullanıcı numarayla sorgu ve ayrıca okul listesi istedi; veri/erişim modeli ve kayıt adımları [CERTIFICATES.md](./CERTIFICATES.md) içinde. Tanıtım içeriğinde kişilere atfedilmeyen anlatım tercihi korunur; gerçek sertifika alıcı bilgileri ayrıca yayım onayı gerektirir.

@@ -6,7 +6,7 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K10, Claude, 22 Kasım ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. Karar bekleyen: `public/images/certificates/` orijinalleri (kullanılmıyor ama tam site yayınında adresle açılır). Sıradaki iş: açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
+- **Son durum (K10, Claude, 22 Kasım ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. **K11 (devam ediyor):** kullanıcı onayıyla orijinaller `design-references/certificates/`'e taşındı; ardından açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
 - **K09 (Claude, ~22:15):** Contact formu tamamlandı, mock EmailJS ile 66/66.
 - **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde orijinal belgeler yerine metinsiz SVG illüstrasyonlar (`af845f5`).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
@@ -227,6 +227,14 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Commit / deploy:** Bu kayıtla birlikte commit + push. Tam site yayınlanmadı.
 
+### K11 Sertifika orijinallerinin taşınması; mobil menü ve SSS erişilebilirliği
+
+**Tarih / çalışan:** 22 Kasım 2026 ~22:35– / Claude. **Kullanıcı talebi:** “Taşı” (orijinal sertifikalar) ve açık iş 2'ye onay. **Durum:** devam ediyor.
+
+**1 — Taşıma (tamamlandı):** `git mv public/images/certificates design-references/certificates` (3 PNG + 6 WebP; silme yok). `src/data/imageManifest.json`'dan üç girdi kaldırıldı (22 → 19; betiğin yazdığı biçim korunarak). `design-references/README.md` klasörün yayınlanmadığını ve neden ayrı tutulduğunu açıklıyor. **Doğrulama:** `npm run build` uyarısız (20 rota → 21 HTML); `build/images/` içinde `certificates` yok, JS/HTML'de `images/certificates` geçmiyor; lint 0. **Sınır:** GitHub deposu herkese açık; dosyalar depoda ve geçmiş commit'lerde görülebilir — bu taşıma yalnızca web sitesinde yayınlanmamalarını sağlar.
+
+**2 — Mobil menü + SSS (başlıyor):** `src/components/Header.jsx/.css`, `src/pages/FAQ.jsx`. Plan: açık menüde odak içeride kalır, arka sayfa `inert` olur, Esc ve kapatınca odak menü düğmesine döner; SSS düğmeleri `aria-expanded`/`aria-controls` ile yanıtlara bağlanır; menü erişilebilir adları üç dile taşınır.
+
 ## Değişikliklerin dosya haritası
 
 Dosyalar depo köküne göredir. Aşağıdaki ürün değişiklikleri başlangıç `400fc97` commit'inden sonraki yerel çalışmadır.
@@ -247,7 +255,7 @@ Dosyalar depo köküne göredir. Aşağıdaki ürün değişiklikleri başlangı
 | `src/pages/VerifyCertificate.jsx/.css` | Sertifika merkezi, okul listesi, örnek galeri ve kilitli/erişilebilir yardım formu |
 | `src/data/certificates.js`, `public/certificates/registry.json` | Kayıt şeması/durum yardımcısı ve boş gerçek kayıt kaynağı |
 | `scripts/validate-certificates.js`, `scripts/certificates.test.js`, `package.json` | Build öncesi kayıt/dosya doğrulaması ve altı kalıcı test |
-| `public/images/certificates/`, `src/data/imageManifest.json` | Kullanıcının üç PNG tasarımı ve WebP/640px varyantları |
+| `design-references/certificates/` (K11'e kadar `public/images/certificates/`), `src/data/imageManifest.json` | Kullanıcının üç PNG tasarımı ve WebP/640px varyantları — K11'den beri yalnızca referans, manifestte yok |
 | `coming-soon/{index.html,main.js,strings.js,coming-soon.css}`, `coming-soon/assets/certificate-*` | İki örnek, üç dilde tanıtım, alt metinler ve ortak ay takvimi |
 | `src/styles/tokens.css`, `src/styles/inner.css` | Boşluk tokenları ve ortak sertifika kartı/ızgara kayıtları |
 | `src/pages/PrivacyPolicy.jsx`, üç dil | Sertifika formu ve açık kayıt kapsamı |

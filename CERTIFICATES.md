@@ -8,7 +8,7 @@ Son güncelleme: 22 Kasım 2026. Kullanıcı kararı: **sertifika numarasıyla s
 - Doğrudan kayıt bağlantısı: `/verify-certificate?id=SERTIFIKA-NUMARASI`. Aynı bağlantı üç dilde çalışır.
 - Genel listede yalnızca `recipientType: "school"` kayıtları yer alır. Öğretmen ve öğrenci kayıtları genel listede gösterilmez.
 - Kaynak: `public/certificates/registry.json`. **Şu anda 0 gerçek kayıt** var; kullanıcı henüz verilmiş belge listesi paylaşmadı. Görseldeki Asylkech adı, tarih ve imza kayıt olarak içeri alınmadı.
-- Üç tasarım örneği kullanıcı tarafından sağlandı (`public/images/certificates/*.png`). **K10 kararı:** sitede bu orijinaller gösterilmez — üzerlerindeki ad, tarih ve imza görünmesin diye galeri ve büyütme penceresi bunların yerine metinsiz SVG illüstrasyonlar (`src/components/CertificateArt.jsx`: `partner` fildişi, `character` gök mavisi, `distinguished` lacivert) kullanır ve “illüstrasyon, gerçek belge değil” notu taşır. Öğretmen/öğrenci tasarımları henüz ayrıca üretilmedi.
+- Üç tasarım örneği kullanıcı tarafından sağlandı (K11'den beri `design-references/certificates/*.png`, yayınlanmaz). **K10 kararı:** sitede bu orijinaller gösterilmez — üzerlerindeki ad, tarih ve imza görünmesin diye galeri ve büyütme penceresi bunların yerine metinsiz SVG illüstrasyonlar (`src/components/CertificateArt.jsx`: `partner` fildişi, `character` gök mavisi, `distinguished` lacivert) kullanır ve “illüstrasyon, gerçek belge değil” notu taşır. Öğretmen/öğrenci tasarımları henüz ayrıca üretilmedi.
 - Coming-soon: iki okul illüstrasyonu (fildişi + lacivert, aynı çizim `coming-soon/index.html` içinde satır içi SVG) ve üç dilde gelecek sertifika özelliği tanıtımı. Tam site kapalıyken belge sorgulama yayımlanmaz.
 - Sertifika yardım formu EmailJS ile manuel talep iletir. Yeni belge üretmez; talep gönderilirken tekrar gönderim engellenir, sonuç sayfa içinde gösterilir.
 
@@ -70,7 +70,7 @@ Dosya hazır değilse `fileUrl: null` kayıt bilgilerini göstermeye izin verir;
 | `public/certificates/registry.json` | Yalnızca gerçek ve yayım onaylı kayıtlar |
 | `scripts/validate-certificates.js` | Build öncesi şema, benzersiz numara ve belge dosyası varlığı kontrolü |
 | `scripts/certificates.test.js` | Numara, şema, tarihler, dosya yolları, iptal ve Bişkek gün sınırı için altı kalıcı test |
-| `public/images/certificates/` | Kullanıcının üç orijinal tasarım PNG'si + WebP/640px varyantları — **sitede kullanılmıyor** (yalnızca referans). `public/` içinde olduğu için tam site yayınında adresle erişilebilir kalır; taşınması/silinmesi kullanıcı kararı. |
+| `design-references/certificates/` | Kullanıcının üç orijinal tasarım PNG'si + eski WebP/640px varyantları — **yalnızca referans, build'e girmez** (K11'de `public/images/certificates/`'ten taşındı; manifest girdileri kaldırıldı). `public/` içine geri koymayın. Depo herkese açık olduğundan dosyalar GitHub'da görülebilir. |
 | `src/locales/{kg,ru,en}/translation.json` | Gerçek site ve gizlilik metinleri |
 | `coming-soon/strings.js` | Bağımsız tanıtım sayfasının üç dilde metinleri |
 
