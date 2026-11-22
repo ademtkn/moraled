@@ -1,26 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ky">
   <head>
     <meta charset="utf-8" />
-    <title>MoralEd</title>
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // https://github.com/rafgraph/spa-github-pages
-      // GitHub Pages has no knowledge of client-side routes like /materials or /faq —
-      // it only serves real files, so a direct visit or refresh on those paths 404s.
-      // This encodes the intended path into a query string and redirects to the real
-      // index.html, which restores it before React Router mounts (see index.html).
-      var pathSegmentsToKeep = 0;
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1b4d" />
+    <title>MoralEd — Сайт иштелип жатат</title>
+    <meta name="description" content="Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз." />
+    <link rel="canonical" href="https://moraled.com/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MoralEd" />
+    <meta property="og:title" content="MoralEd — Сайт иштелип жатат" />
+    <meta property="og:description" content="Жаңы сайтыбыз жакында ачылат. Байланыш: linekginfo@gmail.com · +996 502 001 903" />
+    <meta property="og:url" content="https://moraled.com/" />
+    <meta property="og:image" content="https://moraled.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-CHzt-qiE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-c97ybTqW.css">
   </head>
-  <body>
+  <body class="cs">
+    <a class="cs-skip" href="#cs-main" data-i18n="skip">Негизги мазмунга өтүү</a>
+
+    <header class="cs-header">
+      <div class="cs-container cs-header__inner">
+        <img class="cs-logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="140" height="58" />
+        <div class="cs-lang" role="group" aria-label="Тил" data-i18n-aria="langLabel">
+          <button type="button" class="cs-lang__btn" data-lang="kg" aria-pressed="true" title="Кыргызча">KG</button>
+          <button type="button" class="cs-lang__btn" data-lang="ru" aria-pressed="false" title="Русский">RU</button>
+          <button type="button" class="cs-lang__btn" data-lang="en" aria-pressed="false" title="English">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="cs-main" class="cs-hero" tabindex="-1">
+      <div class="cs-container cs-hero__inner">
+        <div class="cs-copy">
+          <p class="cs-badge"><span class="cs-badge__dot" aria-hidden="true"></span><span data-i18n="badge">Сайт иштелип жатат</span></p>
+          <p class="eyebrow eyebrow--light" data-i18n="eyebrow">Мүнөз тарбиясы · 1–11-класстар</p>
+          <h1 class="cs-title">
+            <span data-i18n="titleLead">Жаңы сайтыбыз</span>
+            <span class="hl" data-i18n="titleHl">жакында ачылат</span>
+          </h1>
+          <p class="cs-lead" data-i18n="lead">Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз.</p>
+          <div class="cs-actions">
+            <a class="btn-sun btn-hero" href="mailto:linekginfo@gmail.com">
+              <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+              <span data-i18n="ctaEmail">Бизге жазыңыз</span>
+            </a>
+            <a class="btn-ghost-light btn-hero" href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer">
+              <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+              Instagram
+            </a>
+          </div>
+          <ul class="cs-stats">
+            <li><strong>9</strong><span data-i18n="statValues">негизги баалуулук — ар бир айга бирден</span></li>
+            <li><strong>1–11</strong><span data-i18n="statGrades">класс — биринчиден он биринчиге чейин</span></li>
+            <li><strong>3</strong><span data-i18n="statLanguages">тил — кыргызча, орусча, англисче</span></li>
+          </ul>
+        </div>
+
+        <div class="cs-collage" aria-hidden="true">
+          <span class="cs-collage__sun"></span>
+          <span class="cs-collage__ring"></span>
+          <div class="cs-photo cs-photo--tall petal-arch"><img src="/assets/beliefs-illustration-BC1JXxwB.webp" alt="" /></div>
+          <div class="cs-photo cs-photo--top petal-leaf"><img src="/assets/children-classroom-story-DyldoE6a.webp" alt="" /></div>
+          <div class="cs-photo cs-photo--bottom petal-drop"><img src="/assets/sunrise-tz4KhM0x.webp" alt="" /></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="cs-footer">
+      <div class="cs-container">
+        <div class="cs-footer__top">
+          <div class="cs-footer__brand">
+            <img class="cs-footer__logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="150" height="62" loading="lazy" />
+            <p class="cs-footer__tagline" data-i18n="tagline">Келечекти түзгөн баалуулуктарды өстүрүү.</p>
+          </div>
+
+          <div class="cs-footer__col">
+            <h2 class="cs-footer__title" data-i18n="contactTitle">Байланыш</h2>
+            <ul class="cs-contact">
+              <li>
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" /></svg>
+                <span><span class="cs-contact__label" data-i18n="locationTitle">Жайгашкан жери</span><span data-i18n="locationText">Бишкек, Кыргызстан</span></span>
+              </li>
+              <li>
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                <span><span class="cs-contact__label" data-i18n="emailTitle">Электрондук почта</span><a href="mailto:linekginfo@gmail.com">linekginfo@gmail.com</a></span>
+              </li>
+              <li>
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>
+                <span><span class="cs-contact__label" data-i18n="phoneTitle">Телефон</span><a href="tel:+996502001903">+996 502 001 903</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cs-footer__col">
+            <h2 class="cs-footer__title" data-i18n="socialTitle">Байланышуу</h2>
+            <div class="cs-social">
+              <a href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+              </a>
+              <a href="https://www.youtube.com/@moral-ed" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.5v-7l6 3.5-6 3.5z" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-footer__bottom">
+          <p>© <span data-year>2026</span> Moral Education. All rights reserved.</p>
+          <a class="cs-footer__line" href="https://line.kg" target="_blank" rel="noopener">line.kg</a>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
