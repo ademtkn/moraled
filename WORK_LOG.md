@@ -6,7 +6,8 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K10, Claude, 22 Kasım ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. **K11 (devam ediyor):** kullanıcı onayıyla orijinaller `design-references/certificates/`'e taşındı; ardından açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
+- **Son durum (K11, Claude, 22 Kasım ~23:00):** Sertifika orijinalleri `design-references/`'e taşındı (`c1a7afb`); açık iş 2 tamamlandı — mobil menü modal (portal + `inert` + Tab döngüsü + odak dönüşü), masaüstü açılır menüler ve SSS ARIA, etiketler 3 dilde; 75/75 test. Kullanıcı onayıyla commit + push. Sıradaki iş: açık iş 3 — öğrenci gönüllü başvuru akışı (`StudentVolunteers.jsx` → `Contact.jsx`).
+- **K10 (Claude, ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. K11'de orijinaller `design-references/certificates/`'e taşındı.
 - **K09 (Claude, ~22:15):** Contact formu tamamlandı, mock EmailJS ile 66/66.
 - **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde orijinal belgeler yerine metinsiz SVG illüstrasyonlar (`af845f5`).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
@@ -229,11 +230,20 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ### K11 Sertifika orijinallerinin taşınması; mobil menü ve SSS erişilebilirliği
 
-**Tarih / çalışan:** 22 Kasım 2026 ~22:35– / Claude. **Kullanıcı talebi:** “Taşı” (orijinal sertifikalar) ve açık iş 2'ye onay. **Durum:** devam ediyor.
+**Tarih / çalışan:** 22 Kasım 2026 ~22:35–23:00 / Claude. **Kullanıcı talebi:** “Taşı” (orijinal sertifikalar) ve açık iş 2'ye onay. **Durum:** tamamlandı.
 
 **1 — Taşıma (tamamlandı):** `git mv public/images/certificates design-references/certificates` (3 PNG + 6 WebP; silme yok). `src/data/imageManifest.json`'dan üç girdi kaldırıldı (22 → 19; betiğin yazdığı biçim korunarak). `design-references/README.md` klasörün yayınlanmadığını ve neden ayrı tutulduğunu açıklıyor. **Doğrulama:** `npm run build` uyarısız (20 rota → 21 HTML); `build/images/` içinde `certificates` yok, JS/HTML'de `images/certificates` geçmiyor; lint 0. **Sınır:** GitHub deposu herkese açık; dosyalar depoda ve geçmiş commit'lerde görülebilir — bu taşıma yalnızca web sitesinde yayınlanmamalarını sağlar.
 
-**2 — Mobil menü + SSS (başlıyor):** `src/components/Header.jsx/.css`, `src/pages/FAQ.jsx`. Plan: açık menüde odak içeride kalır, arka sayfa `inert` olur, Esc ve kapatınca odak menü düğmesine döner; SSS düğmeleri `aria-expanded`/`aria-controls` ile yanıtlara bağlanır; menü erişilebilir adları üç dile taşınır.
+**Taşıma commit'i:** `c1a7afb` (push edildi).
+
+**2 — Mobil menü + SSS (tamamlandı):**
+- `src/components/Header.jsx`: mobil panel ve arka plan perdesi `createPortal` ile `<body>`'ye taşındı; menü açıkken `#root` **`inert`** (arka sayfa klavye ve ekran okuyucuya kapalı), odak kapatma düğmesine gider, `inert` desteklemeyen tarayıcılar için Tab/Shift+Tab panel içinde döner. Esc, kapatma düğmesi, perde tıklaması ve menüdeki dil düğmeleri menüyü kapatıp odağı menü düğmesine geri verir; bağlantıyla gezinmede sayfa normal etkileşimli kalır. Menü düğmesine `aria-controls="mobile-nav"` (yalnız açıkken). Masaüstü açılır menülerde yanlış `aria-haspopup="true"` (ARIA menü anlamı) kaldırıldı; disclosure deseni: `aria-expanded` + açıkken `aria-controls`. Header.css değişmedi (seçiciler `.mobile-nav`/`.backdrop` üst düzey olduğu için portal görünümü etkilemedi).
+- Yeni metinler (3 dil): `nav.open_menu`, `nav.close_menu`, `nav.main_label`, `nav.mobile_label` — önceki sabit İngilizce “Open menu / Close menu / Main / Mobile” yerine. Parite 755 × 3.
+- `src/pages/FAQ.jsx`: soru düğmeleri `type="button"`, `id`, `aria-expanded`, `aria-controls`; yanıtlar her zaman DOM'da, kapalıyken `hidden` (aria-controls hep var olan öğeyi gösterir); +/− ikonları `aria-hidden`. Soruları başlığa sarmak ertelendi: `inner.css`'teki genel `section h2::before` süsü her soruya çizgi ekler, ayrı tasarım işi.
+
+**Doğrulama:** Playwright + axe, 75/75: mobil menü 3 dil × 11 kontrol (yerel etiketler, açılışta odak/inert/kaydırma kilidi, panel `#root` dışında, axe 0 açıkken, 40 Tab + 40 Shift+Tab'da odak hiç dışarı çıkmadı, Esc/kapat/perde ile odak dönüşü, menüdeki dil değişimi, bağlantıyla gezinme sonrası tek perde ve etkileşimli sayfa, JS hatası 0); masaüstü açılır menü 2 dil (aria-controls gerçek öğe, haspopup yok, Esc kapatır, axe 0); SSS 3 dil × 1440/390 × 6 kontrol (8 düğme bağlı, tıklama/Enter/Space, tek açık yanıt, axe 0 açık/kapalı, taşma yok); **21 rota × 1440/390 tarama:** axe 0, JS hatası 0, 390'da her sayfada menü açıkken axe 0 + inert + odak. Animasyon sonrası görsel değişmedi. `npm run lint` 0, `test:certificates` 6/6, `npm run build` uyarısız.
+
+**Commit / deploy:** İlk commit denemesi izin denetimine takıldı; kullanıcı onayıyla (“Evet commit et ve push et”) bu kayıtla birlikte commit + push. Deploy yok (tam site yayında değil).
 
 ## Değişikliklerin dosya haritası
 
@@ -299,7 +309,7 @@ Bu liste planı kaydeder; aşağıdaki geliştirmeler henüz uygulanmadı. Başl
 | Sıra / durum | İş ve ilgili yer | Tamamlanma ölçütü / sonraki adım |
 |---|---|---|
 | 1 — tamamlandı (K09) | Formlar: `src/pages/Contact.jsx`; sertifika yardım formu K05 ile düzeltildi | Gönderiliyor durumu, ref kilidiyle tek istek, başarıda temizleme, `role="status"` ile sayfa içi başarı/hata (hata e-posta adresini gösterir). Mock EmailJS ile 66/66. Gerçek teslim test edilmedi. |
-| 2 — başlanmadı | Klavye/ARIA: `src/components/Header.jsx`, `Header.css`, `src/pages/FAQ.jsx`, üç dil | Mobil menüde odak içeride kalır, arka sayfa klavyeye kapanır, kapanınca uygun yere döner; Esc korunur. SSS düğmeleri `aria-expanded`/`aria-controls` ile yanıtlarına bağlanır. Menü erişilebilir adları üç dile taşınır; klavye ve axe ile kontrol edilir. |
+| 2 — tamamlandı (K11) | Klavye/ARIA: `src/components/Header.jsx`, `src/pages/FAQ.jsx`, üç dil | Mobil menü modal (portal + `inert` + Tab döngüsü + odak dönüşü), açılır menüler disclosure deseni, SSS `aria-expanded`/`aria-controls` + `hidden`, etiketler üç dilde. 75/75 + 21 rota taraması. Ertelenen: SSS sorularını başlık öğesine sarmak (tasarım işi). |
 | 3 — başlanmadı | Gönüllü başvurusu: `StudentVolunteers.jsx` → `Contact.jsx` | Genel formdaki zorunlu mesleki rol/okul alanları öğrenci akışına uygun ele alınır; başvuru amacı taşınır veya görünür yönlendirme netleşir. Mevcut bağlantı yalnızca genel iletişim sayfasını açıyor. |
 | 4 — gerçek girdi gerekli | Görseller ve dil/pedagoji | Kullanıcıdan izinli okul/sınıf fotoğrafları; KG/RU/EN ve özellikle mevcut 5–11. sınıf önerilerinin uzman kontrolü. Yeni görsellerde Picture + optimizasyon. Kişi profili/alıntı istemek varsayılan devam adımı değildir; kullanıcı kişisiz içerik seçti. |
 | 5 — kapsam/veri gerekli | Materyal, sertifika, etkinlik, rapor ve şarkı | Gerçek dosya/teslim yöntemi; sertifikalarda onaylı kayıtlar, verme koşulları, öğretmen/öğrenci şablonları ve manuel yardım süreci; tarihli etkinlik ihtiyacı; saha raporunun gerçek işleyişi. Şarkı için izinli ses sağlanacak mı, yalnızca söz etkinliği mi olacak? Mevcut düğme satır vurguluyor, ses çalmıyor. |

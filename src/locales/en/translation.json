@@ -1,5 +1,9 @@
 {
   "nav": {
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "main_label": "Main menu",
+    "mobile_label": "Mobile menu",
     "home": "Home",
     "about": "About",
     "our_story": "Our Story",

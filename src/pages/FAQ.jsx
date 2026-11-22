@@ -35,19 +35,29 @@ function FAQ() {
 
         <section className="faq-section">
           <div className="faq-wrapper">
-            {faqs.map((faq, index) => (
-              <div className={`faq-item ${openIndex === index ? 'open' : ''}`} key={index}>
-                <button className="faq-question" onClick={() => toggle(index)}>
-                  {faq.question}
-                  <i className={`fas ${openIndex === index ? 'fa-minus' : 'fa-plus'}`}></i>
-                </button>
-                {openIndex === index && (
-                  <div className="faq-answer">
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              // Accordion (disclosure) pattern: the answer stays in the DOM so aria-controls always
+              // points at a real element; `hidden` removes it from view and from screen readers.
+              return (
+                <div className={`faq-item ${isOpen ? 'open' : ''}`} key={index}>
+                  <button
+                    type="button"
+                    className="faq-question"
+                    id={`faq-question-${index + 1}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index + 1}`}
+                    onClick={() => toggle(index)}
+                  >
+                    {faq.question}
+                    <i className={`fas ${isOpen ? 'fa-minus' : 'fa-plus'}`} aria-hidden="true"></i>
+                  </button>
+                  <div className="faq-answer" id={`faq-answer-${index + 1}`} hidden={!isOpen}>
                     <p>{faq.answer}</p>
                   </div>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </section>
 

@@ -161,6 +161,13 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 
 ## 9. Durum ve yol haritası
 
+### Mobil menü ve SSS erişilebilirliği — 22 Kasım 2026 (K11)
+
+- **Mobil menü = modal:** panel + perde `createPortal` ile `<body>`'de; açıkken `#root.inert = true`, odak kapatma düğmesinde, Tab panelde döner; kapanınca odak menü düğmesine döner. Yeni bir modal/çekmece eklerken aynı deseni kullanın (ya da yerel `<dialog>.showModal()` — sertifika önizlemesindeki gibi).
+- Masaüstü açılır menüler ARIA “menu” değil **disclosure**: `aria-expanded` + açıkken `aria-controls`; `aria-haspopup` kullanılmaz.
+- SSS akordeonu: yanıtlar DOM'da kalır, `hidden` ile gizlenir; düğmede `aria-expanded`/`aria-controls`.
+- Menü etiketleri `nav.open_menu`, `nav.close_menu`, `nav.main_label`, `nav.mobile_label` (3 dil). 21 rota × 2 genişlik axe 0. Sertifika orijinalleri `design-references/`'te (build'e girmez).
+
 ### Contact formu geri bildirimi — 22 Kasım 2026 (K09)
 
 - `alert()` yerine form içinde `<p class="contact-status" role="status">`; durumlar `idle | sending | success | error` (`data-state`). Başarı: `--c-success-100` zemin + `--c-success-600` sol kenar; hata: `--c-danger-*`; metin her zaman `--c-ink`.
