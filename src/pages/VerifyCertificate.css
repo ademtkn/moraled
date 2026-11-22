@@ -36,7 +36,8 @@
 .cert-page .cert-designs-section { background: var(--c-paper); }
 .cert-page .cert-design-card { min-width: 0; margin: 0; border: 1px solid var(--c-line); border-radius: var(--r-md); overflow: hidden; background: var(--c-white); box-shadow: var(--shadow-sm); }
 .cert-design-button { position: relative; display: block; width: 100%; padding: var(--space-3); border: 0; background: var(--c-white); cursor: zoom-in; }
-.cert-design-button img { display: block; width: 100%; height: auto; aspect-ratio: 1055 / 1491; object-fit: contain; }
+.cert-design-button .cert-art { display: block; width: 100%; height: auto; border-radius: var(--r-xs); box-shadow: var(--shadow-sm); transition: transform 0.3s var(--ease); }
+.cert-design-button:hover .cert-art, .cert-design-button:focus-visible .cert-art { transform: translateY(calc(var(--space-1) * -1)); }
 .cert-example-badge { position: absolute; bottom: var(--space-5); left: var(--space-5); padding: var(--space-2) var(--space-3); border-radius: var(--r-pill); background: var(--c-navy-900); color: var(--c-white); font: 600 var(--fs-small) var(--font-body); }
 .cert-page .cert-design-card figcaption { padding: var(--space-6); }
 .cert-page .cert-design-card figcaption p { margin: 0; color: var(--c-blue-700); font-size: var(--fs-small); }
@@ -51,7 +52,8 @@
 .cert-preview-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .cert-preview-toolbar h2 { font: 700 var(--fs-h3) var(--font-display); color: var(--c-navy-800); margin: 0; }
 .cert-preview-dialog > p { font-size: var(--fs-small); line-height: 1.6; color: var(--c-ink-2); margin-block: var(--space-4); }
-.cert-preview-dialog img { display: block; width: auto; max-width: 100%; height: auto; max-height: 70vh; max-height: 70dvh; margin-inline: auto; }
+/* 300×420 illustration: 50vh wide ≈ 70vh tall */
+.cert-preview-dialog .cert-art { display: block; width: min(100%, 50vh); width: min(100%, 50dvh); height: auto; margin-inline: auto; border-radius: var(--r-xs); }
 @media (max-width: 800px) {
   .cert-page .cert-lookup-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .cert-page .cert-lookup-panel { padding: var(--space-5); }

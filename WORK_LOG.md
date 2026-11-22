@@ -6,8 +6,9 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K09, Claude, 22 Kasım ~22:15):** Açık iş 1 (Contact formu) tamamlandı ve mock EmailJS ile test edildi; **çalışma ağacında, commit kullanıcı onayı bekliyor** (izin denetimi). Sıradaki iş: açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
-- **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit `af845f5` + push; **deploy kullanıcı onayı bekliyor** (canlıda hâlâ orijinal örnekler var).
+- **Son durum (K10, Claude, 22 Kasım ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. Karar bekleyen: `public/images/certificates/` orijinalleri (kullanılmıyor ama tam site yayınında adresle açılır). Sıradaki iş: açık iş 2 — mobil menü odak tuzağı + SSS ARIA.
+- **K09 (Claude, ~22:15):** Contact formu tamamlandı, mock EmailJS ile 66/66.
+- **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde orijinal belgeler yerine metinsiz SVG illüstrasyonlar (`af845f5`).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
 - **Ürün:** Kırgızistan okullarına yönelik gerçek site, `src/`. Kullanıcının istediği takvim düzeltmesi ile raporun 2 ve 3. içerik işleri tamamlandı; kullanıcının yerel incelemesi bekleniyor.
 - **Son tamamlanan iş:** K05 — sertifika numarasıyla sorgu, okul listesi, belge görüntüleme/paylaşma, üç tasarım örneği ve coming-soon üzerinde iki örnek. Kullanıcının yerel incelemesine hazır; yeni aktif geliştirme yok.
@@ -192,7 +193,7 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Kalan / karar bekleyen:** `coming-soon/assets/certificate-*.webp` artık kullanılmıyor (silme kullanıcı onayına bağlı). Tam sitedeki `/verify-certificate` örnek galerisi hâlâ kullanıcının orijinal PNG'lerini gösteriyor; orada da illüstrasyona geçilip geçilmeyeceği kullanıcıya sorulacak.
 
-**Commit / deploy:** Commit `af845f5` + push yapıldı. **Deploy yapılmadı:** `gh-pages` yayını izin denetimine takıldı (kural 7: kullanıcı onayı). Canlı coming-soon hâlâ 21:18'deki dış deploy'un orijinal sertifika örneklerini gösteriyor. Kullanıcı onaylarsa: `npm run deploy` (yalnız coming-soon; CNAME `www.moraled.com` korunur).
+**Commit / deploy:** Commit `af845f5` + push yapıldı. İlk deploy denemesi izin denetimine takıldı (kural 7); kullanıcı onayından sonra K10'da yayımlandı (gh-pages `cb178a2`).
 
 ### K09 Contact formu: gönderim durumu ve sayfa içi geri bildirim
 
@@ -208,7 +209,23 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Kalan:** Gerçek EmailJS teslimi test edilmedi (kullanıcı isterse kendi adresiyle bir deneme). Görünür etiketler hâlâ yalnızca placeholder + `sr-only` label (axe geçiyor; görünür etiket ayrı bir tasarım kararı). Sonraki iş: açık iş 2 (Header mobil menü odak tuzağı, FAQ `aria-expanded`/`aria-controls`).
 
-**Commit / deploy:** **Commit yapılmadı** — commit komutu izin denetimine takıldı (kural 7: kullanıcı onayı). Değişiklikler çalışma ağacında: `src/pages/Contact.jsx`, `src/pages/Contact.css`, `src/locales/{kg,ru,en}/translation.json`, bu kayıt ve `DESIGN_SYSTEM.md`. Onaydan sonra bunlar tek commit olarak eklenip push edilir. Deploy yok (tam site yayında değil).
+**Commit / deploy:** İlk commit denemesi izin denetimine takıldı (kural 7); kullanıcı onayından sonra `3fc3e75` olarak commit + push. Deploy yok (tam site yayında değil).
+
+### K10 Yayın, verify-certificate illüstrasyonları ve temizlik
+
+**Tarih / çalışan:** 22 Kasım 2026 ~22:15–22:30 / Claude. **Kullanıcı talebi:** “Evet yayınla ve commit et, verify-certificate'te de illüstrasyon olsun. Evet sil.” **Durum:** tamamlandı.
+
+**Commit + yayın:** K09 `3fc3e75` olarak commit + push. Coming-soon, K08'de test edilen build'den `npx gh-pages -d <build> -m "Coming soon: certificate illustrations (no real documents)"` ile yayımlandı → gh-pages `cb178a2`, CNAME `www.moraled.com`. **Canlı doğrulama:** http://www.moraled.com 200, apex → www 301; sayfada 2 `cs-cert-art`, `moraled-mark-*.png` 200; 21:18 yayınındaki dört `certificate-*.webp` adresi artık 404.
+
+**verify-certificate:** Yeni `src/components/CertificateArt.jsx` — üç metinsiz varyant: `partner` (fildişi/altın, coming-soon ile aynı), `character` (yeni: beyaz–gök mavisi zemin, köşelerde mavi dalgalar, iki yıldızlı rozet, mavi mühür), `distinguished` (lacivert/altın, coming-soon ile aynı). Gradyan/clip kimlikleri `useId` ile önekli (galeri + pencere aynı anda DOM'da). `CERTIFICATE_DESIGNS` artık `image` yerine `variant` taşıyor; galeri ve büyütme penceresi `<Picture>` yerine `<CertificateArt>` kullanıyor. CSS: `.cert-design-button .cert-art`, pencerede `width: min(100%, 50dvh)` (300×420 oranı). Metinler (3 dil): `certificate.designs_note` → “illüstrasyon, gerçek belge değil…”, `certificate.design_alt` → “… — сертификаттын стилинин иллюстрациясы”. `CERTIFICATES.md` güncellendi.
+
+**Silinen (kullanıcı onayıyla):** `coming-soon/assets/certificate-{partner,distinguished}-school{,-640}.webp` (4 dosya, K08'den beri kullanılmıyordu).
+
+**Doğrulama:** `/verify-certificate` 3 dil × 1440/390 = 48/48: galeride 3 illüstrasyon, sayfada orijinal sertifika `<img>`/isteği 0, işaret görseli yükleniyor, yinelenen `id` yok, not metni güncel, axe 0 (sayfa + pencere), her pencerede oran 1,4 ve ekrana sığıyor (1440: 450×630, 390: 352×493), Esc sonrası odak düğmeye dönüyor, JS hatası/4xx/taşma yok. `npm run lint` 0, `test:certificates` 6/6, `npm run build` uyarısız (20 rota → 21 HTML).
+
+**Karar bekleyen:** `public/images/certificates/` içindeki üç orijinal PNG + WebP varyantları artık hiçbir sayfada kullanılmıyor, ancak `public/` her şeyi build'e kopyaladığından tam site yayınında `/images/certificates/partner-school.png` gibi adreslerle açılabilir; `imageManifest.json` da yollarını JS paketinde taşıyor. Öneri: yayımlanmayan bir referans klasörüne taşımak (ör. `design-references/certificates/`) ve manifest girdilerini kaldırmak — kullanıcı onayı gerekir.
+
+**Commit / deploy:** Bu kayıtla birlikte commit + push. Tam site yayınlanmadı.
 
 ## Değişikliklerin dosya haritası
 

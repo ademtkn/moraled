@@ -1,9 +1,11 @@
 // Only publication-approved information belongs in the public registry.
 // Schema, publication steps and access limitations: CERTIFICATES.md.
+// Design examples are shown as text-free illustrations (src/components/CertificateArt.jsx), not as
+// the user's original certificate images, so no names/dates/signatures appear on the site.
 export const CERTIFICATE_DESIGNS = [
-  { id: 'partner-school', image: '/images/certificates/partner-school.png', titleKey: 'certificate.design_partner' },
-  { id: 'school-of-character', image: '/images/certificates/school-of-character.png', titleKey: 'certificate.design_character' },
-  { id: 'distinguished-school', image: '/images/certificates/distinguished-school.png', titleKey: 'certificate.design_distinguished' },
+  { id: 'partner-school', variant: 'partner', titleKey: 'certificate.design_partner' },
+  { id: 'school-of-character', variant: 'character', titleKey: 'certificate.design_character' },
+  { id: 'distinguished-school', variant: 'distinguished', titleKey: 'certificate.design_distinguished' },
 ];
 
 export const normaliseCertificateId = (value) => String(value ?? '').trim().toUpperCase();

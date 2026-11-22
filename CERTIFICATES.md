@@ -8,8 +8,8 @@ Son güncelleme: 22 Kasım 2026. Kullanıcı kararı: **sertifika numarasıyla s
 - Doğrudan kayıt bağlantısı: `/verify-certificate?id=SERTIFIKA-NUMARASI`. Aynı bağlantı üç dilde çalışır.
 - Genel listede yalnızca `recipientType: "school"` kayıtları yer alır. Öğretmen ve öğrenci kayıtları genel listede gösterilmez.
 - Kaynak: `public/certificates/registry.json`. **Şu anda 0 gerçek kayıt** var; kullanıcı henüz verilmiş belge listesi paylaşmadı. Görseldeki Asylkech adı, tarih ve imza kayıt olarak içeri alınmadı.
-- Üç tasarım örneği kullanıcı tarafından sağlandı. Görseller galeri ve büyütme penceresinde açıkça örnek olarak etiketlidir; öğretmen/öğrenci tasarımları henüz ayrıca üretilmedi.
-- Coming-soon: iki okul tasarımı ve üç dilde gelecek sertifika özelliği tanıtımı. Tam site kapalıyken belge sorgulama yayımlanmaz.
+- Üç tasarım örneği kullanıcı tarafından sağlandı (`public/images/certificates/*.png`). **K10 kararı:** sitede bu orijinaller gösterilmez — üzerlerindeki ad, tarih ve imza görünmesin diye galeri ve büyütme penceresi bunların yerine metinsiz SVG illüstrasyonlar (`src/components/CertificateArt.jsx`: `partner` fildişi, `character` gök mavisi, `distinguished` lacivert) kullanır ve “illüstrasyon, gerçek belge değil” notu taşır. Öğretmen/öğrenci tasarımları henüz ayrıca üretilmedi.
+- Coming-soon: iki okul illüstrasyonu (fildişi + lacivert, aynı çizim `coming-soon/index.html` içinde satır içi SVG) ve üç dilde gelecek sertifika özelliği tanıtımı. Tam site kapalıyken belge sorgulama yayımlanmaz.
 - Sertifika yardım formu EmailJS ile manuel talep iletir. Yeni belge üretmez; talep gönderilirken tekrar gönderim engellenir, sonuç sayfa içinde gösterilir.
 
 Bu, GitHub Pages üzerinde çalışan **açık, statik bir kayıt sistemidir**. Numara, özel erişim anahtarı değildir. Registry dosyası ve eklenen belge dosyaları herkese açıktır; genel listede görünmemek veriyi gizlemez. Öğretmen/öğrenci verisi eklerken yalnızca yayımlanması onaylanmış bilgiler kullanılmalıdır. Özel hesap ve kişiye özel dosya erişimi istenirse kimlik doğrulama ve sunucu tarafı erişim denetimi gerekir.
@@ -65,15 +65,15 @@ Dosya hazır değilse `fileUrl: null` kayıt bilgilerini göstermeye izin verir;
 | Yer | İşlev |
 |---|---|
 | `src/pages/VerifyCertificate.jsx/.css` | Sorgu, sonuç, okul listesi, örnek galeri ve yardım formu |
-| `src/data/certificates.js` | Şema, numara/dosya doğrulaması, Bişkek tarih durumu ve örnek tasarım yolları |
+| `src/data/certificates.js` | Şema, numara/dosya doğrulaması, Bişkek tarih durumu ve örnek tasarım listesi (`variant`) |
+| `src/components/CertificateArt.jsx` | Metinsiz sertifika illüstrasyonları; gradyan kimlikleri `useId` ile benzersiz |
 | `public/certificates/registry.json` | Yalnızca gerçek ve yayım onaylı kayıtlar |
 | `scripts/validate-certificates.js` | Build öncesi şema, benzersiz numara ve belge dosyası varlığı kontrolü |
 | `scripts/certificates.test.js` | Numara, şema, tarihler, dosya yolları, iptal ve Bişkek gün sınırı için altı kalıcı test |
-| `public/images/certificates/` | Kullanıcının üç tasarım PNG'si ve optimize WebP/640px varyantları |
-| `coming-soon/assets/certificate-*` | Coming-soon için iki tasarımın WebP ve 640px kopyaları |
+| `public/images/certificates/` | Kullanıcının üç orijinal tasarım PNG'si + WebP/640px varyantları — **sitede kullanılmıyor** (yalnızca referans). `public/` içinde olduğu için tam site yayınında adresle erişilebilir kalır; taşınması/silinmesi kullanıcı kararı. |
 | `src/locales/{kg,ru,en}/translation.json` | Gerçek site ve gizlilik metinleri |
 | `coming-soon/strings.js` | Bağımsız tanıtım sayfasının üç dilde metinleri |
 
-Yeni örnek görselde `python3 scripts/optimize-images.py` çalıştırılır; değişen iki coming-soon tasarımının WebP ve `-640.webp` dosyaları ilgili `coming-soon/assets/certificate-*` kopyalarıyla eşitlenir. Yeni görseller React'ta `Picture` bileşeniyle kullanılır. Örnekler düzenlenmiş belge dosyalarından ayrı tutulur.
+Örnek tasarım değişirse `CertificateArt.jsx` içindeki varyant güncellenir (coming-soon'daki iki satır içi SVG ile uyumlu tutulur); gerçek belge görüntüsü örnek olarak kullanılmaz. Verilmiş belge dosyaları (registry `fileUrl`) React'ta `Picture` ile gösterilir; yeni görselde `python3 scripts/optimize-images.py` çalıştırılır.
 
 Şema doğrulaması gerçek belge veya kimlik onayı yerine geçmez. Gerçek kayıt, sertifika verme ölçütü, belge dili ve öğretmen/öğrenci şablonları kullanıcı girdisiyle tamamlanacak işlerdir.

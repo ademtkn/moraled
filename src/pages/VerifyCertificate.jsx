@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import Picture from '../components/Picture';
+import CertificateArt from '../components/CertificateArt';
 import emailjs from '@emailjs/browser';
 import { CERTIFICATE_DESIGNS, certificateStatus, isCertificateId, normaliseCertificateId, parseCertificateRegistry } from '../data/certificates';
 import './VerifyCertificate.css';
@@ -162,7 +163,7 @@ function VerifyCertificate() {
         <h2>{t('certificate.designs_title')}</h2><p className="cert-lead">{t('certificate.designs_intro')}</p>
         <div className="cert-design-grid">{CERTIFICATE_DESIGNS.map((design) => <figure className="cert-design-card" key={design.id}>
           <button type="button" className="cert-design-button" onClick={() => setPreview(design)} aria-label={t('certificate.design_example') + ': ' + t('certificate.preview_label', { title: t(design.titleKey) })}>
-            <Picture src={design.image} alt={t('certificate.design_alt', { title: t(design.titleKey) })} sizes="(max-width: 800px) 85vw, 340px" />
+            <CertificateArt variant={design.variant} label={t('certificate.design_alt', { title: t(design.titleKey) })} />
             <span className="cert-example-badge">{t('certificate.design_example')}</span>
           </button>
           <figcaption><h3>{t(design.titleKey)}</h3><p>{t('certificate.preview_hint')}</p></figcaption>
@@ -196,7 +197,7 @@ function VerifyCertificate() {
     <Footer />
     <dialog className="cert-preview-dialog" ref={previewDialog} onClose={() => setPreview(null)} aria-labelledby="cert-preview-title" aria-describedby="cert-preview-note">
       {preview && <><div className="cert-preview-toolbar"><h2 id="cert-preview-title">{t(preview.titleKey)}</h2><button type="button" className="btn-outline" onClick={() => previewDialog.current.close()}>{t('certificate.preview_close')}</button></div>
-        <p id="cert-preview-note">{t('certificate.designs_note')}</p><Picture src={preview.image} alt={t('certificate.design_alt', { title: t(preview.titleKey) })} sizes="(max-width: 800px) 90vw, 760px" loading="eager" /></>}
+        <p id="cert-preview-note">{t('certificate.designs_note')}</p><CertificateArt variant={preview.variant} label={t('certificate.design_alt', { title: t(preview.titleKey) })} /></>}
     </dialog>
   </>;
 }

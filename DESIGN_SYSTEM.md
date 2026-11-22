@@ -165,14 +165,14 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 
 - `alert()` yerine form içinde `<p class="contact-status" role="status">`; durumlar `idle | sending | success | error` (`data-state`). Başarı: `--c-success-100` zemin + `--c-success-600` sol kenar; hata: `--c-danger-*`; metin her zaman `--c-ink`.
 - **Desen (yeni formlarda da kullanın):** çift gönderim için `useRef` kilidi; düğmede `disabled` yerine `aria-disabled` (odak kaybolmaz); canlı bölge baştan DOM'da; hatada değerler korunur. Sertifika yardım formu (K05) hâlâ `disabled` kullanıyor — dokunulmadı.
-- Mock EmailJS ile 3 dil × 2 genişlik 66/66; build/lint/test temiz. **Commit kullanıcı onayı bekliyor.** Ayrıntı: WORK_LOG K09.
+- Mock EmailJS ile 3 dil × 2 genişlik 66/66; build/lint/test temiz. Commit `3fc3e75`. Ayrıntı: WORK_LOG K09.
 
 ### Coming-soon sertifika illüstrasyonları — 22 Kasım 2026 (K08)
 
 - Kullanıcı isteği: yapım aşaması sayfasında **orijinal sertifikalar ve üzerindeki yazılar görünmesin**. `#cs-certificates` bölümündeki iki PNG örneği yerine **metinsiz satır içi SVG** illüstrasyon: fildişi “Partner” ve lacivert “Distinguished” (altın çerçeve, guilloche, mühür/kurdele, yalnızca MoralEd işareti; ad/tarih/imza yazısı yok). Not ve alt metinler üç dilde “illüstrasyon, gerçek belge değil” olarak güncellendi.
 - Logo betiği yalnız işaret çıktısı da üretiyor: `moraled-mark.png` (`src/assets/logo/`, `coming-soon/assets/`).
-- Tam sitedeki `/verify-certificate` galerisi hâlâ orijinal PNG örneklerini kullanıyor (tam site yayında değil); illüstrasyona geçirilmesi kullanıcı kararı bekliyor. `coming-soon/assets/certificate-*.webp` kullanılmıyor, silme onayı bekliyor.
-- Commit `af845f5` + push. Canlı coming-soon'a **henüz yayımlanmadı** (deploy kullanıcı onayı bekliyor; canlıda 21:18'deki dış deploy'un orijinal örnekleri duruyor).
+- **K10:** `/verify-certificate` galerisi ve büyütme penceresi de illüstrasyona geçti — `src/components/CertificateArt.jsx` (`partner` fildişi, `character` gök mavisi + köşe dalgaları, `distinguished` lacivert). Gerçek belge görüntüsü örnek olarak kullanılmaz; yeni örnek gerekiyorsa bu bileşene varyant eklenir. Kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. `public/images/certificates/` orijinalleri kullanılmıyor ama tam site yayınında adresle açılır — taşıma kararı bekliyor.
+- Commit `af845f5` + push; kullanıcı onayıyla yayımlandı (gh-pages `cb178a2`) — canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404.
 - Sonraki iş: Contact formu (WORK_LOG açık iş 1).
 
 ### Sertifika merkezi ve coming-soon örnekleri — 22 Kasım 2026
