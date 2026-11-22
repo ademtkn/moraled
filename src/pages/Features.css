@@ -11,154 +11,24 @@
 
 .how-it-works-wrapper h1 {
   font-size: 36px;
-  color: #045b57;
+  color: var(--c-navy-800);
   margin-bottom: 20px;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
-}
-
-.how-it-works-intro {
-  font-size: 20px;
-  color: #555;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  opacity: 0;
-  animation: fadeInUp 1s ease forwards;
-}
-
-.how-it-works-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
-}
-
-.how-it-works-step {
-  position: relative;
-  background: #f5f7fa;
-  border-radius: 16px;
-  padding: 40px 24px;
-  text-align: left;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.how-it-works-steps .how-it-works-step:nth-child(2) { animation-delay: 0.15s; }
-.how-it-works-steps .how-it-works-step:nth-child(3) { animation-delay: 0.3s; }
-
-.how-it-works-step-number {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  font-size: 32px;
-  font-weight: 700;
-  color: rgba(10, 147, 150, 0.2);
-  font-family: 'Lora', serif;
-}
-
-.how-it-works-step-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: #045b57;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.how-it-works-step h3 {
-  font-size: 22px;
-  color: #045b57;
-  margin-bottom: 10px;
-}
-
-.how-it-works-step p {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.7;
-  margin: 0 0 12px;
-}
-
-.how-it-works-step-link {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #045b57;
-  text-decoration: none;
-}
-
-.how-it-works-step-link i {
-  font-size: 12px;
-  margin-left: 2px;
 }
 
 .features-section {
-  background: linear-gradient(to bottom, #fdf3e7, #fdf3e7);
+  background: linear-gradient(to bottom, var(--c-paper), var(--c-paper));
   padding: 100px 20px;
   text-align: center;
 }
 
 .features-wrapper h2 {
   font-size: 36px;
-  color: #045b57;
+  color: var(--c-navy-800);
   margin-bottom: 20px;
   animation: fadeInUp 1s ease forwards;
   opacity: 0;
-}
-
-.features-intro {
-  font-size: 22px;
-  color: #555;
-  margin-bottom: 50px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeInUp 1.2s ease forwards;
-  opacity: 0;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 40px 24px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1.4s ease forwards;
-  opacity: 0;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-
-.feature-icon {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 20px;
-  color: #045b57;
-}
-
-.feature-card h3 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.feature-card p {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.7;
 }
 
 .features-benefits-section {
@@ -169,55 +39,8 @@
 
 .features-benefits-wrapper h2 {
   font-size: 36px;
-  color: #045b57;
+  color: var(--c-navy-800);
   margin-bottom: 40px;
-}
-
-.features-benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.features-benefit-card {
-  background: #f5f7fa;
-  border-radius: 12px;
-  padding: 32px 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.features-benefits-grid .features-benefit-card:nth-child(2) { animation-delay: 0.1s; }
-.features-benefits-grid .features-benefit-card:nth-child(3) { animation-delay: 0.2s; }
-.features-benefits-grid .features-benefit-card:nth-child(4) { animation-delay: 0.3s; }
-
-.features-benefit-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: #0a9396;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin: 0 auto 16px;
-}
-
-.features-benefit-card h3 {
-  font-size: 20px;
-  color: #045b57;
-  margin-bottom: 8px;
-}
-
-.features-benefit-card p {
-  font-size: 15px;
-  color: #444;
-  line-height: 1.6;
-  margin: 0;
 }
 
 /* Animasyon */

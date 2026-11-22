@@ -1,0 +1,2035 @@
+/* =====================================================================
+   İÇ SAYFA GÖVDELERİ — Design System v2 · Faz 2
+   ---------------------------------------------------------------------
+   Tüm iç sayfalar <main className="inner-page"> ile sarılıdır. Bu katman
+   index.js'te EN SON yüklenir ve sayfa CSS'lerindeki eski kart, ızgara,
+   başlık ve CTA stillerini ortak "kart dillerine" çevirir:
+
+     A) Açık ikon kartı        — kart ızgaralarının çoğu
+     B) Lacivert özellik kartı — Zorbalık türleri, Gönüllülük faydaları
+     C) Numaralı adım kartı    — Features "nasıl çalışır", başvuru adımları
+     D) Alıntı                 — Our Story liderleri, Research kaynakları
+     E) Kişi kartı             — Ekip, gönüllüler
+     F) CTA paneli (KiVa)      — sayfa sonu çağrıları
+
+   Sayfa CSS'lerinde yalnızca sayfaya özgü yapı kalmalıdır. Yeni bir kart
+   ızgarası eklerken buradaki listelere sınıfını eklemeniz yeterlidir.
+   Genel kurallar :where() ile düşük özgüllükte yazıldı; özel durumlar
+   `.inner-page .sinif` ile kolayca ezilebilir.
+   ===================================================================== */
+
+/* ---------- 0. Sayfa kabı ve bölüm ritmi ---------- */
+.inner-page {
+  /* flow-root: son CTA panelinin alt boşluğu <main>'den dışarı taşmasın */
+  display: flow-root;
+  background: #ffffff;
+}
+
+.inner-page *,
+.inner-page *::before,
+.inner-page *::after {
+  box-sizing: border-box;
+}
+
+/* İçerik bölümleri: 1200px içerik genişliği (yan boşlukla ortalanır) */
+.inner-page > :where(section:not([class*='-hero']):not([class*='-cta']):not(.hx)) {
+  padding: var(--section-y) max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+  background: #ffffff;
+  border-top: 0;
+  border-bottom: 0;
+  text-align: left;
+}
+
+/* Sıcak kâğıt bantlar (beyazla dönüşümlü) */
+.inner-page :is(
+  .beliefs-section,
+  .team-values,
+  .features-section,
+  .age-bands-section,
+  .age-page,
+  .materials-workshops-section,
+  .research-field-section,
+  .bullying-signs-section,
+  .bullying-family-section,
+  .climate-solution-section,
+  .volunteers-roles,
+  .volunteers-roster,
+  .faq-section,
+  .seminar-section,
+  .contact-form,
+  .certificate-form-section
+) {
+  background: var(--c-paper);
+}
+
+/* Eski sarmalayıcılar: genişlik sınırlarını kaldır, sola hizala */
+.inner-page :is(
+  .team-wrapper,
+  .how-it-works-wrapper,
+  .features-wrapper,
+  .features-benefits-wrapper,
+  .scope-wrapper,
+  .age-bands-wrapper,
+  .age-page-wrapper,
+  .materials-wrapper,
+  .research-field-wrapper,
+  .climate-wrapper,
+  .volunteers-steps-wrapper,
+  .story-wrapper,
+  .beliefs-wrapper,
+  .vision-wrapper,
+  .certificate-wrapper
+) {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* ---------- 1. Bölüm başlıkları (ana sayfa ile aynı dil) ---------- */
+.inner-page :where(section:not([class*='-hero']):not(.hx)) h2 {
+  position: relative;
+  max-width: 820px;
+  margin: 0 0 24px;
+  padding: 24px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--c-navy-800);
+}
+
+.inner-page :where(section:not([class*='-hero']):not(.hx)) h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--c-sun-400);
+}
+
+/* Başlık altı giriş paragrafları */
+.inner-page :is(
+  .features-intro,
+  .age-bands-intro,
+  .materials-intro,
+  .research-field-intro,
+  .bullying-section-intro,
+  .volunteers-roster-intro,
+  .seminar-section-intro
+) {
+  max-width: 720px;
+  margin: 0 0 clamp(32px, 4vw, 48px);
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+/* İçerik içi "ilgili sayfa" bağlantıları */
+.inner-page :is(.materials-related-link, .climate-related-link, .bullying-related-link) {
+  max-width: 720px;
+  margin: 0 0 28px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+.inner-page :is(.materials-related-link, .climate-related-link, .bullying-related-link) a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--c-blue-700);
+  text-decoration: none;
+}
+
+.inner-page :is(.materials-related-link, .climate-related-link, .bullying-related-link) a:hover {
+  color: var(--c-navy-800);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- 2. Kart ızgaraları ---------- */
+.inner-page :is(
+  .team-grid,
+  .values-grid,
+  .how-it-works-steps,
+  .features-grid,
+  .features-benefits-grid,
+  .age-bands-grid,
+  .materials-grid,
+  .research-methods-grid,
+  .research-citations,
+  .bullying-forms-grid,
+  .bullying-tips-grid,
+  .climate-work-grid,
+  .volunteers-benefits-grid,
+  .volunteers-roles-grid,
+  .volunteers-steps,
+  .volunteers-roster-grid,
+  .events-grid,
+  .leader-testimonials-grid,
+  .seminar-grid
+) {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 22px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.inner-page :is(
+  .team-grid,
+  .values-grid,
+  .features-grid,
+  .features-benefits-grid,
+  .age-bands-grid,
+  .materials-grid,
+  .research-methods-grid,
+  .volunteers-roles-grid,
+  .volunteers-steps
+) {
+  --cols: 4;
+}
+
+.inner-page :is(.events-grid, .bullying-forms-grid, .volunteers-benefits-grid) {
+  --cols: 2;
+}
+
+.inner-page .research-citations {
+  --cols: 1;
+  gap: 16px;
+}
+
+.inner-page :is(.team-grid, .volunteers-roster-grid) {
+  align-items: start;
+}
+
+/* ---------- A) Açık ikon kartı ---------- */
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block,
+  .seminar-card
+) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: auto;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 30px 28px;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block,
+  .seminar-card
+):hover {
+  transform: translateY(-4px);
+  border-color: var(--c-sky-200);
+  box-shadow: var(--shadow-md);
+}
+
+/* eski dekorlar */
+.inner-page .value-card::after,
+.inner-page .value-card::before {
+  content: none;
+}
+
+/* ikon daireleri */
+.inner-page :is(
+  .value-icon,
+  .how-it-works-step-icon,
+  .feature-icon,
+  .features-benefit-icon,
+  .age-band-icon,
+  .materials-icon,
+  .research-method-icon,
+  .bullying-tip-icon,
+  .climate-work-icon,
+  .volunteers-role-icon,
+  .volunteers-step-icon,
+  .events-icon
+),
+.inner-page .info-block > i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-sky-50);
+  color: var(--c-blue-700);
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: none;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.inner-page :is(
+  .value-icon,
+  .how-it-works-step-icon,
+  .feature-icon,
+  .features-benefit-icon,
+  .age-band-icon,
+  .materials-icon,
+  .research-method-icon,
+  .bullying-tip-icon,
+  .climate-work-icon,
+  .volunteers-role-icon,
+  .volunteers-step-icon,
+  .events-icon
+) i {
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block
+):hover :is(
+  .value-icon,
+  .how-it-works-step-icon,
+  .feature-icon,
+  .features-benefit-icon,
+  .age-band-icon,
+  .materials-icon,
+  .research-method-icon,
+  .bullying-tip-icon,
+  .climate-work-icon,
+  .volunteers-role-icon,
+  .volunteers-step-icon,
+  .events-icon
+),
+.inner-page .info-block:hover > i {
+  background: var(--c-sun-400);
+  color: var(--c-navy-900);
+}
+
+/* kart başlıkları ve metinleri */
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block,
+  .seminar-card
+) :is(h2, h3, h4) {
+  max-width: none;
+  margin: 4px 0 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  text-align: left;
+  text-transform: none;
+  color: var(--c-navy-900);
+}
+
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block,
+  .seminar-card
+) p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+.inner-page :is(
+  .value-card,
+  .how-it-works-step,
+  .feature-card,
+  .features-benefit-card,
+  .age-band-card,
+  .materials-card,
+  .research-method-card,
+  .bullying-tip-card,
+  .climate-work-card,
+  .volunteers-role-card,
+  .volunteers-step,
+  .events-card,
+  .info-block,
+  .seminar-card,
+  .team-card,
+  .volunteers-roster-card
+) h2::before {
+  content: none;
+}
+
+/* kart içi küçük üst etiketler */
+.inner-page :is(.events-cadence, .age-band-range, .seminar-card-source) {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--c-sun-700);
+}
+
+.inner-page :is(.how-it-works-step-link, .materials-workshop-link) i {
+  margin-left: 2px;
+}
+
+.inner-page :is(.climate-work-link, .seminar-watch-link) i {
+  margin-left: 4px;
+}
+
+/* kart içi bağlantılar (alta yaslanır) */
+.inner-page :is(.how-it-works-step-link, .age-band-link, .climate-work-link, .seminar-watch-link, .materials-workshop-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 10px 0 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-blue-700);
+  text-decoration: none;
+}
+
+.inner-page :is(.how-it-works-step-link, .age-band-link, .climate-work-link, .seminar-watch-link, .materials-workshop-link) i {
+  font-size: 12px;
+  transition: transform 0.2s var(--ease);
+}
+
+.inner-page :is(.how-it-works-step-link, .age-band-link, .climate-work-link, .seminar-watch-link, .materials-workshop-link):hover {
+  color: var(--c-navy-800);
+}
+
+.inner-page :is(.how-it-works-step-link, .age-band-link, .climate-work-link, .seminar-watch-link, .materials-workshop-link):hover i {
+  transform: translateX(3px);
+}
+
+.inner-page .age-band-soon {
+  margin-top: auto;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  background: var(--c-sun-100);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-sun-700);
+}
+
+/* ---------- B) Lacivert özellik kartı (Qundylyq) ---------- */
+.inner-page :is(.bullying-form-card, .volunteers-benefit-card) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    'icon title'
+    'icon text';
+  column-gap: 24px;
+  row-gap: 6px;
+  align-items: center;
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 24px 30px 24px 24px;
+  text-align: left;
+  background: var(--c-navy-900);
+  border: 0;
+  border-radius: var(--r-md);
+  box-shadow: none;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.inner-page :is(.bullying-form-card, .volunteers-benefit-card):hover {
+  transform: translateY(-3px);
+  background: var(--c-navy-800);
+}
+
+.inner-page :is(.bullying-form-icon, .volunteers-benefit-icon) {
+  grid-area: icon;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--c-navy-900);
+  font-size: 30px;
+  box-shadow: none;
+}
+
+.inner-page :is(.bullying-form-icon, .volunteers-benefit-icon) i {
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.inner-page :is(.bullying-form-card, .volunteers-benefit-card) h3 {
+  grid-area: title;
+  align-self: end;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: none;
+  color: #ffffff;
+}
+
+.inner-page :is(.bullying-form-card, .volunteers-benefit-card) p {
+  grid-area: text;
+  align-self: start;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---------- C) Numaralı adım kartları ---------- */
+.inner-page :is(.how-it-works-step-number, .volunteers-step-number) {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--c-sun-600);
+  opacity: 1;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+}
+
+/* adımları birbirine bağlayan kesik çizgi (boşluklarda görünür) */
+.inner-page :is(.how-it-works-steps, .volunteers-steps)::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 58px;
+  left: 6%;
+  right: 6%;
+  border-top: 2px dashed var(--c-sky-300);
+}
+
+/* ---------- D) Alıntılar ---------- */
+/* Our Story — okul liderleri: lacivert bant */
+.inner-page .leader-testimonials {
+  background: var(--c-navy-900);
+  color: #ffffff;
+}
+
+.inner-page .leader-testimonials h2 {
+  color: #ffffff;
+}
+
+.inner-page .leader-testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 30px 28px 28px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-lg);
+  box-shadow: none;
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.inner-page .leader-testimonial-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.inner-page .leader-testimonial-quote-icon {
+  margin: 0;
+  font-size: 30px;
+  color: var(--c-sun-400);
+}
+
+.inner-page .leader-testimonial-quote {
+  margin: 0;
+  font-size: 17px;
+  font-style: normal;
+  line-height: 1.65;
+  text-align: left;
+  color: #ffffff;
+}
+
+.inner-page .leader-testimonial-name {
+  margin: auto 0 0;
+  padding-top: 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--c-sky-300);
+}
+
+/* Research — kaynaklı bulgular: turuncu çizgili satırlar */
+.inner-page .research-citation-card {
+  margin: 0;
+  padding: 24px 28px 24px 30px;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-left: 4px solid var(--c-sun-400);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  box-shadow: none;
+}
+
+.inner-page .research-citation-finding {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--c-navy-900);
+}
+
+.inner-page .research-citation-source {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--c-ink-3);
+}
+
+.inner-page .research-field-disclaimer {
+  max-width: 760px;
+  margin: 24px 0 0;
+  font-size: 13.5px;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--c-ink-3);
+}
+
+/* ---------- E) Kişi kartları ---------- */
+.inner-page :is(.team-card, .volunteers-roster-card) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 36px 24px 30px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.inner-page :is(.team-card, .volunteers-roster-card):hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.inner-page :is(.team-avatar, .team-avatar-photo, .volunteers-roster-avatar) {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  margin: 0 0 18px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-navy-800);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  object-fit: cover;
+  box-shadow: 0 0 0 5px #ffffff, 0 0 0 7px var(--c-sun-400);
+}
+
+.inner-page :is(.team-card, .volunteers-roster-card) :is(h2, h3) {
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: none;
+  color: var(--c-navy-900);
+}
+
+.inner-page :is(.team-card, .volunteers-roster-card) > :is(h2, h3) + p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--c-sun-700);
+}
+
+.inner-page .team-bio {
+  margin: 12px 0 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  text-align: center;
+  color: var(--c-ink-2);
+}
+
+/* ---------- F) CTA panelleri (KiVa sıcak panel) ---------- */
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 40px;
+  row-gap: 12px;
+  align-items: center;
+  width: calc(100% - 2 * var(--gutter));
+  max-width: calc(var(--container) - 2 * var(--gutter));
+  margin: clamp(48px, 6vw, 72px) auto var(--section-y);
+  padding: clamp(36px, 5vw, 60px) clamp(28px, 5vw, 64px);
+  text-align: left;
+  color: var(--c-navy-900);
+  background: var(--c-paper-2);
+  border: 0;
+  border-radius: var(--r-xl);
+  box-shadow: none;
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+)::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -70px;
+  bottom: -120px;
+  width: 280px;
+  height: 280px;
+  border: 46px solid rgba(255, 154, 77, 0.22);
+  border-radius: 50%;
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) > :is(h2, h3) {
+  grid-column: 1;
+  max-width: 720px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--c-navy-900);
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) > :is(h2, h3)::before {
+  content: none;
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) > p {
+  grid-column: 1;
+  max-width: 640px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) > .btn-primary {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  margin: 0;
+}
+
+.inner-page :is(
+  .our-story-cta,
+  .join-mission,
+  .scope-cta,
+  .materials-cta,
+  .research-cta,
+  .bullying-cta,
+  .climate-cta,
+  .volunteers-cta,
+  .events-cta,
+  .faq-cta,
+  .moraled-cta
+) > :not(h2):not(h3):not(p):not(.btn-primary) {
+  grid-column: 1 / -1;
+}
+
+/* Sertifika butonu (Materials + Gönüllüler) */
+.inner-page .btn-verify-certificate {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 22px;
+  border: 2px solid var(--c-navy-800);
+  border-radius: var(--r-pill);
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-navy-800);
+  text-decoration: none;
+  box-shadow: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.inner-page .btn-verify-certificate i {
+  font-size: 18px;
+}
+
+.inner-page .btn-verify-certificate:hover {
+  background: var(--c-navy-800);
+  color: #ffffff;
+  transform: none;
+}
+
+.inner-page :is(.volunteers-verify, .materials-workshops-verify) {
+  margin: 6px 0 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* =====================================================================
+   SAYFAYA ÖZGÜ DESENLER
+   ===================================================================== */
+
+/* ---------- Editoryal iki sütun: başlık solda, metin sağda (KiVa) ---------- */
+.inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper,
+.inner-page .certificate-intro-section .certificate-wrapper,
+.inner-page .vision-wrapper,
+.inner-page .bullying-family-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  column-gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+}
+
+.inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper > h2,
+.inner-page .certificate-intro-section .certificate-wrapper > h2,
+.inner-page .vision-wrapper > h2,
+.inner-page .bullying-family-section > h2 {
+  grid-column: 1;
+  grid-row: 1 / span 12;
+  margin: 0;
+}
+
+.inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper > :not(h2),
+.inner-page .certificate-intro-section .certificate-wrapper > :not(h2),
+.inner-page .vision-wrapper > :not(h2),
+.inner-page .bullying-family-section > :not(h2) {
+  grid-column: 2;
+  max-width: 680px;
+  margin: 0 0 18px;
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+/* "İlgili sayfa" notu editoryal sütunda küçük, gri bir yan not olarak kalır */
+.inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper > .climate-related-link,
+.inner-page .bullying-family-section > .bullying-related-link {
+  font-size: 15px;
+  color: var(--c-ink-3);
+}
+
+.inner-page .bullying-family-section > .bullying-related-link {
+  margin-top: 28px;
+}
+
+.inner-page :is(.materials-related-link, .climate-related-link, .bullying-related-link) a i {
+  margin-left: 2px;
+  font-size: 12px;
+}
+
+/* Vizyon: tek cümlelik güçlü ifade */
+.inner-page .vision-wrapper > p {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.8vw, 23px);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--c-navy-900);
+}
+
+/* ---------- Our Story: hikâye + inançlar (metin + yaprak görsel) ---------- */
+.inner-page :is(.story-wrapper, .beliefs-wrapper) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+
+.inner-page :is(.story-text, .beliefs-text) {
+  min-width: 0;
+  max-width: 640px;
+  padding: 0;
+  text-align: left;
+}
+
+.inner-page :is(.story-text, .beliefs-text) p {
+  margin: 0 0 18px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+.inner-page :is(.story-image, .beliefs-image) {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+/* illüstrasyonun beyaz zemini, ebeveyndeki açık mavi yaprakla karışır */
+.inner-page .story-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  padding: 9%;
+  border-radius: 999px 999px 28px 999px;
+  background: var(--c-sky-50);
+  isolation: isolate;
+}
+
+.inner-page .story-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  object-fit: contain;
+  border-radius: 0;
+  background: none;
+  mix-blend-mode: multiply;
+  box-shadow: none;
+}
+
+.inner-page .beliefs-image img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 999px 999px 28px 28px;
+  box-shadow: none;
+}
+
+.inner-page .image-caption {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  color: var(--c-sun-700);
+}
+
+/* ---------- Our Story: misyon — lacivert ifade bandı ---------- */
+.inner-page .mission-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-navy-900);
+  color: #ffffff;
+}
+
+.inner-page .mission-section::after {
+  content: '';
+  position: absolute;
+  top: -220px;
+  right: -180px;
+  width: 560px;
+  height: 560px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  box-shadow: 0 0 0 70px rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+.inner-page .mission-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.inner-page .mission-section h2 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.inner-page .mission-section h2::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.inner-page .mission-lead {
+  margin: 0 auto 20px;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2vw, 25px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #ffffff;
+}
+
+.inner-page .mission-body {
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Scope & Sequence: tablo ---------- */
+.inner-page .scope-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner-page .scope-table th {
+  padding: 18px 22px;
+  border: 0;
+  background: var(--c-navy-900);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: left;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.inner-page .scope-table td,
+.inner-page .scope-table tr.scope-row-shaded td {
+  padding: 18px 22px;
+  border: 0;
+  border-top: 1px solid var(--c-line);
+  background: #ffffff;
+  font-size: 15px;
+  line-height: 1.6;
+  vertical-align: top;
+  color: var(--c-ink-2);
+}
+
+.inner-page .scope-table tbody tr:hover td {
+  background: var(--c-sky-50);
+}
+
+.inner-page .scope-table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--c-navy-900);
+}
+
+.inner-page .scope-pillar {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--c-navy-900);
+}
+
+/* değer satırlarında mevsim noktası: sonbahar · kış · ilkbahar */
+.inner-page .scope-pillar::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  vertical-align: 1px;
+  background: var(--c-sun-500);
+}
+
+.inner-page .scope-table tbody tr:nth-child(n + 4) .scope-pillar::before {
+  background: var(--c-navy-900);
+}
+
+.inner-page .scope-table tbody tr:nth-child(n + 7) .scope-pillar::before {
+  background: var(--c-sky-300);
+}
+
+@media (max-width: 900px) {
+  .inner-page .scope-table,
+  .inner-page .scope-table :is(thead, tbody, tr, th, td) {
+    display: block;
+  }
+
+  .inner-page .scope-table thead {
+    display: none;
+  }
+
+  .inner-page .scope-table {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .inner-page .scope-table tr {
+    margin-bottom: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--c-line);
+    border-radius: var(--r-md);
+  }
+
+  .inner-page .scope-table td,
+  .inner-page .scope-table tr.scope-row-shaded td {
+    border-top: 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .inner-page .scope-table td:first-child {
+    background: var(--c-navy-900);
+    color: #ffffff;
+  }
+}
+
+/* ---------- Yaş bandı sayfası: mevsim renkli takvim yaprakları ---------- */
+.inner-page .age-month-list {
+  display: grid;
+  gap: 22px;
+}
+
+.inner-page .age-month-card {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-left: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner-page .age-month-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 18px 28px;
+  border: 0;
+  background: var(--c-sun-500);
+  color: var(--c-navy-900);
+}
+
+.inner-page .age-month-card:nth-child(n + 4) .age-month-head {
+  background: var(--c-navy-900);
+  color: #ffffff;
+}
+
+.inner-page .age-month-card:nth-child(n + 7) .age-month-head {
+  background: var(--c-sky-200);
+  color: var(--c-navy-900);
+}
+
+.inner-page .age-month-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.inner-page .age-month-head h2 {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  text-transform: none;
+  color: inherit;
+}
+
+.inner-page .age-month-head h2::before {
+  content: none;
+}
+
+.inner-page .age-month-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 28px;
+  padding: 26px 28px 30px;
+}
+
+.inner-page .age-month-block {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.inner-page .age-month-block h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-sun-700);
+}
+
+.inner-page .age-month-block p {
+  margin: 0;
+}
+
+.inner-page .age-month-block :is(p, li) {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--c-ink-2);
+}
+
+.inner-page .age-topic-grade {
+  display: inline-block;
+  margin: 6px 0 4px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  background: var(--c-sky-50);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-blue-700);
+}
+
+.inner-page .age-page-other {
+  margin: 40px 0 0;
+  padding: 28px 30px;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+}
+
+.inner-page .age-page-other p {
+  margin: 0 0 12px;
+  color: var(--c-ink-2);
+}
+
+.inner-page .age-page-other-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.inner-page .age-page-other-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 2px solid var(--c-navy-800);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-navy-800);
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.inner-page .age-page-other-links a:hover {
+  background: var(--c-navy-800);
+  color: #ffffff;
+}
+
+/* ---------- Materials: atölye panelleri ---------- */
+.inner-page .materials-workshops-list {
+  display: grid;
+  gap: 28px;
+  margin: 0 0 32px;
+}
+
+.inner-page .materials-workshop-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner-page .materials-workshop-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(28px, 4vw, 44px);
+  text-align: left;
+}
+
+.inner-page .materials-workshop-content h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--c-navy-900);
+}
+
+.inner-page .materials-workshop-content > p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--c-ink-2);
+}
+
+.inner-page .materials-workshop-points-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 22px;
+  margin: 10px 0 6px;
+}
+
+.inner-page .materials-workshop-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--c-navy-900);
+}
+
+.inner-page .materials-workshop-point span {
+  padding-top: 8px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.inner-page .materials-workshop-point-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-sun-100);
+  color: var(--c-sun-600);
+  font-size: 13px;
+}
+
+.inner-page .materials-workshop-visual {
+  min-height: 260px;
+}
+
+.inner-page .materials-workshop-visual::before {
+  content: none;
+}
+
+.inner-page .materials-workshop-visual-caption {
+  width: auto;
+  max-width: calc(100% - 24px);
+  padding: 14px 20px;
+  background: var(--c-navy-900);
+  border-top-right-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* ---------- About Bullying: işaretler listesi (KiVa satırları) ---------- */
+.inner-page .bullying-signs-list {
+  max-width: 860px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--c-line);
+}
+
+.inner-page .bullying-signs-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-line);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--c-navy-900);
+}
+
+.inner-page .bullying-signs-list li i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  border-radius: 50%;
+  background: var(--c-sun-400);
+  color: var(--c-navy-900);
+  font-size: 15px;
+}
+
+.inner-page .bullying-tips-note {
+  max-width: 760px;
+  margin: 24px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--c-ink-3);
+}
+
+/* ---------- FAQ: akordeon ---------- */
+.inner-page .faq-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.inner-page .faq-item {
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: 18px;
+  box-shadow: none;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.inner-page .faq-item:hover {
+  border-color: var(--c-sky-200);
+}
+
+.inner-page .faq-item.open {
+  border-color: var(--c-sun-400);
+  box-shadow: var(--shadow-md);
+}
+
+.inner-page .faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 22px 24px 22px 26px;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  color: var(--c-navy-900);
+  cursor: pointer;
+}
+
+.inner-page .faq-question i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c-sky-50);
+  color: var(--c-blue-700);
+  font-size: 13px;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.inner-page .faq-item.open .faq-question i {
+  background: var(--c-sun-400);
+  color: var(--c-navy-900);
+}
+
+.inner-page .faq-answer {
+  margin: 0;
+  padding: 0 26px 24px;
+  border: 0;
+  background: none;
+}
+
+.inner-page .faq-answer p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: left;
+  color: var(--c-ink-2);
+}
+
+/* ---------- Contact: bilgi kartları + form kartı ---------- */
+.inner-page .contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.inner-page :is(.contact-form, .certificate-form-section) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner-page :is(.contact-form, .certificate-form-section) h2 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.inner-page :is(.contact-form, .certificate-form-section) h2::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.inner-page :is(.contact-form, .certificate-form-section) form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 720px;
+  margin: 8px auto 0;
+  padding: clamp(24px, 4vw, 40px);
+  background: #ffffff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.inner-page .certificate-form-section .certificate-wrapper {
+  width: 100%;
+}
+
+/* ---------- MoralEd: galeri + seminer videoları ---------- */
+.inner-page .gallery-slider h2 {
+  margin-bottom: 32px;
+}
+
+.inner-page .gallery-slide {
+  padding: 0 10px;
+}
+
+.inner-page .gallery-slide img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin: 0 0 14px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.inner-page .gallery-slide p {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  padding: 0 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--c-navy-900);
+}
+
+.inner-page .gallery-slider .slick-dots {
+  bottom: -40px;
+}
+
+.inner-page .gallery-slider .slick-dots li button:before {
+  font-size: 10px;
+  color: var(--c-navy-800);
+  opacity: 0.25;
+}
+
+.inner-page .gallery-slider .slick-dots li.slick-active button:before {
+  color: var(--c-sun-500);
+  opacity: 1;
+}
+
+.inner-page .gallery-slider :is(.slick-prev, .slick-next) {
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-navy-900);
+  transition: background-color 0.2s var(--ease);
+}
+
+.inner-page .gallery-slider :is(.slick-prev, .slick-next):hover,
+.inner-page .gallery-slider :is(.slick-prev, .slick-next):focus {
+  background: var(--c-sun-500);
+}
+
+.inner-page .gallery-slider .slick-prev {
+  left: -12px;
+}
+
+.inner-page .gallery-slider .slick-next {
+  right: -12px;
+}
+
+.inner-page .gallery-slider :is(.slick-prev, .slick-next):before {
+  font-size: 20px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.inner-page .seminar-card {
+  padding: 14px 14px 26px;
+}
+
+.inner-page .seminar-card > :not(.video-wrapper) {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.inner-page .seminar-card .video-wrapper {
+  width: 100%;
+  margin: 0 0 8px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+/* ---------- Gizlilik: okunaklı uzun metin ---------- */
+.inner-page .privacy-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+.inner-page .privacy-section h2 {
+  max-width: none;
+  margin: 40px 0 12px;
+  padding: 0;
+  font-size: 21px;
+  text-transform: none;
+  color: var(--c-navy-900);
+}
+
+.inner-page .privacy-section h2::before {
+  content: none;
+}
+
+.inner-page .privacy-wrapper :is(p, li) {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--c-ink-2);
+}
+
+/* ---------- 404 ---------- */
+.inner-page .not-found-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 72vh;
+  padding-top: calc(var(--header-h) + var(--section-y));
+  text-align: center;
+}
+
+.inner-page .not-found-section .not-found-code {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(96px, 16vw, 180px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--c-sun-600);
+}
+
+.inner-page .not-found-section h1 {
+  margin: 12px 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--c-navy-900);
+}
+
+.inner-page .not-found-section p {
+  max-width: 560px;
+  margin: 0 0 28px;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--c-ink-2);
+}
+
+/* =====================================================================
+   DUYARLI DÜZEN
+   ===================================================================== */
+@media (max-width: 980px) {
+  .inner-page :is(
+    .team-grid,
+    .values-grid,
+    .how-it-works-steps,
+    .features-grid,
+    .features-benefits-grid,
+    .age-bands-grid,
+    .materials-grid,
+    .research-methods-grid,
+    .bullying-tips-grid,
+    .climate-work-grid,
+    .volunteers-roles-grid,
+    .volunteers-steps,
+    .volunteers-roster-grid,
+    .leader-testimonials-grid,
+    .seminar-grid,
+    .contact-info
+  ) {
+    --cols: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inner-page :is(.events-grid, .bullying-forms-grid, .volunteers-benefits-grid) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inner-page :is(.how-it-works-steps, .volunteers-steps)::before {
+    content: none;
+  }
+
+  .inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper,
+  .inner-page .certificate-intro-section .certificate-wrapper,
+  .inner-page .vision-wrapper,
+  .inner-page .bullying-family-section,
+  .inner-page :is(.story-wrapper, .beliefs-wrapper),
+  .inner-page .materials-workshop-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper > :is(h2, :not(h2)),
+  .inner-page .certificate-intro-section .certificate-wrapper > :is(h2, :not(h2)),
+  .inner-page .vision-wrapper > :is(h2, :not(h2)),
+  .inner-page .bullying-family-section > :is(h2, :not(h2)) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .inner-page :is(.climate-problem-section, .climate-solution-section) .climate-wrapper > h2,
+  .inner-page .certificate-intro-section .certificate-wrapper > h2,
+  .inner-page .vision-wrapper > h2,
+  .inner-page .bullying-family-section > h2 {
+    margin-bottom: 18px;
+  }
+
+  .inner-page :is(.story-image, .beliefs-image) {
+    max-width: 440px;
+  }
+
+  .inner-page .age-month-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* responsive-fixes.css'teki 16px kenar boşluğunu biraz genişlet */
+  .inner-page > :where(section:not([class*='-hero']):not([class*='-cta']):not(.hx)) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .inner-page :is(
+    .our-story-cta,
+    .join-mission,
+    .scope-cta,
+    .materials-cta,
+    .research-cta,
+    .bullying-cta,
+    .climate-cta,
+    .volunteers-cta,
+    .events-cta,
+    .faq-cta,
+    .moraled-cta
+  ) {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 40px);
+    padding: 32px 24px !important;
+  }
+
+  .inner-page :is(
+    .our-story-cta,
+    .join-mission,
+    .scope-cta,
+    .materials-cta,
+    .research-cta,
+    .bullying-cta,
+    .climate-cta,
+    .volunteers-cta,
+    .events-cta,
+    .faq-cta,
+    .moraled-cta
+  ) > .btn-primary {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: stretch;
+    margin-top: 8px;
+  }
+
+  .inner-page :is(
+    .our-story-cta,
+    .join-mission,
+    .scope-cta,
+    .materials-cta,
+    .research-cta,
+    .bullying-cta,
+    .climate-cta,
+    .volunteers-cta,
+    .events-cta,
+    .faq-cta,
+    .moraled-cta
+  ) > :is(h2, h3) {
+    font-size: 21px !important;
+  }
+
+  .inner-page .materials-workshop-points-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .inner-page :is(
+    .team-grid,
+    .values-grid,
+    .how-it-works-steps,
+    .features-grid,
+    .features-benefits-grid,
+    .age-bands-grid,
+    .materials-grid,
+    .research-methods-grid,
+    .bullying-tips-grid,
+    .climate-work-grid,
+    .volunteers-roles-grid,
+    .volunteers-steps,
+    .volunteers-roster-grid,
+    .leader-testimonials-grid,
+    .seminar-grid,
+    .contact-info
+  ) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inner-page :is(.bullying-form-card, .volunteers-benefit-card) {
+    column-gap: 18px;
+    padding: 18px;
+  }
+
+  .inner-page :is(.bullying-form-icon, .volunteers-benefit-icon) {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+
+  .inner-page .faq-question {
+    padding: 18px 18px 18px 20px;
+    font-size: 16px;
+  }
+
+  .inner-page .faq-answer {
+    padding: 0 20px 20px;
+  }
+}

@@ -1,93 +1,69 @@
 MORALED-SİTE
-├── node_modules
-├── package-lock.json
-├── package.json
+├── package.json / package-lock.json
+├── index.html                  # giriş HTML'i (Vite) + crawler'lar için statik SEO/OG etiketleri
+├── vite.config.js / eslint.config.js
+├── vite.soon.config.js         # yapım aşaması sayfasının bağımsız build'i (npm run deploy)
+├── coming-soon/                # yapım aşaması sayfası: index.html, main.js, strings.js (KG/RU/EN), coming-soon.css
+├── README.md / I18N_GUIDE.md / structure.txt
+├── DESIGN_SYSTEM.md            # tasarım sistemi v2: kararlar, kurallar, durum
+├── AGENTS.md                   # yapay zekâ ajanları için çalışma rehberi
+├── scripts
+│   ├── generate-route-html.js   # build sonrası: rota başına HTML (GitHub Pages'te 200 + doğru meta)
+│   ├── optimize-images.py       # WebP + 640px varyant + src/data/imageManifest.json üretir
+│   └── og-image.html            # paylaşım kartı şablonu → public/og-image.jpg
 ├── public
-│   ├── favicon.ico
-│   ├── icons
-│   │   ├── game.png
-│   │   ├── song.png
-│   │   └── story.png
-│   ├── images
-│   │   ├── about-illustration.jpg
-│   │   ├── beliefs-illustration.jpg
-│   │   ├── beliefs-illustration.png
-│   │   ├── cambridge.jpg
-│   │   ├── gallery1.jpg
-│   │   ├── gallery2.jpg
-│   │   ├── gallery3.jpg
-│   │   ├── gallery4.jpg
-│   │   ├── gallery5.jpg
-│   │   ├── gallery6.jpg
-│   │   ├── gallery7.jpg
-│   │   ├── harmony.jpg
-│   │   ├── hero-bg.jpg
-│   │   ├── our-story.jpg
-│   │   ├── partner-gvn.png
-│   │   ├── partner-kef.png
-│   │   ├── partner-yci.png
-│   │   ├── sunrise.jpg
-│   │   └── whole-child-success.svg
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── logos
-│   │   ├── edubridge.png
-│   │   ├── kef.png
-│   │   └── yci.png
-│   ├── manifest.json
-│   ├── patterns
-│   │   └── texture-light.svg
-│   ├── robots.txt
-│   ├── videos
-│   │   └── hero.mp4
-│   └── waves
-│       ├── bottom-wave.svg
-│       └── top-wave.svg
-├── README.md
-├── src
-│   ├── App.css
-│   ├── App.js
-│   ├── App.test.js
-│   ├── assets
-│   │   ├── hero-bg.jpg
-│   │   └── logo.svg
-│   ├── components
-│   │   ├── Footer.css
-│   │   ├── Footer.js
-│   │   ├── gallery
-│   │   │   ├── GallerySlider.css
-│   │   │   └── GallerySlider.js
-│   │   ├── Header.css
-│   │   ├── Header.js
-│   │   ├── partners
-│   │   │   ├── PartnersSection.css
-│   │   │   └── PartnersSection.js
-│   │   ├── schools
-│   │   │   ├── SchoolsOfMoralEd.css
-│   │   │   └── SchoolsOfMoralEd.js
-│   │   ├── seminars
-│   │   │   ├── SeminarSection.css
-│   │   │   └── SeminarSection.js
-│   │   ├── WaveBottom.js
-│   │   └── WaveTop.js
-│   ├── index.css
-│   ├── index.js
-│   ├── logo.svg
-│   ├── pages
-│   │   ├── About.css
-│   │   ├── About.js
-│   │   ├── Contact.css
-│   │   ├── Contact.js
-│   │   ├── Features.css
-│   │   ├── Features.js
-│   │   ├── Home.css
-│   │   ├── Home.js
-│   │   ├── MoralEd.css
-│   │   ├── MoralEd.js
-│   │   ├── Partners.css
-│   │   ├── Partners.js
-│   │   ├── Team.css
-│   │   └── Team.js
-│   ├── reportWebVitals.js
-│   └── setupTests.js
+│   ├── CNAME                    # moraled.com
+│   ├── og-image.jpg             # 1200×630 paylaşım kartı (OG/Twitter)
+│   ├── 404.html                 # GitHub Pages SPA derin link çözümü
+│   ├── sitemap.xml / robots.txt
+│   ├── manifest.json / favicon.svg / icon.svg
+│   ├── images/                  # fotoğraflar (+ .webp ve -640.webp varyantları) + team/
+│   └── logos/                   # indigo-academy/prime/sapat/asylkech.jpg
+└── src
+    ├── index.jsx                # giriş; css sırası: tokens → index → sayfalar → responsive-fixes → polish → inner
+    ├── styles/page-styles.js    # sayfa/bileşen CSS'lerinin sabit global sırası
+    ├── styles/tokens.css        # Design System v2 değişkenleri
+    ├── styles/inner.css         # iç sayfa gövdeleri: 6 kart dili, ızgaralar, CTA panelleri (EN SON)
+    ├── App.jsx                  # rotalar; ana sayfa dışındakiler React.lazy
+    ├── i18n.js                  # i18next yapılandırması + <html lang> senkronu
+    ├── index.css                # temel stiller + hap buton sistemi + yardımcı sınıflar
+    ├── responsive-fixes.css     # mobil düzeltme katmanı
+    ├── polish.css               # iç sayfa hero'ları (lacivert bant + yaprak foto) + form alanları
+    ├── data/ageTopics.js        # 1–11. sınıf aylık konu planları (kg/ru/en)
+    ├── data/imageManifest.json  # görsel varyantları (optimize-images.py üretir, elle düzenlemeyin)
+    ├── locales/{en,kg,ru}/translation.json
+    ├── assets/logo.svg, hero-bg.jpg, heroes/ (hero fotoğrafları — CSS'ten göreli yolla)
+    ├── components
+    │   ├── Header.jsx/.css       # navbar + dropdown'lar + mobil menü
+    │   ├── Footer.jsx/.css
+    │   ├── Seo.jsx               # sayfa başı SEO (titleKey/descriptionKey)
+    │   ├── ScrollToTop.js       # sayfa geçişinde anında en üste
+    │   ├── Picture.jsx           # <picture> + WebP srcset; webpUrl() CSS arka planları için
+    │   ├── RouteFallback.jsx    # lazy sayfa yüklenirken header + boş gövde
+    │   ├── gallery/GallerySlider.jsx/.css
+    │   ├── partners/PartnersSection.jsx/.css
+    │   ├── seminars/SeminarSection.jsx/.css
+    │   └── samples
+    │       ├── SampleModal.jsx/.css
+    │       ├── StoryHonestFox.jsx    # interaktif hikâye
+    │       ├── SongKindnessAnthem.jsx# karaoke şarkı
+    │       └── GameValueQuest.jsx    # 5 soruluk değer quiz'i
+    └── pages
+        ├── About.jsx (ana sayfa) + Home.css
+        ├── OurStory.jsx/.css
+        ├── Team.jsx/.css
+        ├── Features.jsx/.css
+        ├── ScopeSequence.jsx/.css        # 9 ay tablosu + 4 yaş bandı
+        ├── ScopeSequenceAge.jsx/.css     # /scope-and-sequence/:band
+        ├── Materials.jsx/.css
+        ├── MoralEd.jsx/.css              # galeri + seminer + partnerler
+        ├── Research.jsx/.css
+        ├── AboutBullying.jsx/.css
+        ├── ClassroomClimate.jsx/.css
+        ├── StudentVolunteers.jsx/.css
+        ├── Events.jsx/.css
+        ├── FAQ.jsx/.css
+        ├── Contact.jsx/.css              # EmailJS formu
+        ├── PrivacyPolicy.jsx/.css
+        ├── VerifyCertificate.jsx/.css    # EmailJS sertifika talebi
+        └── NotFound.jsx/.css

@@ -1,392 +1,715 @@
-/* MODAL SHELL */
+/* =====================================================================
+   ÖRNEK KAYNAK PENCERESİ (hikâye · şarkı · oyun) — Design System v2
+   Başlık bandı türün rengini taşır (ana sayfadaki örnek kartlarıyla aynı):
+   hikâye = turuncu, şarkı = mavi, oyun = lacivert.
+   Mobilde alttan açılan panel olur. Header'ın (z-index 1100) üstünde açılır.
+   ===================================================================== */
+
 .sample-modal-backdrop {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  z-index: 1300;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  padding: 20px;
-  box-sizing: border-box;
+  padding: 16px;
+  background: rgba(7, 19, 56, 0.62);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: sampleBackdropIn 0.2s ease;
 }
 
 .sample-modal {
   position: relative;
-  background: #fff;
-  padding: 36px;
-  border-radius: 16px;
-  max-width: 560px;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-  text-align: center;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-  animation: sampleModalIn 0.3s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(640px, 100%);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  animation: sampleModalIn 0.28s var(--ease);
+}
+
+.sample-modal *,
+.sample-modal *::before,
+.sample-modal *::after {
+  box-sizing: border-box;
+}
+
+@keyframes sampleBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes sampleModalIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- Başlık bandı ---------- */
+.sample-modal-head {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 76px 24px 28px;
+}
+
+.sample-modal-head::before,
+.sample-modal-head::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.1;
+}
+
+.sample-modal-head::before {
+  width: 190px;
+  height: 190px;
+  right: -60px;
+  top: -90px;
+}
+
+.sample-modal-head::after {
+  width: 90px;
+  height: 90px;
+  left: -30px;
+  bottom: -50px;
+}
+
+.sample-modal--story .sample-modal-head {
+  background: var(--c-sun-100);
+  color: var(--c-sun-600);
+}
+
+.sample-modal--song .sample-modal-head {
+  background: var(--c-sky-100);
+  color: var(--c-blue-700);
+}
+
+.sample-modal--game .sample-modal-head {
+  background: var(--c-navy-900);
+  color: var(--c-sun-400);
+}
+
+.sample-modal-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 22px;
+  color: inherit;
+}
+
+.sample-modal--game .sample-modal-icon {
+  background: var(--c-sun-400);
+  color: var(--c-navy-900);
+}
+
+.sample-modal-heading {
+  min-width: 0;
+}
+
+.sample-modal-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--c-navy-900);
+}
+
+.sample-modal-subtitle {
+  margin: 4px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--c-ink-2);
+}
+
+.sample-modal--game .sample-modal-title {
+  color: #ffffff;
+}
+
+.sample-modal--game .sample-modal-subtitle {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .sample-modal-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: #fdf3e7;
-  border: none;
-  color: #045b57;
-  width: 32px;
-  height: 32px;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  font-size: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--c-navy-900);
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.sample-modal-close svg {
+  width: 15px;
+  height: 15px;
 }
 
 .sample-modal-close:hover {
-  background: #8a5a2e;
-  color: white;
-  transform: scale(1.08);
+  transform: rotate(90deg);
+  background: #ffffff;
 }
 
-.sample-modal-title {
-  font-size: 24px;
-  color: #045b57;
-  margin-bottom: 4px;
-  font-weight: 800;
+.sample-modal--game .sample-modal-close {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
-.sample-modal-subtitle {
+.sample-modal--game .sample-modal-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Gövde ---------- */
+.sample-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 26px 28px 30px;
+}
+
+/* ortak küçük butonlar */
+.story-restart-btn,
+.song-replay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 2px solid var(--c-navy-800);
+  border-radius: var(--r-pill);
+  background: transparent;
+  font-family: var(--font-display);
   font-size: 14px;
-  color: #777;
-  margin-bottom: 24px;
+  font-weight: 700;
+  color: var(--c-navy-800);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-/* STORY EXPERIENCE */
+.story-restart-btn:hover,
+.song-replay-btn:hover {
+  background: var(--c-navy-800);
+  color: #ffffff;
+}
+
+.song-play-btn,
+.game-next-btn,
+.game-restart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 2px solid var(--c-blue-700);
+  border-radius: var(--r-pill);
+  background: var(--c-blue-700);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.song-play-btn:hover,
+.game-next-btn:hover,
+.game-restart-btn:hover {
+  background: var(--c-navy-800);
+  border-color: var(--c-navy-800);
+  transform: translateY(-1px);
+}
+
+/* =====================================================================
+   HİKÂYE — Dürüst Tilki
+   ===================================================================== */
+.story-experience {
+  display: grid;
+  gap: 18px;
+}
+
 .story-scene {
-  background: linear-gradient(to bottom right, #fdf3e7, #fdf3e7);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: var(--c-paper);
+  animation: sampleFadeUp 0.35s var(--ease);
 }
 
 .story-scene-emoji {
-  font-size: 32px;
-  display: block;
-  margin-bottom: 8px;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 26px;
+  line-height: 1;
 }
 
 .story-text {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--c-ink);
 }
 
 .story-choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  gap: 10px;
 }
 
 .story-choice-btn {
-  background: white;
-  border: 2px solid #0a9396;
-  color: #0a9396;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 15px 18px;
+  border: 1.5px solid var(--c-line);
+  border-radius: 16px;
+  background: #ffffff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
   text-align: left;
+  color: var(--c-navy-900);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.story-choice-btn::after {
+  content: '\f061';
+  flex: none;
+  font-family: 'Font Awesome 6 Free';
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--c-blue-700);
+  transition: transform 0.2s var(--ease);
 }
 
 .story-choice-btn:hover {
-  background: #045b57;
-  color: white;
-  transform: translateX(4px);
+  border-color: var(--c-blue-500);
+  background: var(--c-sky-50);
+  transform: translateY(-1px);
+}
+
+.story-choice-btn:hover::after {
+  transform: translateX(3px);
 }
 
 .story-moral {
-  border: 2px dashed;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 12px;
-  animation: sampleFadeUp 0.5s ease;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding: 20px 22px;
+  border: 2px solid var(--c-line);
+  border-radius: 18px;
+  background: #ffffff;
+  animation: sampleFadeUp 0.35s var(--ease);
 }
 
 .story-moral-emoji {
   font-size: 28px;
-  display: block;
-  margin-bottom: 8px;
+  line-height: 1;
+  animation: sampleBounce 0.6s var(--ease);
 }
 
 .story-moral p {
-  color: #333;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--c-ink);
 }
 
-.story-restart-btn {
-  background-color: #0a9396;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
+.story-moral strong {
+  font-family: var(--font-display);
+  color: var(--c-navy-900);
 }
 
-.story-restart-btn:hover {
-  background-color: #07736f;
-  transform: scale(1.05);
-}
-
-/* SONG EXPERIENCE */
+/* =====================================================================
+   ŞARKI — İyilik Marşı
+   ===================================================================== */
 .song-controls {
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.song-play-btn,
-.song-replay-btn {
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-  background-color: #0a9396;
-  color: #ffffff;
-}
-
-.song-play-btn {
-  background-color: #0a9396;
-  color: #ffffff;
-}
-
-.song-play-btn:hover {
-  background-color: #e07856;
-  transform: scale(1.05);
-}
-
-.song-replay-btn {
-  background-color: #fdf3e7;
-  color: #045b57;
-}
-
-.song-replay-btn:hover {
-  background-color: #8a5a2e;
-  color: white;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .song-lyrics {
-  background: linear-gradient(to bottom right, #faf1e6, #f7e6d4);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 12px;
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: var(--c-paper);
 }
 
 .song-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
   font-size: 16px;
-  color: #888;
-  margin: 8px 0;
-  transition: all 0.3s ease;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--c-ink-3);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 .song-line-chorus {
+  font-family: var(--font-display);
   font-weight: 700;
-  color: #045b57;
-}
-
-.song-line-active {
-  color: #e07856;
-  font-size: 18px;
-  font-weight: 800;
-  transform: scale(1.04);
+  color: var(--c-navy-900);
 }
 
 .song-note {
-  margin-right: 6px;
-  display: inline-block;
-  animation: sampleBounce 1s infinite;
+  flex: none;
+  font-size: 13px;
+  color: var(--c-sun-600);
+}
+
+.song-line-active {
+  background: var(--c-sun-400);
+  color: var(--c-navy-900);
+  transform: translateX(4px);
+}
+
+.song-line-active .song-note {
+  color: var(--c-navy-900);
 }
 
 .song-hint {
-  font-size: 14px;
-  color: #999;
-  font-style: italic;
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--c-ink-3);
 }
 
-/* GAME EXPERIENCE */
+/* =====================================================================
+   OYUN — Değer Görevi
+   ===================================================================== */
+.game-experience {
+  display: grid;
+  gap: 18px;
+}
+
 .game-progress {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 16px;
-  text-align: left;
+  display: grid;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
 }
 
 .game-progress-bar {
-  background: #eee;
-  border-radius: 6px;
   height: 8px;
-  margin-top: 6px;
   overflow: hidden;
+  border-radius: var(--r-pill);
+  background: var(--c-sky-100);
 }
 
 .game-progress-fill {
-  background: linear-gradient(to right, #045b57, #ecc9ab);
   height: 100%;
-  transition: width 0.4s ease;
+  border-radius: var(--r-pill);
+  background: var(--c-sun-500);
+  transition: width 0.4s var(--ease);
 }
 
 .game-scenario {
-  font-size: 18px;
-  color: #333;
-  font-weight: 600;
-  margin-bottom: 20px;
-  line-height: 1.5;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--c-navy-900);
 }
 
 .game-options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 10px;
-  margin-bottom: 16px;
 }
 
 .game-option-btn {
-  background: white;
-  border: 2px solid #ddd;
-  color: #333;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  border: 1.5px solid var(--c-line);
+  border-radius: 16px;
+  background: #ffffff;
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.45;
   text-align: left;
+  color: var(--c-ink);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
 }
 
-.game-option-btn:hover:not(:disabled) {
-  border-color: #045b57;
-  transform: translateX(4px);
+.game-option-btn:not(:disabled):hover {
+  border-color: var(--c-blue-500);
+  background: var(--c-sky-50);
 }
 
 .game-option-btn:disabled {
   cursor: default;
 }
 
-.game-correct {
-  background: #e6f7ee !important;
-  border-color: #2a9d8f !important;
-  font-weight: 700;
+.game-option-letter {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--c-sky-50);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--c-blue-700);
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-.game-incorrect {
-  background: #fdecea !important;
-  border-color: #e76f51 !important;
+.game-option-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.game-correct,
+.game-correct:disabled {
+  border-color: var(--c-success-600);
+  background: var(--c-success-100);
+}
+
+.game-correct .game-option-letter {
+  background: var(--c-success-600);
+  color: #ffffff;
+}
+
+.game-incorrect,
+.game-incorrect:disabled {
+  border-color: var(--c-danger-600);
+  background: var(--c-danger-100);
+}
+
+.game-incorrect .game-option-letter {
+  background: var(--c-danger-600);
+  color: #ffffff;
+}
+
+.game-correct::after,
+.game-incorrect::after {
+  flex: none;
+  font-family: 'Font Awesome 6 Free';
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.game-correct::after {
+  content: '\f00c';
+  color: var(--c-success-600);
+}
+
+.game-incorrect::after {
+  content: '\f00d';
+  color: var(--c-danger-600);
 }
 
 .game-feedback {
-  background: linear-gradient(to bottom right, #fdf3e7, #fdf3e7);
-  border-radius: 12px;
-  padding: 18px;
-  animation: sampleFadeUp 0.4s ease;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--c-paper);
+  animation: sampleFadeUp 0.3s var(--ease);
 }
 
 .game-feedback p {
-  color: #333;
-  margin-bottom: 10px;
-  line-height: 1.5;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--c-ink);
 }
 
 .game-value-tag {
   display: inline-block;
-  background: #045b57;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-navy-900);
+  font-family: var(--font-display);
+  font-size: 11.5px;
   font-weight: 700;
-  margin-bottom: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .game-next-btn {
-  display: block;
-  margin: 0 auto;
-  background-color: #0a9396;
-  color: #ffffff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-.game-next-btn:hover {
-  background-color: #07736f;
-  transform: scale(1.05);
+  justify-self: end;
 }
 
 .game-result {
-  padding: 10px 0;
+  justify-items: center;
+  padding: 8px 0 4px;
+  text-align: center;
+  animation: sampleFadeUp 0.35s var(--ease);
 }
 
 .game-result-emoji {
-  font-size: 48px;
-  display: block;
-  margin-bottom: 10px;
-  color: #0a9396;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--c-sun-400);
+  font-size: 34px;
+  color: var(--c-navy-900);
+  animation: sampleBounce 0.6s var(--ease);
 }
 
 .game-result h3 {
-  color: #045b57;
+  margin: 0;
+  font-family: var(--font-display);
   font-size: 22px;
-  margin-bottom: 10px;
+  font-weight: 800;
+  color: var(--c-navy-900);
 }
 
 .game-result p {
-  color: #555;
-  margin-bottom: 20px;
+  max-width: 440px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-ink-2);
 }
 
-.game-restart-btn {
-  background-color: #0a9396;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-.game-restart-btn:hover {
-  background-color: #07736f;
-  transform: scale(1.05);
-}
-
-/* SHARED ANIMATIONS */
 @keyframes sampleFadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes sampleBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-@media (max-width: 500px) {
+/* ---------- Mobil: alttan açılan panel ---------- */
+@media (max-width: 560px) {
+  .sample-modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   .sample-modal {
-    padding: 24px 18px;
+    width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-radius: 24px 24px 0 0;
+    animation-name: sampleSheetIn;
+  }
+
+  .sample-modal-head {
+    gap: 14px;
+    padding: 22px 66px 20px 20px;
+  }
+
+  .sample-modal-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 19px;
+  }
+
+  .sample-modal-title {
+    font-size: 19px;
+  }
+
+  .sample-modal-close {
+    top: 16px;
+    right: 14px;
+  }
+
+  .sample-modal-body {
+    padding: 20px 20px calc(env(safe-area-inset-bottom, 0px) + 24px);
+  }
+
+  .story-scene {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 18px;
+  }
+
+  .game-scenario {
+    font-size: 17px;
+  }
+}
+
+@keyframes sampleSheetIn {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

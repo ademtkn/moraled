@@ -1,42 +1,61 @@
+/* =====================================================================
+   PARTNER OKULLAR — Design System v2
+   Logolar beyaz daireler içinde (KiVa), sonsuz yatay kayan şerit.
+   Ana sayfada ve /moraled sayfasında kullanılır.
+   ===================================================================== */
+
 .partners-carousel-section {
-  padding: 60px 20px;
-  background: #f8f9fa;
+  padding: var(--section-y) 0;
+  background: #ffffff;
   text-align: center;
   overflow: hidden;
 }
 
 .partners-carousel-section h2 {
-  font-size: 36px;
-  color: #045b57;
-  margin-bottom: 15px;
-  font-weight: 700;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: 1.12;
+  text-transform: uppercase;
+  color: var(--c-navy-800);
+}
+
+.partners-carousel-section h2::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  margin: 20px auto 0;
+  border-radius: 5px;
+  background: var(--c-sun-400);
 }
 
 .carousel-subtitle {
-  font-size: 18px;
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto 50px;
+  max-width: 640px;
+  margin: 18px auto 48px;
+  padding: 0 var(--gutter);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--c-ink-2);
 }
 
 .partners-carousel-container {
   position: relative;
   width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  padding: 12px 0 16px;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .partners-carousel {
   display: flex;
-  gap: 60px;
-  animation: scroll 30s linear infinite;
+  gap: 48px;
   width: fit-content;
+  animation: scroll 30s linear infinite;
 }
 
 .partners-carousel:hover {
@@ -56,50 +75,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-width: 200px;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.partner-logo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  gap: 16px;
+  width: 190px;
+  flex: none;
 }
 
 .partner-logo-card img {
-  width: 120px;
-  height: 120px;
+  box-sizing: border-box;
+  width: 160px;
+  height: 160px;
+  padding: 26px;
   object-fit: contain;
-  margin-bottom: 15px;
+  border: 1px solid var(--c-line);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.partner-logo-card:hover img {
+  transform: translateY(-4px);
+  border-color: var(--c-sun-400);
+  box-shadow: var(--shadow-md);
 }
 
 .partner-logo-card span {
+  font-family: var(--font-display);
   font-size: 14px;
   font-weight: 600;
-  color: #333;
-  text-align: center;
   line-height: 1.4;
+  text-align: center;
+  color: var(--c-navy-800);
 }
 
 @media (max-width: 768px) {
-  .partners-carousel-section h2 {
-    font-size: 28px;
+  .partners-carousel {
+    gap: 28px;
   }
-  
-  .carousel-subtitle {
-    font-size: 16px;
-  }
-  
+
   .partner-logo-card {
-    min-width: 150px;
+    width: 140px;
   }
-  
+
   .partner-logo-card img {
-    width: 80px;
-    height: 80px;
+    width: 116px;
+    height: 116px;
+    padding: 18px;
   }
 }

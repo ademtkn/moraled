@@ -1,186 +1,75 @@
-# Çoklu Dil Desteği Kullanım Kılavuzu
+# Çoklu Dil Desteği Kullanım Kılavuzu (i18n)
 
-Bu proje, react-i18next kütüphanesi kullanılarak çoklu dil desteği ile geliştirilmiştir.
+Bu proje `react-i18next` + `i18next-browser-languagedetector` ile 3 dilde çalışır.
 
 ## 🌍 Mevcut Diller
 
-- **İngilizce (EN)** 🇬🇧 - Ana dil
-- **Türkçe (TR)** 🇹🇷
+| Kod | Dil | Dosya |
+|---|---|---|
+| `en` | İngilizce | `src/locales/en/translation.json` |
+| `kg` | Kırgızca (varsayılan) | `src/locales/kg/translation.json` |
+| `ru` | Rusça | `src/locales/ru/translation.json` |
 
-Dil menüsü modern dropdown tasarımıyla sağ üst köşede bulunur. Tıkladığınızda kullanılabilir diller açılır.
+Dil menüsü header'ın sağ üstünde (masaüstü) ve mobil menünün altında bulunur.
+Seçim `localStorage`'da saklanır. Dil değişince `<html lang>`, sayfa içerikleri ve
+SEO başlıkları/description'ları otomatik güncellenir.
 
-## 📁 Dosya Yapısı
+## 📁 Yapı
 
 ```
 src/
-├── i18n.js                          # i18next yapılandırması
-├── locales/
-│   ├── en/
-│   │   └── translation.json         # İngilizce çeviriler
-│   └── tr/
-│       └── translation.json         # Türkçe çeviriler
+├── i18n.js                     # yapılandırma (fallbackLng: 'kg')
+├── locales/{en,kg,ru}/translation.json
+└── components/Header.js        # dil değiştirme arayüzü
 ```
 
-## 🚀 Kullanım
+## ➕ Yeni Çeviri Anahtarı Ekleme
 
-### Yeni Bir Bileşende Çeviri Kullanma
+1. **Üç dil dosyasına da aynı anahtarı ekleyin** (sıralama önemli değil, anahtar önemli):
+
+```json
+"mySection": {
+  "title": "My Title",          // en
+  "title": "Менин аталышым",     // kg
+  "title": "Мой заголовок"       // ru
+}
+```
+
+2. **Bileşende kullanın:**
 
 ```jsx
 import { useTranslation } from 'react-i18next';
 
 function MyComponent() {
   const { t } = useTranslation();
-  
-  return (
-    <div>
-      <h1>{t('nav.home')}</h1>
-      <p>{t('common.welcome')}</p>
-    </div>
-  );
+  return <h1>{t('mySection.title')}</h1>;
 }
 ```
 
-### Dil Değiştirme
+3. **Parametreli metinler** `{{param}}` söz dizimi kullanır:
 
-Dil menüsü modern bir dropdown olarak tasarlanmıştır:
+```json
+"game_score": "You scored {{score}} / {{total}}"
+```
 
 ```jsx
-const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' }
-];
-
-const currentLanguage = languages.find(lang => lang.code === i18n.language);
-
-// Dropdown butonu
-<button onClick={() => setLangMenuOpen(!langMenuOpen)}>
-  <span>{currentLanguage.flag}</span>
-  <span>{currentLanguage.code.toUpperCase()}</span>
-</button>
-
-// Menü açıldığında dil seçenekleri
-{langMenuOpen && (
-  <div>
-    {languages.map(lang => (
-      <button onClick={() => i18n.changeLanguage(lang.code)}>
-        {lang.flag} {lang.name}
-      </button>
-    ))}
-  </div>
-)}
+t('samples.game_score', { score: 4, total: 5 });
 ```
 
-## ➕ Yeni Dil Ekleme
+## 📋 Kurallar
 
-### 1. Çeviri Dosyası Oluşturun
+- **Üç dosyada anahtar sayısı ve isimleri birebir aynı olmalı** (parite).
+  Kontrol için: `src/locales` dosyalarını JSON olarak açıp anahtar listelerini karşılaştırın.
+- SEO başlıkları `seo.<sayfa>_title/desc` anahtarlarıyla sayfa bazlı çevrilir
+  (`src/components/Seo.js` → `titleKey` / `descriptionKey`).
+- Dinamik anahtarlar (ör. `samples.game_value_${valueKey}`) dosyada tam anahtar setiyle
+  bulunmalıdır.
+- Emoji içeren buton metinlerinde emoji anahtarın içinde tutulur
+  (ör. `"song_play": "▶️ Play"`).
 
-`src/locales/[dil-kodu]/translation.json` dosyası oluşturun:
+## 🔧 Yapılandırma (`src/i18n.js`)
 
-```json
-{
-  "nav": {
-    "home": "Anasayfa",
-    "about": "Hakkında"
-  }
-}
-```
-
-### 2. i18n.js Dosyasını Güncelleyin
-
-```javascript
-// Yeni dili import edin
-import translationDE from './locales/de/translation.json';
-
-// resources objesine ekleyin
-const resources = {
-  en: { translation: translationEN },
-  tr: { translation: translationTR },
-  de: { translation: translationDE }  // Yeni dil
-};
-```
-
-### 3. Header.js'de Dil Listesini Güncelleyin
-
-```javascript
-const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' }  // Yeni dil
-];
-```
-
-Dil otomatik olarak dropdown menüye eklenecektir!
-
-## 📝 Yeni Çeviri Anahtarı Ekleme
-
-1. Her dil dosyasında (`en/translation.json`, `tr/translation.json`) aynı anahtarı ekleyin:
-
-**en/translation.json**
-```json
-{
-  "mySection": {
-    "title": "My Title",
-    "description": "My Description"
-  }
-}
-```
-
-**tr/translation.json**
-```json
-{
-  "mySection": {
-    "title": "Başlığım",
-    "description": "Açıklamam"
-  }
-}
-```
-
-2. Bileşeninizde kullanın:
-```jsx
-<h1>{t('mySection.title')}</h1>
-<p>{t('mySection.description')}</p>
-```
-
-## 💡 İpuçları
-
-- Çeviri anahtarları her dil dosyasında aynı yapıya sahip olmalıdır
-- Kullanıcının seçtiği dil `localStorage`'da saklanır
-- Ana dil İngilizce olarak ayarlanmıştır (fallback)
-- Tarayıcının dil ayarları otomatik algılanır
-- Dil menüsü modern dropdown tasarımıyla minimum yer kaplar
-- Bayrak emoji'leri otomatik olarak desteklenir (🇬🇧 🇹🇷)
-
-## 🎯 Örnek Çeviri Yapısı
-
-```json
-{
-  "nav": {
-    "home": "Home",
-    "about": "About"
-  },
-  "values": {
-    "Respect": "Respect",
-    "Respect_desc": "Respect means..."
-  },
-  "footer": {
-    "brand_name": "Moral Education",
-    "rights": "All rights reserved."
-  },
-  "common": {
-    "language": "Language",
-    "welcome": "Welcome"
-  }
-}
-```
-
-## 🔧 Yapılandırma Seçenekleri
-
-`src/i18n.js` dosyasında şu ayarları değiştirebilirsiniz:
-
-- `fallbackLng`: Yedek dil (varsayılan: 'en')
-- `lng`: Başlangıç dili (varsayılan: 'en')
-- `debug`: Geliştirme modu debug (varsayılan: false)
-
----
-
-**Not:** Daha fazla bilgi için [react-i18next dokümantasyonunu](https://react.i18next.com/) ziyaret edin.
+- `fallbackLng: 'kg'` — anahtar bulunamazsa Kırgızca gösterilir
+- `detection.order: ['localStorage']` — tarayıcı dili otomatik algılanmaz;
+  istenirse `order: ['localStorage', 'navigator']` yapılabilir
+- Dil değişince `languageChanged` dinleyicisi `document.documentElement.lang`'ı günceller

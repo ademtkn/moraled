@@ -1,0 +1,84 @@
+/* =====================================================================
+   RESPONSIVE FIXES — sistematik düzeltme katmanı (Kasım 2026)
+   index.js içinde polish.css'ten önce import edilir.
+   NOT (Design System v2): yeni ana sayfa bölümleri `.hx` sınıfını taşır
+   ve kendi duyarlı kurallarını Home.css'te tanımlar; bu yüzden aşağıdaki
+   global `section` kuralları `section:not(.hx)` ile sınırlandırıldı.
+   ===================================================================== */
+
+/* --- Global korumalar: yatay taşma yok, medya taşmasın --- */
+html,
+body {
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* --- Küçük ekranlar (tablet ve altı) --- */
+@media (max-width: 768px) {
+  /* Akışkan başlık ölçeği: iç sayfa hero ve bölüm başlıkları */
+  section:not(.hx) h1 {
+    font-size: clamp(28px, 8.5vw, 36px) !important;
+  }
+
+  section:not(.hx) h2 {
+    font-size: clamp(24px, 7vw, 30px) !important;
+  }
+
+  /* Dikey ritmi sıkılaştır, yan boşlukları güvenli yap */
+  section:not(.hx) {
+    padding-bottom: 56px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Sabit min-width'li esnek satırlar -> dikey istifle */
+  .story-wrapper,
+  .beliefs-wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .story-text,
+  .story-image,
+  .beliefs-text,
+  .beliefs-image {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .info-block {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .contact-info {
+    gap: 24px;
+  }
+
+}
+
+/* --- Telefonlar --- */
+@media (max-width: 480px) {
+  section:not(.hx) h1 {
+    font-size: 26px !important;
+  }
+
+  .not-found-code {
+    font-size: 64px !important;
+  }
+
+  /* Eski sayfalardaki kart gridleri tek kolon (minmax taşmasını önler) */
+  [class$="-grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn-hero {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}

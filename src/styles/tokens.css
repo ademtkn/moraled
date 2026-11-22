@@ -1,0 +1,88 @@
+/* =====================================================================
+   MoralEd Design System v2 — "Асман & Күн" (Sky & Sun)
+   ---------------------------------------------------------------------
+   Tek doğruluk kaynağı: renk, tipografi, şekil, gölge ve yerleşim
+   değişkenleri. Sayfa CSS'lerinde sabit hex yerine bu değişkenleri
+   kullanın. Ayrıntılar: /DESIGN_SYSTEM.md
+   ===================================================================== */
+
+:root {
+  /* ---- Marka: logodan türetilen lacivert & mavi (gökyüzü / dağlar) ---- */
+  --c-navy-950: #071338;
+  --c-navy-900: #0b1b4d;
+  --c-navy-800: #00266d; /* logo laciverti — başlıklar */
+  --c-blue-800: #003a8c;
+  --c-blue-700: #0045a2; /* logo kraliyet mavisi — birincil buton */
+  --c-blue-500: #007ae1; /* logo parlak mavi — bağlantı, ikon */
+  --c-sky-300: #7fb8ff;
+  --c-sky-200: #c9e0fb;
+  --c-sky-100: #e4effc;
+  --c-sky-50: #f2f7fd;
+
+  /* ---- Vurgu: güneş turuncusu (Kırgız bayrağındaki güneş, sıcaklık) ----
+     Beyaz zemin üzerinde küçük metin için KULLANMAYIN (kontrast düşük).
+     Turuncu buton = lacivert metin. */
+  --c-sun-700: #c2410c;
+  --c-sun-600: #e8620f; /* beyaz üstünde büyük metin / eyebrow */
+  --c-sun-500: #ff7a1a; /* buton zemini */
+  --c-sun-400: #ff9a4d; /* fosforlu kalem vurgusu, koyu zeminde metin */
+  --c-sun-300: #ffc28f;
+  --c-sun-100: #fff1e5;
+
+  /* ---- Anlamsal: yalnızca doğru/yanlış geri bildirimi (oyun vb.) ---- */
+  --c-success-600: #15803d;
+  --c-success-100: #e6f6ec;
+  --c-danger-600: var(--c-sun-700);
+  --c-danger-100: var(--c-sun-100);
+
+  /* ---- Nötrler: sıcak kâğıt tonları (KiVa sakinliği) ---- */
+  --c-paper: #f7f4ee;
+  --c-paper-2: #ede9e2;
+  --c-mist: #f5f7fb;
+  --c-white: #ffffff;
+  --c-ink: #141c45;   /* gövde metni — saf siyah yerine lacivert mürekkep */
+  --c-ink-2: #464e72; /* ikincil metin */
+  --c-ink-3: #646b88; /* yardımcı metin — kâğıtta 4.8:1, beyazda 5.3:1 */
+  --c-line: #e2e5ee;
+  --c-line-dark: rgba(255, 255, 255, 0.14);
+
+  /* ---- Tipografi (ikisi de Kırgızca ң ө ү harflerini destekler) ---- */
+  --font-display: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-display: clamp(30px, 4.6vw, 60px);
+  --fs-h1: clamp(28px, 4vw, 52px);
+  --fs-h2: clamp(25px, 3vw, 40px);
+  --fs-h3: clamp(18px, 1.5vw, 21px);
+  --fs-lead: clamp(17px, 1.35vw, 20px);
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-eyebrow: 13px;
+
+  /* ---- Şekil ---- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* ---- Gölge (lacivert tonlu, yumuşak) ---- */
+  --shadow-sm: 0 1px 2px rgba(11, 27, 77, 0.06), 0 2px 10px rgba(11, 27, 77, 0.05);
+  --shadow-md: 0 2px 6px rgba(11, 27, 77, 0.06), 0 14px 36px rgba(11, 27, 77, 0.09);
+  --shadow-lg: 0 28px 64px rgba(11, 27, 77, 0.18);
+
+  /* ---- Yerleşim ---- */
+  --container: 1200px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --section-y: clamp(64px, 8.5vw, 116px);
+  --header-h: 84px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-h: 68px;
+  }
+}

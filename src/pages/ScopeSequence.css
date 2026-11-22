@@ -11,7 +11,7 @@
 
 .scope-section {
   padding: 100px 24px 80px;
-  background-color: #f5f7fa;
+  background-color: var(--c-mist);
 }
 
 .age-bands-section {
@@ -27,116 +27,8 @@
 
 .age-bands-wrapper h2 {
   font-size: 36px;
-  color: #005f73;
+  color: var(--c-navy-800);
   margin-bottom: 16px;
-}
-
-.age-bands-intro {
-  font-size: 18px;
-  color: #555;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
-}
-
-.age-bands-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.age-band-card {
-  background: #f5f7fa;
-  border-radius: 12px;
-  padding: 36px 24px;
-  text-align: left;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.age-bands-grid .age-band-card:nth-child(2) { animation-delay: 0.1s; }
-.age-bands-grid .age-band-card:nth-child(3) { animation-delay: 0.2s; }
-.age-bands-grid .age-band-card:nth-child(4) { animation-delay: 0.3s; }
-
-.age-band-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #0a9396;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
-.age-band-range {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #0a9396;
-  margin-bottom: 6px;
-}
-
-.age-band-card h3 {
-  font-size: 20px;
-  color: #005f73;
-  margin-bottom: 10px;
-}
-
-.age-band-card p {
-  font-size: 15px;
-  color: #444;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.age-band-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #045b57;
-  text-decoration: none;
-}
-
-.age-band-link:hover {
-  color: #0a9396;
-  text-decoration: underline;
-}
-
-.age-band-soon {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #8a5a2e;
-}
-
-.scope-cta {
-  background: #ffffff;
-  border-top: 4px solid #ecc9ab;
-  border-bottom: 4px solid #ecc9ab;
-  padding: 90px 20px;
-  text-align: center;
-}
-
-.scope-cta h2 {
-  font-size: 32px;
-  color: #045b57;
-  margin-bottom: 12px;
-}
-
-.scope-cta p {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 28px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .scope-wrapper {
@@ -146,76 +38,7 @@
 }
 
 .scope-wrapper h1 {
-  color: #005f73;
+  color: var(--c-navy-800);
   font-size: 36px;
   margin-bottom: 16px;
-}
-
-.scope-intro {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  color: #444;
-  font-size: 20px;
-  line-height: 1.6;
-}
-
-.scope-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  text-align: left;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.scope-table th {
-  background-color: #0a9396;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 16px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.scope-table td {
-  padding: 18px 20px;
-  border: 1px solid rgba(10, 147, 150, 0.12);
-  vertical-align: top;
-  font-size: 15px;
-  color: #333;
-  line-height: 1.6;
-}
-
-.scope-table tr.scope-row-shaded td {
-  background-color: #e6f5f5;
-}
-
-.scope-pillar {
-  font-weight: 700;
-  color: #005f73;
-}
-
-@media (max-width: 900px) {
-  .scope-table, .scope-table thead, .scope-table tbody, .scope-table th, .scope-table td, .scope-table tr {
-    display: block;
-  }
-
-  .scope-table thead {
-    display: none;
-  }
-
-  .scope-table tr {
-    margin-bottom: 24px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(10, 147, 150, 0.12);
-  }
-
-  .scope-table td {
-    border: none;
-    border-bottom: 1px solid rgba(10, 147, 150, 0.1);
-  }
 }

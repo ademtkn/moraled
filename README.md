@@ -1,114 +1,93 @@
-# MoralEd - Moral Education Platform
+# MoralEd — Moral Education Platform
 
-A values-based education platform built with React, featuring multi-language support and modern web technologies.
+Değerler temelli bir karakter eğitimi platformu. Kırgızistan'daki K-12 okullarına aylık
+değer takvimi (9 değer, Eylül–Mayıs) ile karakter eğitimi sunar.
 
-## ✨ Features
+Canlı site: **https://moraled.com**
 
-- 🌍 **Multi-language Support** (English, Turkish)
-- 📱 **Responsive Design**
-- ⚡ **Fast Performance**
-- 🎨 **Modern UI/UX**
-- 🔄 **Dynamic Content**
+## ✨ Özellikler
 
-## 🌐 Internationalization (i18n)
+- 🌍 **3 dil desteği**: İngilizce (EN), Kırgızca (KG), Rusça (RU) — varsayılan: Kırgızca
+- 📚 **Sınıf bazlı müfredat**: 1–11. sınıflar için aylık konu planları
+  - Early Elementary (1–2), Upper Elementary (3–4), Middle School (5–8), High School (9–11)
+- 📱 **Tam responsive** tasarım (telefon / tablet / masaüstü) + kaydırılabilir mobil menü
+- 🎯 **İnteraktif örnek kaynaklar**: hikâye (The Honest Fox), şarkı (Kindness Anthem),
+  değer quiz'i (Value Quest) — üçü de tamamen üç dilde
+- 🎥 Seminer videoları, fotoğraf galerisi, partner okul karuseli
+- ✉️ EmailJS ile iletişim + sertifika doğrulama formları
+- 🔍 Sayfa bazlı SEO (başlık, açıklama, OG/Twitter, canonical) — dile göre değişir
+- 🚀 GitHub Pages + moraled.com özel alan adı (SPA derin link desteği)
 
-This project uses `react-i18next` for multi-language support with a modern dropdown selector. 
+## 🎨 Tasarım
 
-- **Default Language:** English (EN) 🇬🇧
-- **Available Languages:** English (EN), Turkish (TR) 🇹🇷
-- Language preference is saved in localStorage
-- Elegant dropdown menu in header for easy language switching
+Site, Kasım 2026'da **Design System v2 — "Асман & Күн"** ile yeniden tasarlandı: logodan türetilen
+lacivert/mavi palet + güneş turuncusu vurgu, Montserrat + Inter. Referanslar: qundylyq.kz,
+piermontpress.us, kivaprogram.net.
 
-For detailed documentation on adding new languages or translations, see [I18N_GUIDE.md](./I18N_GUIDE.md).
+- Tasarım kararları, kurallar, güncel durum ve yol haritası: **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)**
+- Yapay zekâ ajanları ve yeni geliştiriciler için çalışma rehberi: **[AGENTS.md](./AGENTS.md)**
 
-## 🚀 Quick Start
+## 🚧 Yapım aşaması modu (Kasım 2026)
 
-### Prerequisites
+Tam site tamamlanana kadar moraled.com'da yalnızca 3 dilli (KG/RU/EN) "yapım aşamasında"
+sayfası yayında: `coming-soon/` + `vite.soon.config.js`. Bu build bağımsızdır — tam sitenin
+kodu, sayfaları ve metinleri yayın paketinde yoktur; bilinmeyen her adres (örn. `/our-story`)
+aynı sayfayı gösterir. Footer'da iletişim bilgileri ve
+`© 2026 Moral Education. All rights reserved.` + line.kg bağlantısı var.
 
-- Node.js (v14 or higher)
-- npm or yarn
+Site açılışında: `npm run deploy:full`.
 
-### Installation
+## 🌐 Diller (i18n)
+
+- **Dosyalar:** `src/locales/{en,kg,ru}/translation.json` (her biri 678 anahtar, tam parite)
+- **Yapılandırma:** `src/i18n.js` — `fallbackLng: 'kg'`, dil tercihi `localStorage`'da
+- Dil değiştirince `<html lang>` ve SEO başlıkları otomatik güncellenir
+- Yeni anahtar ekleme rehberi: [I18N_GUIDE.md](./I18N_GUIDE.md)
+
+## 🚀 Hızlı Başlangıç
+
+Gereksinimler: Node.js 20.19+ veya 22.12+ (Vite 8)
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm start
+npm install       # bağımlılıklar
+npm start         # geliştirme sunucusu (Vite) → http://localhost:3000
+npm run build     # üretim build'i → build/ (+ rota başına HTML, scripts/generate-route-html.js)
+npm run preview   # build/ klasörünü yerelde sun → http://localhost:4173
+npm run lint      # ESLint (hook kuralları, kullanılmayan değişkenler)
+npm run deploy    # YALNIZCA "yapım aşamasında" sayfasını yayınlar (build:soon + gh-pages)
+npm run deploy:full   # tam siteyi yayınlar — site açılışında kullanılacak
+npm run dev:soon  # yapım aşaması sayfası → http://localhost:3001
+python3 scripts/optimize-images.py   # görsel ekledikten sonra: WebP + telefon boyu varyantlar (Pillow gerekir)
 ```
 
-The app will open at [http://localhost:3000](http://localhost:3000)
+## 🗂️ Yapı
 
----
+- `src/pages/` — 17 sayfa (rota haritası `src/App.jsx`; ana sayfa dışındakiler ayrı JS parçası olarak yüklenir)
+- `src/components/` — Header, Footer, Seo, galeri, partnerler, seminerler, örnek kaynaklar
+- `src/data/ageTopics.js` — sınıf bazlı aylık konu planları (kg/ru/en)
+- `src/locales/` — çeviri dosyaları
+- `src/components/Picture.jsx` + `src/data/imageManifest.json` — WebP/srcset görseller (`scripts/optimize-images.py` üretir)
+- `src/styles/page-styles.js` — tüm sayfa CSS'lerinin sabit global sırası (kod bölmeye rağmen kaskad korunur)
+- `src/styles/tokens.css` — Design System v2 değişkenleri (renk, font, köşe, gölge)
+- `src/responsive-fixes.css` — eski sayfalar için mobil düzeltme katmanı
+- `src/polish.css` — iç sayfa hero'ları ve form alanları
+- `src/styles/inner.css` — iç sayfa gövdeleri: ortak kart dilleri, ızgaralar, CTA panelleri (en son yüklenir)
+- `index.html` — giriş HTML'i + crawler'lar için statik SEO/OG etiketleri
+- `public/` — CNAME, sitemap, robots, 404 (SPA), görseller, `og-image.jpg` (paylaşım kartı)
+- `scripts/` — `generate-route-html.js` (build sonrası), `optimize-images.py`, `og-image.html` (paylaşım kartı şablonu)
 
-# Getting Started with Create React App
+## 📦 Teknoloji
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React 19, react-router-dom 7, i18next, react-slick, AOS, EmailJS, react-helmet-async,
+**Vite 8** (Kasım 2026'da Create React App'ten geçildi: `npm audit` 46 açık → 0, geliştirme sunucusu
+~0.5 sn'de açılır, sayfa başına kod bölme). ESLint 10 (flat config: `eslint.config.js`).
 
-## Available Scripts
+## 🔗 Referans çerçeveler
 
-In the project directory, you can run:
+Müfredat içerikleri şu kaynaklar temel alınarak hazırlandı:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Kırgız Cumhuriyeti Eğitim Geliştirme Programı 2021–2040 (Hükümet Kararı No. 200,
+  04.05.2021) — birleşik terbiye politikası, sosyal-duygusal gelişim, aile/toplum katılımı
+- [CASEL — SEL Fundamentals](https://casel.org/fundamentals-of-sel/)
+- [Character.org — 11 Principles](https://character.org/11-principles-in-schools/)
+- [Piermont Press — Pathways](https://piermontpress.us/) (değer eğitimi materyalleri)

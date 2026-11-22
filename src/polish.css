@@ -1,0 +1,229 @@
+/* =====================================================================
+   POLISH — Design System v2 iç sayfa katmanı (Kasım 2026)
+   index.js içinde EN SON import edilir.
+   - Tüm iç sayfa hero'ları (section[class*="-hero"]) tek tip:
+     lacivert bant + büyük harfli başlık + turuncu çizgi (Qundylyq),
+     sağda yaprak biçimli fotoğraf + güneş diski.
+   - Fotoğraf her sayfa için --hero-img değişkeniyle seçilir.
+   - İç sayfa gövdeleri (kartlar, ızgaralar, CTA'lar): src/styles/inner.css
+   ===================================================================== */
+
+/* ---------- İç sayfa hero'ları ---------- */
+section[class*="-hero"] {
+  --hero-edge: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+  --hero-photo-w: min(30vw, 360px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: calc(var(--header-h) + var(--hero-photo-w) + 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: #ffffff;
+  background-color: var(--c-navy-900);
+  background-image: radial-gradient(circle at 0% 100%, rgba(0, 122, 225, 0.22), transparent 45%);
+  padding-top: calc(var(--header-h) + clamp(44px, 6vw, 80px)) !important;
+  padding-bottom: clamp(52px, 6vw, 88px) !important;
+  padding-left: var(--hero-edge) !important;
+  padding-right: calc(var(--hero-edge) + var(--hero-photo-w) + 64px) !important;
+}
+
+/* Sağdaki yaprak fotoğraf */
+section[class*="-hero"]::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: calc((100% + var(--header-h)) / 2);
+  right: var(--hero-edge);
+  width: var(--hero-photo-w);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 999px 999px 28px 999px;
+  background: var(--hero-img, none) center / cover no-repeat, var(--c-navy-800);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+}
+
+/* Fotoğrafın arkasından taşan güneş diski */
+section[class*="-hero"]::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: calc((100% + var(--header-h)) / 2 - var(--hero-photo-w) / 2 - 22px);
+  right: calc(var(--hero-edge) + var(--hero-photo-w) - 78px);
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--c-sun-400);
+}
+
+section[class*="-hero"] h1 {
+  max-width: 820px;
+  margin: 0 !important;
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+section[class*="-hero"] h1::after {
+  content: '';
+  display: block;
+  width: 88px;
+  height: 6px;
+  margin-top: 22px;
+  border-radius: 6px;
+  background: var(--c-sun-400);
+}
+
+section[class*="-hero"] p {
+  max-width: 640px;
+  margin: 22px 0 0 !important;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: none;
+}
+
+section[class*="-hero"] .btn-primary {
+  margin-top: 28px;
+  align-self: flex-start;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Sayfa başına fotoğraf (public/images) */
+.our-story-hero { --hero-img: url('./assets/heroes/beliefs-illustration.webp'); }
+.moraled-hero { --hero-img: url('./assets/heroes/gallery1.webp'); }
+.faq-hero { --hero-img: url('./assets/heroes/children-classroom-story.webp'); }
+.bullying-hero { --hero-img: url('./assets/heroes/sunrise.webp'); }
+.volunteers-hero { --hero-img: url('./assets/heroes/teacher-instructing-students.webp'); }
+.contact-hero { --hero-img: url('./assets/heroes/gallery4.webp'); }
+.research-hero { --hero-img: url('./assets/heroes/cambridge.webp'); }
+.materials-hero { --hero-img: url('./assets/heroes/gallery5.webp'); }
+.climate-hero { --hero-img: url('./assets/heroes/gallery2.webp'); }
+.events-hero { --hero-img: url('./assets/heroes/gallery3.webp'); }
+.certificate-hero { --hero-img: url('./assets/heroes/gallery3.webp'); }
+.scope-hero { --hero-img: url('./assets/heroes/gallery3.webp'); }
+.age-hero { --hero-img: url('./assets/heroes/children-classroom-story.webp'); }
+.team-hero { --hero-img: url('./assets/heroes/teacher-instructing-students.webp'); }
+.features-hero { --hero-img: url('./assets/heroes/sunrise.webp'); }
+
+/* Yaş bandı sayfası: hero içindeki geri bağlantısı + yaş etiketi */
+.age-hero__back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-sky-300);
+  text-decoration: none;
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+}
+
+.age-hero__back:hover {
+  gap: 12px;
+  color: #ffffff;
+}
+
+.age-hero__range {
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-sun-400);
+}
+
+
+/* Gizlilik sayfası fotoğrafsız: yalnızca güneş */
+.privacy-hero {
+  --hero-photo-w: 0px;
+  min-height: 0;
+}
+
+.privacy-hero::after {
+  display: none;
+}
+
+.privacy-hero::before {
+  top: auto;
+  bottom: -60px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  opacity: 0.9;
+}
+
+/* Tablet ve telefon: fotoğraf arka plana iner */
+@media (max-width: 860px) {
+  section[class*="-hero"] {
+    --hero-photo-w: 0px;
+    min-height: 0;
+    padding-top: calc(var(--header-h) + 44px) !important;
+    padding-bottom: 56px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  section[class*="-hero"]::after {
+    inset: 0;
+    width: auto;
+    aspect-ratio: auto;
+    transform: none;
+    border-radius: 0;
+    opacity: 0.16;
+    box-shadow: none;
+  }
+
+  section[class*="-hero"]::before {
+    top: auto;
+    bottom: -48px;
+    right: -36px;
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* ---------- Form alanları (iletişim + sertifika) ---------- */
+.contact-form input,
+.contact-form select,
+.contact-form textarea,
+.certificate-form-section input,
+.certificate-form-section select,
+.certificate-form-section textarea {
+  padding: 15px 18px;
+  border: 1.5px solid var(--c-line);
+  border-radius: 14px;
+  background: #ffffff;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--c-ink);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.certificate-form-section input::placeholder,
+.certificate-form-section textarea::placeholder {
+  color: var(--c-ink-3);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus,
+.certificate-form-section input:focus,
+.certificate-form-section select:focus,
+.certificate-form-section textarea:focus {
+  outline: none;
+  border-color: var(--c-blue-500);
+  box-shadow: 0 0 0 4px rgba(0, 122, 225, 0.14);
+}

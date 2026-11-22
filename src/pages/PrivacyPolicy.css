@@ -1,18 +1,18 @@
 .privacy-hero {
-  background-color: #f5f7fa;
+  background-color: var(--c-mist);
   padding: 100px 20px 60px;
   text-align: center;
 }
 
 .privacy-hero h1 {
   font-size: 40px;
-  color: #005f73;
+  color: var(--c-navy-800);
   margin-bottom: 8px;
 }
 
 .privacy-hero p {
   font-size: 16px;
-  color: #777;
+  color: var(--c-ink-3);
 }
 
 .privacy-section {
@@ -27,17 +27,17 @@
 
 .privacy-wrapper p {
   font-size: 16px;
-  color: #444;
+  color: var(--c-ink-2);
   line-height: 1.7;
   margin-bottom: 24px;
 }
 
 .privacy-wrapper h2 {
   font-size: 22px;
-  color: #045b57;
+  color: var(--c-navy-800);
   margin: 40px 0 12px;
 }
 
 .privacy-wrapper a {
-  color: #0a8479;
+  color: var(--c-blue-700);
 }

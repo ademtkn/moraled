@@ -1,0 +1,62 @@
+<!doctype html>
+<!--
+  Social share card → public/og-image.jpg (1200×630), used by src/components/Seo.jsx and index.html.
+  Regenerate: open this file in Chrome at exactly 1200×630 and capture a screenshot, e.g.
+    npx playwright screenshot --viewport-size=1200,630 --wait-for-timeout=2500 scripts/og-image.html og.png
+  then save it as JPEG (quality ~82) to public/og-image.jpg.
+  Text is the Kyrgyz home hero (default site language) — keep it in sync with home.hero_* in src/locales/kg.
+-->
+<html lang="ky">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    background:
+      radial-gradient(circle at 0% 100%, rgba(0, 122, 225, 0.28), transparent 45%),
+      #0b1b4d;
+    color: #fff;
+  }
+  .copy { position: absolute; left: 72px; top: 64px; width: 610px; }
+  .logo { height: 64px; filter: brightness(0) invert(1); display: block; }
+  .eyebrow {
+    margin-top: 40px; display: flex; align-items: center; gap: 12px;
+    font: 700 15px/1.3 'Montserrat', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: #ff9a4d;
+  }
+  .eyebrow::before { content: ''; width: 30px; height: 2px; background: currentColor; }
+  h1 {
+    margin: 18px 0 0; font: 800 50px/1.07 'Montserrat', sans-serif; letter-spacing: -0.01em; text-transform: uppercase;
+  }
+  .hl {
+    background: linear-gradient(transparent 62%, #ff7a1a 62%, #ff7a1a 92%, transparent 92%);
+    padding: 0 4px; margin: 0 -4px;
+  }
+  .url { position: absolute; left: 72px; bottom: 56px; font: 700 20px 'Montserrat', sans-serif; color: #7fb8ff; letter-spacing: 0.02em; }
+  .collage { position: absolute; right: 64px; top: 70px; width: 420px; height: 490px; }
+  .ph { position: absolute; overflow: hidden; background: #00266d; }
+  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tall { left: 0; top: 0; width: 200px; height: 490px; border-radius: 999px 999px 22px 22px; }
+  .tall img { object-position: 50% 30%; }
+  .top { left: 216px; top: 0; width: 204px; height: 237px; border-radius: 22px 999px 999px 999px; }
+  .bottom { left: 216px; top: 253px; width: 204px; height: 237px; border-radius: 999px 999px 999px 22px; }
+  .sun { position: absolute; right: 30px; top: 40px; width: 120px; height: 120px; border-radius: 50%; background: #ff9a4d; }
+</style>
+</head>
+<body>
+  <span class="sun"></span>
+  <div class="copy">
+    <img class="logo" src="../src/assets/logo.svg" alt="">
+    <div class="eyebrow">Мүнөз тарбиясы · 1–11-класстар</div>
+    <h1>Жаңы муун үчүн баалуулуктарга негизделген <span class="hl">билим берүү</span></h1>
+  </div>
+  <div class="url">moraled.com</div>
+  <div class="collage">
+    <div class="ph tall"><img src="../public/images/beliefs-illustration.webp" alt=""></div>
+    <div class="ph top"><img src="../public/images/children-classroom-story.webp" alt=""></div>
+    <div class="ph bottom"><img src="../public/images/sunrise.webp" alt=""></div>
+  </div>
+</body>
+</html>

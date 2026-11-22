@@ -1,0 +1,107 @@
+{
+  "/images/beliefs-illustration.jpg": {
+    "h": 1536,
+    "small": "/images/beliefs-illustration-640.webp",
+    "w": 1024,
+    "webp": "/images/beliefs-illustration.webp"
+  },
+  "/images/cambridge.jpg": {
+    "h": 534,
+    "w": 800,
+    "webp": "/images/cambridge.webp"
+  },
+  "/images/children-classroom-story.jpg": {
+    "h": 599,
+    "small": "/images/children-classroom-story-640.webp",
+    "w": 900,
+    "webp": "/images/children-classroom-story.webp"
+  },
+  "/images/gallery1.jpg": {
+    "h": 1163,
+    "small": "/images/gallery1-640.webp",
+    "w": 1400,
+    "webp": "/images/gallery1.webp"
+  },
+  "/images/gallery2.jpg": {
+    "h": 934,
+    "small": "/images/gallery2-640.webp",
+    "w": 1400,
+    "webp": "/images/gallery2.webp"
+  },
+  "/images/gallery3.jpg": {
+    "h": 934,
+    "small": "/images/gallery3-640.webp",
+    "w": 1400,
+    "webp": "/images/gallery3.webp"
+  },
+  "/images/gallery4.jpg": {
+    "h": 934,
+    "small": "/images/gallery4-640.webp",
+    "w": 1400,
+    "webp": "/images/gallery4.webp"
+  },
+  "/images/gallery5.jpg": {
+    "h": 788,
+    "small": "/images/gallery5-640.webp",
+    "w": 1400,
+    "webp": "/images/gallery5.webp"
+  },
+  "/images/harmony.jpg": {
+    "h": 533,
+    "w": 800,
+    "webp": "/images/harmony.webp"
+  },
+  "/images/hero-bg.jpg": {
+    "h": 900,
+    "small": "/images/hero-bg-640.webp",
+    "w": 1200,
+    "webp": "/images/hero-bg.webp"
+  },
+  "/images/our-story.jpg": {
+    "h": 800,
+    "small": "/images/our-story-640.webp",
+    "w": 1200,
+    "webp": "/images/our-story.webp"
+  },
+  "/images/sunrise.jpg": {
+    "h": 533,
+    "w": 800,
+    "webp": "/images/sunrise.webp"
+  },
+  "/images/teacher-instructing-students.jpg": {
+    "h": 506,
+    "small": "/images/teacher-instructing-students-640.webp",
+    "w": 900,
+    "webp": "/images/teacher-instructing-students.webp"
+  },
+  "/images/team/aigerim-shuguralieva.jpg": {
+    "h": 500,
+    "w": 500,
+    "webp": "/images/team/aigerim-shuguralieva.webp"
+  },
+  "/images/whole-child-success.svg": {
+    "h": 846,
+    "w": 1224,
+    "webp": "/images/whole-child-success.webp"
+  },
+  "/logos/indigo-academy.jpg": {
+    "h": 600,
+    "w": 600,
+    "webp": "/logos/indigo-academy.webp"
+  },
+  "/logos/indigo-asylkech.jpg": {
+    "h": 468,
+    "w": 480,
+    "webp": "/logos/indigo-asylkech.webp"
+  },
+  "/logos/indigo-prime.jpg": {
+    "h": 317,
+    "w": 480,
+    "webp": "/logos/indigo-prime.webp"
+  },
+  "/logos/indigo-sapat.jpg": {
+    "h": 345,
+    "w": 480,
+    "webp": "/logos/indigo-sapat.webp"
+  }
+}

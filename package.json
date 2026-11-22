@@ -2,7 +2,23 @@
   "name": "moraled-site",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": "https://moraled.com",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build && node scripts/generate-route-html.js",
+    "preview": "vite preview",
+    "dev:soon": "vite --config vite.soon.config.js",
+    "build:soon": "vite build --config vite.soon.config.js",
+    "preview:soon": "vite preview --config vite.soon.config.js",
+    "lint": "eslint .",
+    "deploy": "npm run build:soon && gh-pages -d build",
+    "deploy:full": "npm run build && gh-pages -d build"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
@@ -14,37 +30,18 @@
     "react-i18next": "^16.5.8",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.18.2",
-    "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-react": "^6.3.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.8",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.14.0",
+    "vite": "^8.3.8",
+    "vite-plugin-svgr": "^5.2.0"
   }
 }

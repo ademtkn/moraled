@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ky">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#00266d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Design System v2: Montserrat (başlık) + Inter (metin) — ikisi de Kırgızca ң ө ү destekler -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script>
+      // Single Page Apps for GitHub Pages — https://github.com/rafgraph/spa-github-pages
+      // Restores the real path encoded by 404.html before React Router mounts.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+
+    <!--
+      Static SEO / social tags for crawlers that do not run JavaScript (WhatsApp, Telegram, Facebook…).
+      `npm run build` rewrites them per route (scripts/generate-route-html.js). In the browser
+      src/index.jsx removes them (data-seo-static) and src/components/Seo.jsx renders the live ones.
+    -->
+    <title data-seo-static>MoralEd – Character Education in Action</title>
+    <meta data-seo-static name="description" content="" />
+    <link data-seo-static rel="canonical" href="https://moraled.com/" />
+    <meta data-seo-static property="og:type" content="website" />
+    <meta data-seo-static property="og:site_name" content="MoralEd" />
+    <meta data-seo-static property="og:title" content="MoralEd – Character Education in Action" />
+    <meta data-seo-static property="og:description" content="" />
+    <meta data-seo-static property="og:url" content="https://moraled.com/" />
+    <meta data-seo-static property="og:image" content="https://moraled.com/og-image.jpg" />
+    <meta data-seo-static property="og:image:width" content="1200" />
+    <meta data-seo-static property="og:image:height" content="630" />
+    <meta data-seo-static name="twitter:card" content="summary_large_image" />
+    <meta data-seo-static name="twitter:title" content="MoralEd – Character Education in Action" />
+    <meta data-seo-static name="twitter:description" content="" />
+    <meta data-seo-static name="twitter:image" content="https://moraled.com/og-image.jpg" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+  </body>
+</html>
