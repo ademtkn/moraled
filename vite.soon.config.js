@@ -15,14 +15,18 @@ const OUT = path.join(ROOT, 'build');
 const PUBLIC_FILES = ['CNAME', 'favicon.svg', 'icon.svg', 'og-image.jpg'];
 
 function comingSoonFiles() {
+  let outDir = OUT; // follows --outDir when building elsewhere (e.g. a scratch folder)
   return {
     name: 'moraled-coming-soon-files',
     apply: 'build',
+    configResolved(config) {
+      outDir = config.build.outDir;
+    },
     closeBundle() {
-      for (const file of PUBLIC_FILES) fs.copyFileSync(path.join(ROOT, 'public', file), path.join(OUT, file));
-      fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nDisallow:\n');
+      for (const file of PUBLIC_FILES) fs.copyFileSync(path.join(ROOT, 'public', file), path.join(outDir, file));
+      fs.writeFileSync(path.join(outDir, 'robots.txt'), 'User-agent: *\nDisallow:\n');
       // GitHub Pages answers every unknown URL (e.g. /our-story) with 404.html → show the same page.
-      fs.copyFileSync(path.join(OUT, 'index.html'), path.join(OUT, '404.html'));
+      fs.copyFileSync(path.join(outDir, 'index.html'), path.join(outDir, '404.html'));
     },
   };
 }

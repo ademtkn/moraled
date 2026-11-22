@@ -100,6 +100,7 @@ Yeni font eklemeden önce `Жаңы муун үчүн баалуулуктарг
 | **Görseller** (`components/Picture.jsx`) | `<Picture src="/images/x.jpg" sizes="…" />` → WebP + 640px telefon varyantı, orijinal JPG yedek. Varyantlar `scripts/optimize-images.py` ile üretilir ve `src/data/imageManifest.json`'a yazılır. CSS arka planı için `webpUrl()`. `<picture>` `display: contents` olduğundan mevcut `.ebeveyn img` CSS'i aynen çalışır. Hero'daki görsele `priority` verin. |
 | **Örnek pencereleri** (`components/samples`) | Başlık bandı türün rengini taşır (hikâye turuncu, şarkı mavi, oyun lacivert). Gerçek diyalog: `role="dialog"`, açılınca kapat butonuna odak, Esc ile kapanır, Tab içeride döner, kapanınca odak açan butona döner, sayfa kaydırması kilitlenir. Mobilde alttan açılan panel. Header'ın üstünde (z-index 1300). |
 | **Erişilebilirlik iskeleti** | Her sayfada `<main id="main">`; Header'da yalnızca klavyeyle görünen "İçeriğe geç" bağlantısı (`common.skip_to_content`). Sayfa geçişinde `ScrollToTop` anında (`behavior: 'instant'`) en üste atlar. |
+| **Kod bölme güvenliği** (`RouteFallback`, `RouteErrorBoundary`) | Lazy sayfa ilk kez indirilirken yalnızca header + boş gövde gösterilir (doğrudan ziyarette; gezinmede eski sayfa ekranda kalır). Parça indirilemezse: önce `src/index.jsx` sayfayı **bir kez** yeniler (`vite:preloadError`, yeni yayın sonrası eski parça durumu); yine olmazsa header + "Бет жүктөлгөн жок" + **Tekrar dene** ekranı (noindex, kendi başlığıyla). Başka sayfaya gidince hata temizlenir. |
 | **İç sayfa gövdeleri** (`src/styles/inner.css`) | Tüm iç sayfalar `<main className="inner-page">` ile sarılı. Katman, sayfaların mevcut sınıf adlarını 6 ortak kart diline çevirir (aşağıdaki tablo). Bölümler 1200px içerik genişliğinde, beyaz/kâğıt dönüşümlü; başlıklar sola hizalı, büyük harf, üstünde turuncu çizgi. |
 
 ### İç sayfa kart dilleri (`src/styles/inner.css`)
@@ -134,7 +135,7 @@ Diğer desenler: **editoryal iki sütun** (başlık solda, metin sağda — Clim
 13. **Yeni sayfa/bileşen CSS'ini `src/styles/page-styles.js`'e ekleyin.** Aksi hâlde lazy sayfanın CSS'i `polish.css`/`inner.css`'ten sonra yüklenir ve eşit özgüllükteki kuralları ezer.
 14. **`build.cssTarget` içine `es2020` koymayın.** Vite bunu Lightning CSS için eski bir Chrome'a çevirir; o da her `:is()` için `:-webkit-any()` yedeği üretir. Bu yedeğin özgüllüğü farklıdır ve mobil Scope tablosunun başlığını görünür yapmıştı.
 15. **CommonJS paketlerinin varsayılan importu** üretim build'inde modül nesnesi olarak gelebilir (react-slick → React hatası #130). `const Slider = SlickSlider.default ?? SlickSlider;` kalıbı kullanılıyor.
-16. react-helmet-async v3, `index.html`'deki mevcut etiketleri devralmaz. Statik SEO etiketleri `data-seo-static` ile işaretli ve `src/index.jsx` açılışta onları siler; aksi hâlde açıklama/OG/canonical çiftlenir.
+16. react-helmet-async v3 (React 19) `index.html`'deki mevcut etiketleri devralmaz, kendi `<title>`/`<meta>`'sını ekler. Statik SEO etiketleri `data-seo-static` ile işaretli: `src/index.jsx` açılışta meta/link'leri siler; statik `<title>` ise ilk `<Seo>` yerleşince `Seo.jsx` tarafından silinir (yükleme anında başlıksız kalmamak için). Sonuç: her durumda tek `<title>`, tek açıklama/OG/canonical.
 17. Sayfa `<Seo>` prop'ları (`titleKey`, `descriptionKey`, `path`) **düz metin** olmalı: `scripts/generate-route-html.js` bunları kaynak koddan okuyup rota HTML'ini üretir.
 
 ## 7. CSS katmanları ve yükleme sırası (`src/index.jsx`)
@@ -153,7 +154,7 @@ Vite → CRA geçişinde 18 sayfa × 2 genişlik piksel karşılaştırmasıyla 
 
 ## 8. Bu çalışmada eklenen çeviri anahtarları
 
-`home.hero_eyebrow`, `home.hero_button_2`, `home.hero_badge`, `home.stat_values`, `home.stat_grades`, `home.stat_bands`, `home.stat_languages`, `home.explore_title`, `home.explore_subtitle`, `home.resources_eyebrow`, `home.framework_cta` — üç dilde de var (parite: 678 anahtar).
+`home.hero_eyebrow`, `home.hero_button_2`, `home.hero_badge`, `home.stat_values`, `home.stat_grades`, `home.stat_bands`, `home.stat_languages`, `home.explore_title`, `home.explore_subtitle`, `home.resources_eyebrow`, `home.framework_cta`, `common.skip_to_content` (Faz 3), `common.load_error_title`, `common.load_error_text`, `common.retry` (Faz 4) — üç dilde de var (parite: 682 anahtar). KG/RU metinleri yapay zekâ yazdı; ana dili konuşan biri kontrol etmeli.
 
 Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı · 3 dil) müfredatın kendisinden gelir. **Uydurma istatistik eklemeyin**; gerçek etki rakamları (okul/öğretmen/öğrenci sayısı) kullanıcıdan alınmalıdır.
 
@@ -199,6 +200,7 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - [x] **Paylaşım görseli:** `public/og-image.jpg` 1200×630, 101 KB (eski 273 KB stok foto yerine marka kartı; şablon `scripts/og-image.html`).
 - [x] **SEO / sosyal önizleme düzeltmesi:** GitHub Pages alt sayfalara HTTP 404 dönüyordu (SPA yönlendirme hilesi) ve `index.html`'de hiç OG etiketi yoktu → Google bu sayfaları atlayabilir, WhatsApp/Telegram önizleme göstermez. Artık `npm run build` her rota için `build/<rota>.html` üretir (20 rota, Kırgızca başlık/açıklama/canonical/OG) → alt sayfalar **200** döner. Yerel GitHub Pages emülatörüyle doğrulandı.
 - [x] `<html lang>` artık `ky` (önceden `kg` = Kongo dili kodu).
+- [x] **Kod bölme hata güvenliği** (22 Kasım, ikinci oturum): `RouteErrorBoundary` + `RouteFallback`; statik `<title>` yükleme boyunca korunur, sonra tek başlık. Test edildi: parça indirilemezse tam 1 otomatik yenileme → hata ekranı → "Tekrar dene" sayfayı kurtarıyor; gezinme sırasında hata → geri gidince temizleniyor; hata ekranı axe 0 ihlal.
 - [x] Doğrulama: 18 sayfa × 1440/390px Vite ↔ CRA piksel karşılaştırması aynı (tek fark: form açılır okunda 2px tarayıcı çizim gürültüsü, stiller birebir aynı); axe 0 ihlal; etkileşimler (SPA geçişi, dil, pencere, içeriğe geç, galeri) hatasız.
 
 > ✅ **Canlı site (22 Kasım 2026):** moraled.com yayında — **yapım aşaması modu** (yalnızca `coming-soon/` sayfası). 21–22 Kasım'da site kapalıydı ("Site not found"): alan adı hiçbir repoya atanmamıştı; yeni gh-pages yayını (`CNAME=moraled.com`) alan adını `ademtkn/moraled`'e bağladı. HTTPS (Let's Encrypt) ve http→https yönlendirmesi çalışıyor.
@@ -211,6 +213,9 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - Footer: iletişim (adres, e-posta, telefon, Instagram/YouTube) + `© {yıl} Moral Education. All rights reserved.` + line.kg.
 - `404.html` = aynı sayfa → bilinmeyen tüm adresler bu sayfayı gösterir. axe 0 ihlal (3 dil × 2 genişlik).
 - `npm run deploy` artık bu sayfayı yayınlar; tam site için `npm run deploy:full`.
+- **v2 tasarım "Таң" (Şafak, 22 Kasım 2026):** Ala-Too üzerinde doğan güneş — şafak gradyanı, güneş/gökyüzü parıltıları, yıldızlar, gren dokusu; şeffaf header + beyaz logo + cam dil seçici; altın gradyan başlık; dönen güneş ışınları ve yörünge içinde dairesel fotoğraflar; **ayın değeri** kartı (tarihe göre otomatik, Eyl–May); 9 değerin kayan bandı; dağ silüetinden doğan footer ve cam iletişim kartları. Giriş animasyonları yalnızca JS varken; `prefers-reduced-motion`'da kapalı.
+- Sayfanın görselleri `coming-soon/assets/` içinde (kopya). `../src/assets/...` yolları build'de çalışıyor ama **geliştirme sunucusunda (`dev:soon`) kırılıyordu** — Vite kökü `coming-soon/` olduğundan tarayıcı `/src/assets/...` istiyor. Sayfaya görsel eklerken bu klasöre koyun.
+- Başlık genişliği ölçülerek ayarlandı: 1024–1440px'te üç dilde de tam 2 satır (sütun 1.16fr, yazı en çok 54px).
 
 ### Faz 5 — sıradakiler
 

@@ -1,5 +1,5 @@
 // "Under construction" page texts — keep the three languages in parity (same keys).
-// Reused phrases come from src/locales/{kg,ru,en}/translation.json.
+// Reused phrases (values, months, contact labels) come from src/locales/{kg,ru,en}/translation.json.
 // The copyright line is intentionally the same English text in every language.
 export const STRINGS = {
   kg: {
@@ -12,9 +12,10 @@ export const STRINGS = {
     titleHl: 'жакында ачылат',
     lead: 'Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз.',
     ctaEmail: 'Бизге жазыңыз',
-    statValues: 'негизги баалуулук — ар бир айга бирден',
-    statGrades: 'класс — биринчиден он биринчиге чейин',
-    statLanguages: 'тил — кыргызча, орусча, англисче',
+    monthLabel: 'Айдын баалуулугу',
+    valuesLabel: 'Адеп-ахлак тарбиясынын календары',
+    values: ['Кам көрүү', 'Жоопкерчилик', 'Сый-урмат', 'Ишенимдүүлүк', 'Адилеттик', 'Лидерлик', 'Чыдамкайлык', 'Жарандуулук', 'Өзүн-өзү тартипке салуу'],
+    months: ['Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
     tagline: 'Келечекти түзгөн баалуулуктарды өстүрүү.',
     contactTitle: 'Байланыш',
     locationTitle: 'Жайгашкан жери',
@@ -33,9 +34,10 @@ export const STRINGS = {
     titleHl: 'скоро откроется',
     lead: 'Мы обновляем нашу платформу ценностного воспитания характера для школ. А пока по вопросам и сотрудничеству свяжитесь с нами — контакты ниже.',
     ctaEmail: 'Написать нам',
-    statValues: 'ключевых ценностей — по одной на каждый месяц',
-    statGrades: 'классы — с первого по одиннадцатый',
-    statLanguages: 'языка — кыргызский, русский, английский',
+    monthLabel: 'Ценность месяца',
+    valuesLabel: 'Наш календарь нравственного воспитания',
+    values: ['Забота', 'Ответственность', 'Уважение', 'Честность', 'Справедливость', 'Лидерство', 'Настойчивость', 'Гражданственность', 'Самодисциплина'],
+    months: ['Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
     tagline: 'Воспитывая ценности, формирующие будущее.',
     contactTitle: 'Контакты',
     locationTitle: 'Местоположение',
@@ -54,9 +56,10 @@ export const STRINGS = {
     titleHl: 'coming soon',
     lead: "We're rebuilding our values-based character education platform for schools. In the meantime, reach out with questions or partnership ideas — our contacts are below.",
     ctaEmail: 'Email us',
-    statValues: 'core values — one for each month',
-    statGrades: 'grades — from first to eleventh',
-    statLanguages: 'languages — Kyrgyz, Russian, English',
+    monthLabel: 'Value of the month',
+    valuesLabel: 'Our Character Education Calendar',
+    values: ['Caring', 'Responsibility', 'Respect', 'Trustworthiness', 'Fairness', 'Leadership', 'Perseverance', 'Citizenship', 'Self-Discipline'],
+    months: ['September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May'],
     tagline: 'Nurturing values that shape the future.',
     contactTitle: 'Contact',
     locationTitle: 'Location',
