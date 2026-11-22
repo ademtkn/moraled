@@ -6,7 +6,8 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K11, Claude, 22 Kasım ~23:00):** Sertifika orijinalleri `design-references/`'e taşındı (`c1a7afb`); açık iş 2 tamamlandı — mobil menü modal (portal + `inert` + Tab döngüsü + odak dönüşü), masaüstü açılır menüler ve SSS ARIA, etiketler 3 dilde; 75/75 test. Kullanıcı onayıyla commit + push. Sıradaki iş: açık iş 3 — öğrenci gönüllü başvuru akışı (`StudentVolunteers.jsx` → `Contact.jsx`).
+- **Son durum (K12, Claude, 22 Kasım ~23:30):** Açık iş 3 tamamlandı — öğrenci gönüllü başvurusu: gönüllü sayfasındaki düğme `/contact?topic=volunteer`'a gider; form gönüllü moduna geçer (öğrenci/öğretmen/ebeveyn rolleri, zorunlu “öğretmen veya ebeveyn haberdar” onayı, e-postada konu satırı), gizlilik metni güncellendi; mock EmailJS ile 66/66 + genel form 66/66. Kullanıcı onayıyla commit + push. Sonraki açık işler (4–8) kullanıcı girdisi/kararı gerektiriyor (gerçek fotoğraflar, uzman dil kontrolü, materyal/etkinlik verisi, gerçek EmailJS teslim denemesi).
+- **K11 (Claude, ~23:00):** Sertifika orijinalleri `design-references/`'e taşındı (`c1a7afb`); açık iş 2 tamamlandı — mobil menü modal (portal + `inert` + Tab döngüsü + odak dönüşü), masaüstü açılır menüler ve SSS ARIA, etiketler 3 dilde; 75/75 test. Kullanıcı onayıyla commit + push. Sıradaki iş: açık iş 3 — öğrenci gönüllü başvuru akışı (`StudentVolunteers.jsx` → `Contact.jsx`).
 - **K10 (Claude, ~22:30):** Kullanıcı onayıyla K09 commit'lendi (`3fc3e75`), coming-soon yayımlandı (gh-pages `cb178a2`; canlıda illüstrasyonlar, eski orijinal sertifika adresleri 404). `/verify-certificate` galerisi de metinsiz illüstrasyonlara geçti; kullanılmayan `coming-soon/assets/certificate-*.webp` silindi. K11'de orijinaller `design-references/certificates/`'e taşındı.
 - **K09 (Claude, ~22:15):** Contact formu tamamlandı, mock EmailJS ile 66/66.
 - **K08 (Claude, ~22:00):** Coming-soon sertifika bölümünde orijinal belgeler yerine metinsiz SVG illüstrasyonlar (`af845f5`).
@@ -245,6 +246,26 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Commit / deploy:** İlk commit denemesi izin denetimine takıldı; kullanıcı onayıyla (“Evet commit et ve push et”) bu kayıtla birlikte commit + push. Deploy yok (tam site yayında değil).
 
+### K12 Öğrenci gönüllü başvuru akışı
+
+**Tarih / çalışan:** 22 Kasım 2026 ~23:05–23:30 / Claude. **Kullanıcı talebi:** “Evet commit et ve push et, gönüllü başvurusuna başla.” (K11 commit'i: `762e09e`.) **Durum:** tamamlandı.
+
+**Sorun:** “Окуучу-волонтёрлор” sayfasının düğmesi genel iletişim formunu açıyordu; orada roller yalnızca öğretmen/yönetici/müdür/diğer, öğrenci için anlam taşımıyor ve e-postada başvurunun gönüllülükle ilgili olduğu görünmüyordu.
+
+**Karar:** Ayrı form yerine aynı Contact formunun **gönüllü modu** (K09'daki sağlam gönderim mantığı tekrar kullanıldı). Sayfanın kendi adımları (“мектеп менен макулдашуу”, “ата-эне же камкорчу менен сүйлөшүү”) gereği başvuru bir yetişkinin bilgisiyle yapılır; bu nedenle onay kutusu zorunlu. Reşit olmayanlardan ek kişisel veri istenmedi (alanlar genel formla aynı).
+
+**Yapılan:**
+- `src/pages/StudentVolunteers.jsx`: CTA → `/contact?topic=volunteer`.
+- `src/pages/Contact.jsx`: `Contact` sarmalayıcısı `topic` parametresini okur ve `ContactPage`'i moda göre `key`'ler (modlar arası geçişte form ve durum sıfırlanır). Gönüllü modunda: başlık “Окуучу-волонтёрдун арызы”, açıklama + gönüllü adımlarına bağlantı, roller `Student / Teacher / Parent or caregiver / Other` (değerler e-posta için İngilizce), görünür metin alanı `details`, zorunlu onay kutusu (`adult_informed`), düğme “Арызды жөнөтүү”. Gönderimde gizli `message` alanı “Topic: Student volunteer application / A teacher or parent/caregiver knows about this application: Yes” + fikir olarak birleştirilir (sertifika formuyla aynı desen — EmailJS şablonu yalnız standart alanları gösteriyor). Sayfa açılınca form bölümüne kaydırılır (`scroll-margin-top: var(--header-h)`). Ad/e-posta alanlarına `autoComplete`.
+- `src/pages/Contact.css`: giriş metni, onay kutusu (polish.css'in metin alanı stilini geri alır, `accent-color`, görünür odak çizgisi), kaydırma payı.
+- Metinler (3 dil, 8 yeni anahtar → 763): `contact.form_role_student`, `form_role_parent`, `volunteer_title`, `volunteer_intro`, `volunteer_steps_link`, `volunteer_message`, `volunteer_consent`, `volunteer_button`. `privacy.info_text`'e gönüllü onayı cümlesi eklendi.
+
+**Doğrulama:** mock EmailJS (istek gövdesi de denetlendi) 3 dil × 1440/390 × 11 = **66/66**: gönüllü sayfasından geçiş ve forma kaydırma, gönüllü rolleri/alanları, onay işaretlenmeden istek gitmemesi, hatada değerlerin ve onayın korunması, başarıda e-posta gövdesinde konu + onay + fikir + rol + okul ve formun sıfırlanması, header'daki Bağlantı ile genel moda temiz dönüş, genel modda e-posta gövdesine önek eklenmemesi, gizlilik metni, axe 0, alert/JS hatası/taşma yok. K09 genel form testi yeniden 66/66, odak testi geçti. Mobil/masaüstü görselde başlık header'ın altında net. `npm run lint` 0, `test:certificates` 6/6, `npm run build` uyarısız (20 rota → 21 HTML).
+
+**Kalan:** Gerçek EmailJS teslimi test edilmedi — kullanıcı kendi adresiyle bir deneme yapmalı (gönüllü e-postasında ilk satırlar konu ve onay). Başvuruların kayıt/yanıt süreci (kim, ne kadar sürede yanıtlar) kullanıcı kararı.
+
+**Commit / deploy:** İlk deneme izin denetimine takıldı; kullanıcı onayıyla (“Evet commit et ve push et, bundan sonrakileri de commit et”) bu kayıtla birlikte commit + push. Deploy yok (tam site yayında değil).
+
 ## Değişikliklerin dosya haritası
 
 Dosyalar depo köküne göredir. Aşağıdaki ürün değişiklikleri başlangıç `400fc97` commit'inden sonraki yerel çalışmadır.
@@ -310,7 +331,7 @@ Bu liste planı kaydeder; aşağıdaki geliştirmeler henüz uygulanmadı. Başl
 |---|---|---|
 | 1 — tamamlandı (K09) | Formlar: `src/pages/Contact.jsx`; sertifika yardım formu K05 ile düzeltildi | Gönderiliyor durumu, ref kilidiyle tek istek, başarıda temizleme, `role="status"` ile sayfa içi başarı/hata (hata e-posta adresini gösterir). Mock EmailJS ile 66/66. Gerçek teslim test edilmedi. |
 | 2 — tamamlandı (K11) | Klavye/ARIA: `src/components/Header.jsx`, `src/pages/FAQ.jsx`, üç dil | Mobil menü modal (portal + `inert` + Tab döngüsü + odak dönüşü), açılır menüler disclosure deseni, SSS `aria-expanded`/`aria-controls` + `hidden`, etiketler üç dilde. 75/75 + 21 rota taraması. Ertelenen: SSS sorularını başlık öğesine sarmak (tasarım işi). |
-| 3 — başlanmadı | Gönüllü başvurusu: `StudentVolunteers.jsx` → `Contact.jsx` | Genel formdaki zorunlu mesleki rol/okul alanları öğrenci akışına uygun ele alınır; başvuru amacı taşınır veya görünür yönlendirme netleşir. Mevcut bağlantı yalnızca genel iletişim sayfasını açıyor. |
+| 3 — tamamlandı (K12) | Gönüllü başvurusu: `StudentVolunteers.jsx` → `Contact.jsx?topic=volunteer` | Gönüllü modu: öğrenci/öğretmen/ebeveyn rolleri, zorunlu yetişkin bilgisi onayı, e-postada konu satırı, gizlilik metni. Mock 66/66. Gerçek EmailJS teslimi kullanıcı denemesi bekliyor. |
 | 4 — gerçek girdi gerekli | Görseller ve dil/pedagoji | Kullanıcıdan izinli okul/sınıf fotoğrafları; KG/RU/EN ve özellikle mevcut 5–11. sınıf önerilerinin uzman kontrolü. Yeni görsellerde Picture + optimizasyon. Kişi profili/alıntı istemek varsayılan devam adımı değildir; kullanıcı kişisiz içerik seçti. |
 | 5 — kapsam/veri gerekli | Materyal, sertifika, etkinlik, rapor ve şarkı | Gerçek dosya/teslim yöntemi; sertifikalarda onaylı kayıtlar, verme koşulları, öğretmen/öğrenci şablonları ve manuel yardım süreci; tarihli etkinlik ihtiyacı; saha raporunun gerçek işleyişi. Şarkı için izinli ses sağlanacak mı, yalnızca söz etkinliği mi olacak? Mevcut düğme satır vurguluyor, ses çalmıyor. |
 | 6 — kısmen tamamlandı | `src/pages/PrivacyPolicy.jsx` ve gerçek veri akışları | K05 ile sertifika alanları ve açık kayıt modeli eklendi; tüm üçüncü taraf hizmetler ve gerçek saklama süreçlerinin envanteri kontrol edilir. Hukuki uygunluk onayı olarak sunulmaz. |

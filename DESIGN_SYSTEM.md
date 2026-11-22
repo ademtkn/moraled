@@ -161,6 +161,12 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 
 ## 9. Durum ve yol haritası
 
+### Öğrenci gönüllü başvurusu — 22 Kasım 2026 (K12)
+
+- `/contact?topic=volunteer` = Contact formunun gönüllü modu (gönüllü sayfasındaki düğme buraya gider; sayfa form bölümüne kayar). Roller öğrenci/öğretmen/ebeveyn/diğer; **“öğretmen veya ebeveyn haberdar” onay kutusu zorunlu**; e-postada konu + onay satırı gizli `message` alanına yazılır.
+- Yeni bir form türü gerekirse aynı yolu izleyin: ayrı sayfa yerine `topic` parametresi + `ContactPage key`, ek bilgileri gizli `message`'a birleştirin (EmailJS şablonu yalnız standart alanları gösterir).
+- Onay kutusu stili `Contact.css`'te (`.contact-consent`); polish.css'in genel `.contact-form input` kuralını geri alır.
+
 ### Mobil menü ve SSS erişilebilirliği — 22 Kasım 2026 (K11)
 
 - **Mobil menü = modal:** panel + perde `createPortal` ile `<body>`'de; açıkken `#root.inert = true`, odak kapatma düğmesinde, Tab panelde döner; kapanınca odak menü düğmesine döner. Yeni bir modal/çekmece eklerken aynı deseni kullanın (ya da yerel `<dialog>.showModal()` — sertifika önizlemesindeki gibi).

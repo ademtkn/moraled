@@ -95,3 +95,52 @@
   background: var(--c-danger-100);
   border-left-color: var(--c-danger-600);
 }
+
+/* Öğrenci gönüllü başvurusu (/contact?topic=volunteer) */
+/* The volunteer link scrolls straight to the form; keep its heading clear of the fixed header. */
+#contact-form {
+  scroll-margin-top: var(--header-h);
+}
+
+.contact-form .contact-form-intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-6);
+  color: var(--c-ink-2);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.contact-form .contact-form-intro a {
+  color: var(--c-blue-700);
+  font-weight: 600;
+}
+
+.contact-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--c-ink);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* polish.css styles every .contact-form input as a text field — undo that for the checkbox. */
+.contact-form .contact-consent input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  padding: 0;
+  border-radius: var(--r-xs);
+  accent-color: var(--c-blue-700);
+  cursor: pointer;
+}
+
+.contact-form .contact-consent input:focus-visible {
+  outline: 2px solid var(--c-blue-500);
+  outline-offset: 2px;
+  box-shadow: none;
+}
