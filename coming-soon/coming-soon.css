@@ -792,11 +792,15 @@
 .cs-cert-audiences li { padding: var(--space-2) var(--space-4); border: 1px solid var(--c-line-dark); border-radius: var(--r-pill); color: var(--c-white); font-size: var(--fs-small); }
 .cs-cert-note { max-width: 56ch; color: var(--c-sky-200); font-size: var(--fs-small); line-height: 1.7; }
 .cs-cert-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); padding-bottom: var(--space-8); }
-.cs-cert-card { min-width: 0; margin: 0; padding: var(--space-2); background: var(--c-white); border-radius: var(--r-sm); box-shadow: var(--shadow-lg); }
+.cs-cert-card { min-width: 0; margin: 0; padding: 0; background: none; }
 .cs-cert-card:nth-child(2) { transform: translateY(var(--space-8)); }
-.cs-cert-card img { display: block; width: 100%; height: auto; }
-.cs-cert-card figcaption { display: grid; gap: var(--space-2); padding: var(--space-4) var(--space-2); color: var(--c-navy-900); font-size: var(--fs-small); line-height: 1.5; }
-.cs-cert-card figcaption span { color: var(--c-sun-700); font-weight: 600; }
+/* Text-free SVG certificate illustrations (no real names, dates or signatures) */
+.cs-cert-art { display: block; width: 100%; height: auto; border-radius: var(--r-sm); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08); transform: rotate(-2.5deg); transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+.cs-cert-card:nth-child(2) .cs-cert-art { transform: rotate(2deg); }
+.cs-cert-card:hover .cs-cert-art { transform: rotate(0deg) translateY(calc(var(--space-2) * -1)); box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 194, 143, 0.35); }
+.cs-cert-card figcaption { display: grid; gap: var(--space-1); padding: var(--space-6) var(--space-1) 0; color: var(--c-white); font-size: var(--fs-small); line-height: 1.5; text-align: center; }
+.cs-cert-card figcaption span { color: var(--c-sun-300); font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.cs-cert-card figcaption strong { font-family: var(--font-display); font-weight: 700; }
 @media (max-width: 1024px) {
   .cs-cert-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .cs-cert-copy h2 { max-width: 22ch; }

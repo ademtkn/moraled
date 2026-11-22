@@ -161,6 +161,13 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 
 ## 9. Durum ve yol haritası
 
+### Coming-soon sertifika illüstrasyonları — 22 Kasım 2026 (K08)
+
+- Kullanıcı isteği: yapım aşaması sayfasında **orijinal sertifikalar ve üzerindeki yazılar görünmesin**. `#cs-certificates` bölümündeki iki PNG örneği yerine **metinsiz satır içi SVG** illüstrasyon: fildişi “Partner” ve lacivert “Distinguished” (altın çerçeve, guilloche, mühür/kurdele, yalnızca MoralEd işareti; ad/tarih/imza yazısı yok). Not ve alt metinler üç dilde “illüstrasyon, gerçek belge değil” olarak güncellendi.
+- Logo betiği yalnız işaret çıktısı da üretiyor: `moraled-mark.png` (`src/assets/logo/`, `coming-soon/assets/`).
+- Tam sitedeki `/verify-certificate` galerisi hâlâ orijinal PNG örneklerini kullanıyor (tam site yayında değil); illüstrasyona geçirilmesi kullanıcı kararı bekliyor. `coming-soon/assets/certificate-*.webp` kullanılmıyor, silme onayı bekliyor.
+- Sonraki iş: Contact formu (WORK_LOG açık iş 1).
+
 ### Sertifika merkezi ve coming-soon örnekleri — 22 Kasım 2026
 
 - Kullanıcı kararı: **numarayla sorgulama, okul belgeleri ayrıca listelenebilir**. `/verify-certificate` aynı rota üzerinde genişletildi: okul/öğretmen/öğrenci türleri, kayıt durumu, belge açma, paylaşılabilir bağlantı ve yalnızca okul kayıtlarının listesi.

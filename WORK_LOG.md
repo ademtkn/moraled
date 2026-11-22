@@ -6,7 +6,8 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
+- **Son durum (K08, Claude, 22 Kasım ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit + push + coming-soon deploy. Sıradaki iş: açık iş 1 — Contact formu (kullanıcı onayladı).
+- **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
 - **Ürün:** Kırgızistan okullarına yönelik gerçek site, `src/`. Kullanıcının istediği takvim düzeltmesi ile raporun 2 ve 3. içerik işleri tamamlandı; kullanıcının yerel incelemesi bekleniyor.
 - **Son tamamlanan iş:** K05 — sertifika numarasıyla sorgu, okul listesi, belge görüntüleme/paylaşma, üç tasarım örneği ve coming-soon üzerinde iki örnek. Kullanıcının yerel incelemesine hazır; yeni aktif geliştirme yok.
 - **Dal / başlangıç HEAD:** `redesign/vite-coming-soon` / `400fc97`. Aşağıdaki Codex değişiklikleri çalışma ağacında; henüz commit edilmedi. Git durumu her devralmada yeniden kontrol edilmeli.
@@ -175,6 +176,22 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 **Açık kalan:** 4173/4174 QA önizleme sunucuları (kapatma komutu izin denetimine takıldı). Sonraki iş: www sertifikası onayı → ardından açık işler 1 (Contact formu).
 
 **Commit / deploy:** Commit + push yapıldı (yukarıda). Claude bu adımlarda deploy yapmadı.
+
+### K08 Coming-soon: gerçek sertifika görselleri yerine illüstrasyon
+
+**Tarih / çalışan:** 22 Kasım 2026 ~21:30–22:00 / Claude. **Kullanıcı talebi:** “Yapım aşamasındaki ‘Planned for the new website / Recognising our work together’ kısmındaki orijinal sertifikalar ve üzerindeki yazılar görünmesin; yerine sertifikaya benzeyen estetik bir tasarım olsun.” Ardından Contact formu işine geçiş onaylandı. **Durum:** tamamlandı.
+
+**Yapılan:** `#cs-certificates` bölümündeki iki `<picture>` (kullanıcının PNG örnekleri; alıcı adı/tarih/imza okunuyordu) çıkarıldı. Yerine metinsiz iki satır içi SVG illüstrasyon geldi: fildişi “Partner” (altın çift çerçeve, guilloche halkalar, köşe elmasları, MoralEd işareti, altın başlık çubuğu, mavi alıcı çubuğu, satır/çip yer tutucuları, imza çizgisi, kurdeleli mühür) ve lacivert “Distinguished” (beyaz diskte işaret + defne, üç yıldız, beyaz alıcı çubuğu, turuncu kurdele). İçlerinde hiçbir ad, tarih veya yazı yok; yalnızca logo işareti. Figcaption'lar (“Дизайн үлгүсү” + belge türü) korundu. Not metni üç dilde “Сүрөттөр — сертификаттардын стилин көрсөткөн иллюстрациялар, чыныгы документтер эмес.” olarak güncellendi; `certAlt*` erişilebilir adları “… сертификатынын иллюстрациясы” oldu. Kartlar hafif eğik (−2.5° / 2°), üzerine gelince düzleşiyor.
+
+**Logo işareti:** `scripts/build-logo-assets.py` artık yalnız işaret (`moraled-mark.png`, 222×200, şeffaf) da üretiyor → `src/assets/logo/` ve `coming-soon/assets/`. SVG içindeki `<image href="./assets/moraled-mark.png">` Vite tarafından hash'leniyor.
+
+**Değişen dosyalar:** `coming-soon/index.html`, `coming-soon/coming-soon.css`, `coming-soon/strings.js`, `scripts/build-logo-assets.py`, yeni `coming-soon/assets/moraled-mark.png`, `src/assets/logo/moraled-mark.png`.
+
+**Doğrulama:** `vite build -c vite.soon.config.js` (scratch klasörüne) uyarısız; build içinde `certificate-*` dosyası ve alıcı adı yok, işaret hash'li. Yerel statik sunucuda 3 dil × 1440/390px: her görünümde 2 illüstrasyon, işaret yükleniyor, not güncel, axe 0, 4xx/JS hatası/yatay taşma yok. Atlama bağlantısı odak olmadan gizli (top −64px), Tab ile görünüyor. 33 anahtar × 3 dil paritesi korunuyor.
+
+**Kalan / karar bekleyen:** `coming-soon/assets/certificate-*.webp` artık kullanılmıyor (silme kullanıcı onayına bağlı). Tam sitedeki `/verify-certificate` örnek galerisi hâlâ kullanıcının orijinal PNG'lerini gösteriyor; orada da illüstrasyona geçilip geçilmeyeceği kullanıcıya sorulacak.
+
+**Commit / deploy:** Bu kayıtla birlikte commit + push; coming-soon `gh-pages`'e yayımlandı (orijinal belgeler canlı sayfadan kalkması için — 21:18'deki dış deploy bunları yayına almıştı). Sonuç aşağıdaki güncel durum satırında.
 
 ## Değişikliklerin dosya haritası
 

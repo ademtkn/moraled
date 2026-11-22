@@ -10,6 +10,7 @@ Outputs
                      moraled-horizontal-dark.png  same, navy turned white — for dark backgrounds
                      moraled-stacked.png          full logo incl. subtitle, light backgrounds
                      moraled-stacked-dark.png     full logo, dark backgrounds (footer)
+                     moraled-mark.png             mark only (also in coming-soon/assets)
   coming-soon/assets/  the two *-dark files (that page has a dark background)
   public/            favicon-32.png, favicon-48.png, apple-touch-icon.png (180, white),
                      icon-192.png, icon-512.png (PWA / manifest)
@@ -147,6 +148,12 @@ def main():
     for path, img in files.items():
         img.save(path, optimize=True)
         print(f'{path.relative_to(ROOT)}  {img.size[0]}x{img.size[1]}  {path.stat().st_size // 1024} KB')
+
+    # Mark only (M-figure + book), transparent — used inside the certificate illustrations.
+    mark_img = fit_height(mark, 200)
+    for path in (OUT_LOGO / 'moraled-mark.png', OUT_SOON / 'moraled-mark.png'):
+        mark_img.save(path, optimize=True)
+        print(f'{path.relative_to(ROOT)}  {mark_img.size[0]}x{mark_img.size[1]}')
 
     # Icons: the mark alone, centred on a square (transparent; apple-touch on white).
     def square(size, pad, bg=(0, 0, 0, 0)):
