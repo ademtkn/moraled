@@ -10,22 +10,7 @@ import Seo from '../components/Seo';
 import SampleModal from '../components/samples/SampleModal';
 import PartnersSection from '../components/partners/PartnersSection';
 import Picture from '../components/Picture';
-
-// One icon per monthly pillar (September → May).
-const PILLAR_ICONS = [
-  'fas fa-heart',
-  'fas fa-handshake',
-  'fas fa-hand-holding-heart',
-  'fas fa-star',
-  'fas fa-scale-balanced',
-  'fas fa-lightbulb',
-  'fas fa-seedling',
-  'fas fa-globe',
-  'fas fa-bullseye',
-];
-
-// Each row of the 3×3 calendar is one season: autumn · winter · spring.
-const SEASONS = ['autumn', 'autumn', 'autumn', 'winter', 'winter', 'winter', 'spring', 'spring', 'spring'];
+import { CURRICULUM_CALENDAR, getCurrentCurriculumMonth } from '../data/curriculumCalendar';
 
 // Language-neutral figures taken from the curriculum itself (no invented statistics).
 const STATS = [
@@ -67,14 +52,6 @@ const WHOLE_CHILD = [
   { icon: 'fas fa-leaf', key: 'home.pillar_moral' },
 ];
 
-// School months run September (1) → May (9); in summer, show September's pillar.
-function currentPillarNumber(date = new Date()) {
-  const m = date.getMonth(); // 0 = January
-  if (m >= 8) return m - 7;
-  if (m <= 4) return m + 5;
-  return 1;
-}
-
 // Wrap the last two words of the title in the highlighter (works for EN / KG / RU).
 function splitForHighlight(title) {
   const words = title.trim().split(/\s+/);
@@ -90,19 +67,16 @@ function About() {
     AOS.init({ duration: 700, once: true, offset: 40, easing: 'ease-out-cubic' });
   }, []);
 
-  const pillars = PILLAR_ICONS.map((icon, index) => {
-    const n = index + 1;
-    return {
-      n,
-      icon,
-      season: SEASONS[index],
-      month: t(`scopeSequence.month_${n}`),
-      name: t(`scopeSequence.pillar_${n}`),
-      focus: t(`home.pillar_focus_${n}`),
-    };
-  });
+  const pillars = CURRICULUM_CALENDAR.map((entry) => ({
+    n: entry.number,
+    icon: entry.icon,
+    season: entry.season,
+    month: t(entry.monthKey),
+    name: t(entry.pillarKey),
+    focus: t(entry.summaryKey),
+  }));
 
-  const featured = pillars[currentPillarNumber() - 1];
+  const featured = pillars[getCurrentCurriculumMonth().index];
   const { lead, tail } = splitForHighlight(t('home.hero_title'));
 
   const scrollToValues = () => {
@@ -193,7 +167,7 @@ function About() {
           <div className="ds-container">
             <header className="hx-head hx-head--center" data-aos="fade-up">
               <span className="eyebrow">
-                {t('scopeSequence.month_1')} — {t('scopeSequence.month_9')}
+                {pillars[0].month} — {pillars[pillars.length - 1].month}
               </span>
               <h2 className="section-title">{t('home.core_values_title')}</h2>
               <p className="section-lead">{t('home.core_values_subtitle')}</p>
@@ -369,28 +343,27 @@ function About() {
           </div>
         </section>
 
-        {/* 8 · GENÇLERİN SESİ — lacivert bant */}
+        {/* 8 · SINIFTA UYGULAMA — lacivert bant */}
         <section className="hx hx-voices">
           <div className="ds-container">
             <header className="hx-head" data-aos="fade-up">
               <span className="eyebrow eyebrow--light">MoralEd</span>
-              <h2 className="section-title section-title--light">{t('home.testimonials_title')}</h2>
-              <p className="section-lead hx-voices__lead">{t('home.testimonials_subtitle')}</p>
+              <h2 className="section-title section-title--light">{t('home.practice_title')}</h2>
+              <p className="section-lead hx-voices__lead">{t('home.practice_intro')}</p>
             </header>
 
             <div className="hx-voices__list">
               {[1, 2, 3].map((n) => (
-                <figure className="hx-quote" key={n} data-aos="fade-up" data-aos-delay={(n - 1) * 80}>
-                  <span className="hx-quote__mark" aria-hidden="true">“</span>
-                  <blockquote>{t(`home.testimonial_${n}`)}</blockquote>
-                  <figcaption>{t(`home.testimonial_${n}_author`)}</figcaption>
-                </figure>
+                <article className="hx-practice-card" key={n} data-aos="fade-up" data-aos-delay={(n - 1) * 80}>
+                  <h3>{t(`home.practice_${n}_title`)}</h3>
+                  <p>{t(`home.practice_${n}_text`)}</p>
+                </article>
               ))}
             </div>
 
             <div className="hx-voices__actions">
-              <Link to="/contact" className="btn-ghost-light">
-                {t('home.testimonial_button').trim()} <i className="fas fa-arrow-right" aria-hidden="true"></i>
+              <Link to="/scope-and-sequence" className="btn-ghost-light">
+                {t('home.practice_button')} <i className="fas fa-arrow-right" aria-hidden="true"></i>
               </Link>
             </div>
           </div>

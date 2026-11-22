@@ -1,8 +1,9 @@
-// Lesson topics per age band, taken from "KAO Kyrgyzstan.xlsx" (Grades 1-4).
+// Existing Grades 1–4 topics were imported from "KAO Kyrgyzstan.xlsx".
+// Entries marked `adapted` are MoralEd additions for Kyrgyzstan, not KAO titles.
+// Their source mapping is documented in CONTENT_SOURCES.md.
 // Each title is { kg, ru, en }: the Kyrgyz title is the original from the spreadsheet,
 // ru and en are translations (to be proofread by native speakers).
-// `months` follows the grade-table order: Sept Caring, Oct Respect, Nov Trustworthiness,
-// Dec Responsibility, Jan Fairness, Feb Citizenship, Mar Perseverance, Apr Leadership, May Self-Discipline.
+// `months` follows the shared September–May order in curriculumCalendar.js.
 //
 // Middle school (Grades 5-7) was developed to align with:
 //  - The Kyrgyz Republic Education Development Program 2021-2040
@@ -116,9 +117,9 @@ export const AGE_PAGES = {
           [T('Таарыныч, узак таарынуунун зыяны', 'Обида и вред долгой обиды', 'Resentment and the harm of holding a grudge')],
           [T('Компьютердик айрым оюндардын зыяндуулугу', 'Вред некоторых компьютерных игр', 'The harm of some computer games')],
           [T('Бактылуу болуу мүнөздөн', 'Счастье зависит от характера', 'Happiness depends on character')],
-          [],
+          [{ ...T('Мектебимди жана айылымды таза сактайм', 'Забочусь о чистоте школы и родного края', 'Caring for my school and local environment'), adapted: true }],
           [T('Ак эмгектин наны таттуу', 'Хлеб честного труда сладок', 'Bread earned by honest work is sweet')],
-          [],
+          [{ ...T('Жакшы ишти чогуу уюштурабыз', 'Вместе организуем доброе дело', 'Organising a helpful class project together'), adapted: true }],
           [T('Туура тамактануу – ден соолукка, узак жашоого өбөлгө', 'Правильное питание – залог здоровья и долгой жизни', 'Healthy eating is the key to health and a long life')],
         ],
       },
@@ -571,6 +572,3 @@ export const AGE_PAGES = {
     ],
   },
 };
-
-// Pillar position (1-9) in the site's main table (scopeSequence.pillar_N), listed in grade-table order.
-export const GRADE_ORDER_PILLARS = [1, 3, 4, 2, 5, 8, 7, 6, 9];

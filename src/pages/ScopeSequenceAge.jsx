@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
-import { AGE_PAGES, GRADE_ORDER_PILLARS } from '../data/ageTopics';
+import { AGE_PAGES } from '../data/ageTopics';
+import { CURRICULUM_CALENDAR } from '../data/curriculumCalendar';
 import './ScopeSequence.css';
 import './ScopeSequenceAge.css';
 
@@ -22,12 +23,12 @@ function ScopeSequenceAge() {
   const range = t(`scopeSequence.band_${page.band}_range`);
   const grades = t(`ageDetail.${page.key}.grades`);
 
-  const months = GRADE_ORDER_PILLARS.map((pillarNo, i) => ({
-    month: t(`scopeSequence.month_${i + 1}`),
-    pillar: t(`scopeSequence.pillar_${pillarNo}`),
-    focus: focus[i],
+  const months = CURRICULUM_CALENDAR.map((entry) => ({
+    month: t(entry.monthKey),
+    pillar: t(entry.pillarKey),
+    focus: focus[entry.index],
     topics: page.topics
-      .map((g) => ({ grade: g.grade, items: g.months[i] }))
+      .map((g) => ({ grade: g.grade, items: g.months[entry.index] }))
       .filter((g) => g.items.length > 0),
   }));
 
@@ -72,7 +73,12 @@ function ScopeSequenceAge() {
                           <div className="age-topic-group" key={g.grade}>
                             <span className="age-topic-grade">{t('ageDetail.grade_label', { n: g.grade })}</span>
                             <ul>
-                              {g.items.map((item) => <li key={item.kg}>{item[lang] || item.kg}</li>)}
+                              {g.items.map((item) => (
+                                <li key={item.kg}>
+                                  {item[lang] || item.kg}
+                                  {item.adapted && <small className="age-adapted-label">{t('ageDetail.adapted_label')}</small>}
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         ))}
@@ -93,6 +99,11 @@ function ScopeSequenceAge() {
                 </article>
               ))}
             </div>
+
+            <p className="age-source-note">
+              {t('ageDetail.source_note')}{' '}
+              <Link to="/research">{t('ageDetail.source_link')}</Link>
+            </p>
 
             <div className="age-page-other">
               <p>{t('ageDetail.other_ages')}</p>

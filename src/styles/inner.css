@@ -175,7 +175,10 @@
   .volunteers-roster-grid,
   .events-grid,
   .leader-testimonials-grid,
-  .seminar-grid
+  .seminar-grid,
+  .cert-audience-grid,
+  .cert-school-grid,
+  .cert-design-grid
 ) {
   position: relative;
   display: grid;
@@ -231,7 +234,9 @@
   .volunteers-step,
   .events-card,
   .info-block,
-  .seminar-card
+  .seminar-card,
+  .cert-audience-card,
+  .cert-school-card
 ) {
   position: relative;
   z-index: 1;
@@ -267,7 +272,9 @@
   .volunteers-step,
   .events-card,
   .info-block,
-  .seminar-card
+  .seminar-card,
+  .cert-audience-card,
+  .cert-school-card
 ):hover {
   transform: translateY(-4px);
   border-color: var(--c-sky-200);
@@ -380,7 +387,9 @@
   .volunteers-step,
   .events-card,
   .info-block,
-  .seminar-card
+  .seminar-card,
+  .cert-audience-card,
+  .cert-school-card
 ) :is(h2, h3, h4) {
   max-width: none;
   margin: 4px 0 0;
@@ -409,7 +418,9 @@
   .volunteers-step,
   .events-card,
   .info-block,
-  .seminar-card
+  .seminar-card,
+  .cert-audience-card,
+  .cert-school-card
 ) p {
   margin: 0;
   font-size: 15.5px;
@@ -1878,6 +1889,9 @@
     .volunteers-roster-grid,
     .leader-testimonials-grid,
     .seminar-grid,
+    .cert-audience-grid,
+    .cert-school-grid,
+    .cert-design-grid,
     .contact-info
   ) {
     --cols: 2;
@@ -2008,6 +2022,9 @@
     .volunteers-roster-grid,
     .leader-testimonials-grid,
     .seminar-grid,
+    .cert-audience-grid,
+    .cert-school-grid,
+    .cert-design-grid,
     .contact-info
   ) {
     grid-template-columns: minmax(0, 1fr);
@@ -2032,4 +2049,54 @@
   .inner-page .faq-answer {
     padding: 0 20px 20px;
   }
+}
+
+/* Kyrgyzstan content: collaboration, source notes and local adaptations. */
+.inner-page .team-collaboration-grid {
+  --cols: 3;
+}
+
+.inner-page :is(.team-card .team-collaboration-copy, .volunteers-roster-card .volunteers-principle-copy) {
+  margin-block-start: calc(var(--gutter) / 2);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.65;
+  text-transform: none;
+  color: var(--c-ink-2);
+}
+
+.inner-page .story-community-title {
+  margin: 0 0 calc(var(--gutter) / 2);
+  font-size: var(--fs-h3);
+  color: var(--c-sun-400);
+}
+
+.inner-page .research-source-title {
+  margin: 0 0 calc(var(--gutter) / 2);
+  padding: 0;
+  font-size: var(--fs-h3);
+  color: var(--c-navy-900);
+}
+
+.inner-page .research-source-link {
+  display: inline-block;
+  margin-block-start: calc(var(--gutter) / 2);
+  margin-inline-end: var(--gutter);
+  color: var(--c-blue-700);
+  font-weight: 700;
+}
+
+.inner-page .age-adapted-label {
+  display: block;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--c-sun-700);
+}
+
+.inner-page .age-source-note {
+  margin-block: var(--gutter);
+  font-size: var(--fs-small);
+  color: var(--c-ink-2);
 }

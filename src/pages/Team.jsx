@@ -5,33 +5,14 @@ import './Team.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
-import Picture from '../components/Picture';
 
 function Team() {
   const { t } = useTranslation();
-  const teamMembers = [
-    {
-      name: 'Amina Tursunova',
-      role: t('team.role_1'),
-    },
-    {
-      name: 'Bekzat Karimov',
-      role: t('team.role_2'),
-    },
-    {
-      name: 'Elina Rustamova',
-      role: t('team.role_3'),
-    },
-    {
-      name: 'Aigerim Shuguralieva',
-      role: t('team.role_4'),
-      photo: '/images/team/aigerim-shuguralieva.jpg',
-      bio: t('team.bio_4'),
-    },
-  ];
-
-  const getInitials = (name) =>
-    name.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+  const roles = ['fas fa-chalkboard-teacher', 'fas fa-house', 'fas fa-children'].map((icon, i) => ({
+    icon,
+    title: t(`team.collaboration_${i + 1}_title`),
+    text: t(`team.collaboration_${i + 1}_text`),
+  }));
 
   return (
     <>
@@ -49,17 +30,12 @@ function Team() {
 
         <section className="team-section">
           <div className="team-wrapper">
-            <div className="team-grid">
-              {teamMembers.map((member, index) => (
-                <div className="team-card" key={index}>
-                  {member.photo ? (
-                    <Picture className="team-avatar-photo" src={member.photo} alt={member.name} sizes="112px" />
-                  ) : (
-                    <div className="team-avatar" aria-hidden="true">{getInitials(member.name)}</div>
-                  )}
-                  <h2>{member.name}</h2>
-                  <p>{member.role}</p>
-                  {member.bio && <p className="team-bio">{member.bio}</p>}
+            <div className="team-grid team-collaboration-grid">
+              {roles.map((role) => (
+                <div className="team-card" key={role.title}>
+                  <div className="team-avatar" aria-hidden="true"><i className={role.icon}></i></div>
+                  <h2>{role.title}</h2>
+                  <p className="team-collaboration-copy">{role.text}</p>
                 </div>
               ))}
             </div>

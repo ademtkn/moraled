@@ -32,12 +32,13 @@ function Research() {
     },
   ];
 
-  const citations = [1, 2, 3].map((n) => ({
-    authors: t(`research.citation_${n}_authors`),
-    title: t(`research.citation_${n}_title`),
-    source: t(`research.citation_${n}_source`),
-    finding: t(`research.citation_${n}_finding`),
-  }));
+  const sources = [
+    { id: 'national', href: 'https://cbd.minjust.gov.kg/158227/edition/1070465/kg' },
+    { id: 'book' },
+    { id: 'piermont', href: 'https://piermontpress.us/pathways/scope-sequence-objectives-and-outcomes/' },
+    { id: 'kiva', href: 'https://www.kivaprogram.net/about-bullying1/' },
+    { id: 'character', href: 'https://character.org/11-principles-in-schools/' },
+  ];
 
   return (
     <>
@@ -76,13 +77,16 @@ function Research() {
               {t('research.field_research_intro')}
             </p>
             <div className="research-citations">
-              {citations.map((c) => (
-                <div className="research-citation-card" key={c.title}>
-                  <p className="research-citation-finding">{c.finding}</p>
+              {sources.map((source) => (
+                <article className="research-citation-card" key={source.id}>
+                  <h3 className="research-source-title">{t(`research.source_${source.id}_title`)}</h3>
+                  <p className="research-citation-finding">{t(`research.source_${source.id}_text`)}</p>
                   <p className="research-citation-source">
-                    {c.authors}. <em>{c.title}</em>. {c.source}.
+                    {t(`research.source_${source.id}_citation`)}
                   </p>
-                </div>
+                  {source.href && <a className="research-source-link" href={source.href} target="_blank" rel="noreferrer">{t('research.source_open')}</a>}
+                  {source.id === 'national' && <a className="research-source-link" href="https://edu.gov.kg/programs/1/" target="_blank" rel="noreferrer">{t('research.source_ministry')}</a>}
+                </article>
               ))}
             </div>
             <p className="research-field-disclaimer">

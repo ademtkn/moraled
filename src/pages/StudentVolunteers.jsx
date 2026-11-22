@@ -6,9 +6,6 @@ import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import './StudentVolunteers.css';
 
-const getInitials = (name) =>
-  name.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
-
 function StudentVolunteers() {
   const { t } = useTranslation();
 
@@ -85,11 +82,10 @@ function StudentVolunteers() {
     },
   ];
 
-  const volunteers = [
-    { name: 'Zarina Abenova', role: t('volunteers.volunteer_1_role') },
-    { name: 'Timur Osmonov', role: t('volunteers.volunteer_2_role') },
-    { name: 'Aidana Bekova', role: t('volunteers.volunteer_3_role') },
-  ];
+  const principles = [1, 2, 3].map((n) => ({
+    title: t(`volunteers.principle_${n}_title`),
+    text: t(`volunteers.principle_${n}_text`),
+  }));
 
   return (
     <>
@@ -155,16 +151,15 @@ function StudentVolunteers() {
         </section>
 
         <section className="volunteers-roster">
-          <h2>{t('volunteers.roster_title')}</h2>
+          <h2>{t('volunteers.principles_title')}</h2>
           <p className="volunteers-roster-intro">
-            {t('volunteers.roster_intro')}
+            {t('volunteers.principles_intro')}
           </p>
           <div className="volunteers-roster-grid">
-            {volunteers.map((volunteer) => (
-              <div className="volunteers-roster-card" key={volunteer.name}>
-                <div className="volunteers-roster-avatar" aria-hidden="true">{getInitials(volunteer.name)}</div>
-                <h3>{volunteer.name}</h3>
-                <p>{volunteer.role}</p>
+            {principles.map((principle) => (
+              <div className="volunteers-roster-card" key={principle.title}>
+                <h3>{principle.title}</h3>
+                <p className="volunteers-principle-copy">{principle.text}</p>
               </div>
             ))}
           </div>

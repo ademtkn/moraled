@@ -11,20 +11,10 @@ import Picture from '../components/Picture';
 function OurStory() {
   const { t } = useTranslation();
 
-  const leaderTestimonials = [
-    {
-      quote: t('forSchools.testimonial_1_quote'),
-      name: t('forSchools.testimonial_1_name'),
-    },
-    {
-      quote: t('forSchools.testimonial_2_quote'),
-      name: t('forSchools.testimonial_2_name'),
-    },
-    {
-      quote: t('forSchools.testimonial_3_quote'),
-      name: t('forSchools.testimonial_3_name'),
-    },
-  ];
+  const community = [1, 2, 3].map((n) => ({
+    title: t(`about.community_${n}_title`),
+    text: t(`about.community_${n}_text`),
+  }));
 
   return (
     <>
@@ -103,15 +93,14 @@ function OurStory() {
           </div>
         </section>
 
-        {/* SCHOOL LEADER TESTIMONIALS */}
+        {/* SCHOOL, FAMILY AND COMMUNITY */}
         <section className="leader-testimonials">
-          <h2>{t('forSchools.testimonials_title')}</h2>
+          <h2>{t('about.community_title')}</h2>
           <div className="leader-testimonials-grid">
-            {leaderTestimonials.map((testimonial) => (
-              <div className="leader-testimonial-card" key={testimonial.name}>
-                <i className="fas fa-quote-left leader-testimonial-quote-icon"></i>
-                <p className="leader-testimonial-quote">{testimonial.quote}</p>
-                <p className="leader-testimonial-name">{testimonial.name}</p>
+            {community.map((item) => (
+              <div className="leader-testimonial-card" key={item.title}>
+                <h3 className="story-community-title">{item.title}</h3>
+                <p className="leader-testimonial-quote">{item.text}</p>
               </div>
             ))}
           </div>

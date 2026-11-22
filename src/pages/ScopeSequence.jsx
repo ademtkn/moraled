@@ -4,16 +4,17 @@ import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { CURRICULUM_CALENDAR } from '../data/curriculumCalendar';
 import './ScopeSequence.css';
 
 function ScopeSequence() {
   const { t } = useTranslation();
 
-  const scope = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({
-    month: t(`scopeSequence.month_${n}`),
-    pillar: t(`scopeSequence.pillar_${n}`),
-    focus: t(`scopeSequence.skills_${n}`),
-    objective: t(`scopeSequence.objective_${n}`),
+  const scope = CURRICULUM_CALENDAR.map((entry) => ({
+    month: t(entry.monthKey),
+    pillar: t(entry.pillarKey),
+    focus: t(entry.skillsKey),
+    objective: t(entry.objectiveKey),
   }));
 
   const ageBandIcons = ['fas fa-shapes', 'fas fa-book-reader', 'fas fa-comments', 'fas fa-user-graduate'];
