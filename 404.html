@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1b4d" />
+    <meta name="theme-color" content="#071338" />
     <title>MoralEd — Сайт иштелип жатат</title>
     <meta name="description" content="Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз." />
     <link rel="canonical" href="https://moraled.com/" />
@@ -23,98 +23,126 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-CHzt-qiE.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-c97ybTqW.css">
+    <!-- Entrance animations only when JavaScript runs; without JS everything is simply visible. -->
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="module" crossorigin src="/assets/index-dLBBrTI2.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-eAJOpEEw.css">
   </head>
   <body class="cs">
     <a class="cs-skip" href="#cs-main" data-i18n="skip">Негизги мазмунга өтүү</a>
 
-    <header class="cs-header">
-      <div class="cs-container cs-header__inner">
-        <img class="cs-logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="140" height="58" />
-        <div class="cs-lang" role="group" aria-label="Тил" data-i18n-aria="langLabel">
-          <button type="button" class="cs-lang__btn" data-lang="kg" aria-pressed="true" title="Кыргызча">KG</button>
-          <button type="button" class="cs-lang__btn" data-lang="ru" aria-pressed="false" title="Русский">RU</button>
-          <button type="button" class="cs-lang__btn" data-lang="en" aria-pressed="false" title="English">EN</button>
-        </div>
+    <div class="cs-stage">
+      <div class="cs-bg" aria-hidden="true">
+        <span class="cs-glow cs-glow--sun"></span>
+        <span class="cs-glow cs-glow--sky"></span>
+        <span class="cs-stars"></span>
+        <span class="cs-grain"></span>
       </div>
-    </header>
 
-    <main id="cs-main" class="cs-hero" tabindex="-1">
-      <div class="cs-container cs-hero__inner">
-        <div class="cs-copy">
-          <p class="cs-badge"><span class="cs-badge__dot" aria-hidden="true"></span><span data-i18n="badge">Сайт иштелип жатат</span></p>
-          <p class="eyebrow eyebrow--light" data-i18n="eyebrow">Мүнөз тарбиясы · 1–11-класстар</p>
-          <h1 class="cs-title">
-            <span data-i18n="titleLead">Жаңы сайтыбыз</span>
-            <span class="hl" data-i18n="titleHl">жакында ачылат</span>
-          </h1>
-          <p class="cs-lead" data-i18n="lead">Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз.</p>
-          <div class="cs-actions">
-            <a class="btn-sun btn-hero" href="mailto:linekginfo@gmail.com">
-              <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
-              <span data-i18n="ctaEmail">Бизге жазыңыз</span>
-            </a>
-            <a class="btn-ghost-light btn-hero" href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer">
-              <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
-              Instagram
-            </a>
+      <header class="cs-header">
+        <div class="cs-container cs-header__inner">
+          <img class="cs-logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="140" height="58" />
+          <div class="cs-lang" role="group" aria-label="Тил" data-i18n-aria="langLabel">
+            <button type="button" class="cs-lang__btn" data-lang="kg" aria-pressed="true" title="Кыргызча">KG</button>
+            <button type="button" class="cs-lang__btn" data-lang="ru" aria-pressed="false" title="Русский">RU</button>
+            <button type="button" class="cs-lang__btn" data-lang="en" aria-pressed="false" title="English">EN</button>
           </div>
-          <ul class="cs-stats">
-            <li><strong>9</strong><span data-i18n="statValues">негизги баалуулук — ар бир айга бирден</span></li>
-            <li><strong>1–11</strong><span data-i18n="statGrades">класс — биринчиден он биринчиге чейин</span></li>
-            <li><strong>3</strong><span data-i18n="statLanguages">тил — кыргызча, орусча, англисче</span></li>
-          </ul>
         </div>
+      </header>
 
-        <div class="cs-collage" aria-hidden="true">
-          <span class="cs-collage__sun"></span>
-          <span class="cs-collage__ring"></span>
-          <div class="cs-photo cs-photo--tall petal-arch"><img src="/assets/beliefs-illustration-BC1JXxwB.webp" alt="" /></div>
-          <div class="cs-photo cs-photo--top petal-leaf"><img src="/assets/children-classroom-story-DyldoE6a.webp" alt="" /></div>
-          <div class="cs-photo cs-photo--bottom petal-drop"><img src="/assets/sunrise-tz4KhM0x.webp" alt="" /></div>
-        </div>
-      </div>
-    </main>
-
-    <footer class="cs-footer">
-      <div class="cs-container">
-        <div class="cs-footer__top">
-          <div class="cs-footer__brand">
-            <img class="cs-footer__logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="150" height="62" loading="lazy" />
-            <p class="cs-footer__tagline" data-i18n="tagline">Келечекти түзгөн баалуулуктарды өстүрүү.</p>
-          </div>
-
-          <div class="cs-footer__col">
-            <h2 class="cs-footer__title" data-i18n="contactTitle">Байланыш</h2>
-            <ul class="cs-contact">
-              <li>
-                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" /></svg>
-                <span><span class="cs-contact__label" data-i18n="locationTitle">Жайгашкан жери</span><span data-i18n="locationText">Бишкек, Кыргызстан</span></span>
-              </li>
-              <li>
+      <main id="cs-main" class="cs-hero" tabindex="-1">
+        <div class="cs-container cs-hero__inner">
+          <div class="cs-copy">
+            <p class="cs-badge cs-anim" style="--d: 0"><span class="cs-badge__dot" aria-hidden="true"></span><span data-i18n="badge">Сайт иштелип жатат</span></p>
+            <p class="eyebrow eyebrow--light cs-anim" style="--d: 1" data-i18n="eyebrow">Мүнөз тарбиясы · 1–11-класстар</p>
+            <h1 class="cs-title cs-anim" style="--d: 2">
+              <span class="cs-title__lead" data-i18n="titleLead">Жаңы сайтыбыз</span>
+              <span class="cs-title__hl" data-i18n="titleHl">жакында ачылат</span>
+            </h1>
+            <p class="cs-lead cs-anim" style="--d: 3" data-i18n="lead">Биз мектептер үчүн баалуулуктарга негизделген мүнөз тарбиясы платформабызды жаңылап жатабыз. Ага чейин суроолоруңуз же кызматташуу боюнча төмөндөгү байланыштар аркылуу кайрылыңыз.</p>
+            <div class="cs-actions cs-anim" style="--d: 4">
+              <a class="cs-btn cs-btn--sun" href="mailto:linekginfo@gmail.com">
                 <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
-                <span><span class="cs-contact__label" data-i18n="emailTitle">Электрондук почта</span><a href="mailto:linekginfo@gmail.com">linekginfo@gmail.com</a></span>
-              </li>
-              <li>
-                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>
-                <span><span class="cs-contact__label" data-i18n="phoneTitle">Телефон</span><a href="tel:+996502001903">+996 502 001 903</a></span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="cs-footer__col">
-            <h2 class="cs-footer__title" data-i18n="socialTitle">Байланышуу</h2>
-            <div class="cs-social">
-              <a href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+                <span data-i18n="ctaEmail">Бизге жазыңыз</span>
               </a>
-              <a href="https://www.youtube.com/@moral-ed" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.5v-7l6 3.5-6 3.5z" /></svg>
+              <a class="cs-btn cs-btn--glass" href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer">
+                <svg class="cs-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+                Instagram
               </a>
             </div>
           </div>
+
+          <div class="cs-visual cs-anim" style="--d: 2">
+            <span class="cs-rays" aria-hidden="true"></span>
+            <span class="cs-orbit" aria-hidden="true"><span></span></span>
+            <div class="cs-circle cs-circle--main"><img src="/assets/kids-heart-tree-BC1JXxwB.webp" alt="" width="760" height="1140" /></div>
+            <div class="cs-circle cs-circle--a"><img src="/assets/classroom-DyldoE6a.webp" alt="" width="800" height="533" /></div>
+            <div class="cs-circle cs-circle--b"><img src="/assets/circle-tz4KhM0x.webp" alt="" width="800" height="533" /></div>
+            <div class="cs-month">
+              <span class="cs-month__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+              </span>
+              <span class="cs-month__text">
+                <span class="cs-month__label" data-i18n="monthLabel">Айдын баалуулугу</span>
+                <span class="cs-month__value" data-month-value>Сый-урмат</span>
+                <span class="cs-month__name" data-month-name>Ноябрь</span>
+              </span>
+            </div>
+          </div>
         </div>
+
+        <div class="cs-marquee cs-anim" style="--d: 5">
+          <p class="cs-marquee__label" data-i18n="valuesLabel">Адеп-ахлак тарбиясынын календары</p>
+          <div class="cs-marquee__viewport">
+            <div class="cs-marquee__track">
+              <ul data-values><li>Кам көрүү</li><li>Жоопкерчилик</li><li>Сый-урмат</li><li>Ишенимдүүлүк</li><li>Адилеттик</li><li>Лидерлик</li><li>Чыдамкайлык</li><li>Жарандуулук</li><li>Өзүн-өзү тартипке салуу</li></ul>
+              <ul data-values aria-hidden="true"><li>Кам көрүү</li><li>Жоопкерчилик</li><li>Сый-урмат</li><li>Ишенимдүүлүк</li><li>Адилеттик</li><li>Лидерлик</li><li>Чыдамкайлык</li><li>Жарандуулук</li><li>Өзүн-өзү тартипке салуу</li></ul>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Ala-Too ridges: the footer rises out of the mountains -->
+      <svg class="cs-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+        <path class="cs-mountains__back" d="M0 200V128l96-34 82 26 118-62 104 46 92-30 128 58 112-70 120 52 96-28 118 50 102-36 108 30 164-44v120z" />
+        <path class="cs-mountains__front" d="M0 200v-38l120-38 96 30 140-52 120 44 104-24 132 44 118-56 136 46 110-26 128 38 110-30 126 30v32z" />
+      </svg>
+    </div>
+
+    <footer class="cs-footer">
+      <div class="cs-container">
+        <div class="cs-footer__head">
+          <img class="cs-footer__logo" src="/assets/logo-DyNlh3CF.svg" alt="Moral Education" width="150" height="62" loading="lazy" />
+          <p class="cs-footer__tagline" data-i18n="tagline">Келечекти түзгөн баалуулуктарды өстүрүү.</p>
+        </div>
+
+        <h2 class="cs-footer__title" data-i18n="contactTitle">Байланыш</h2>
+        <ul class="cs-contact">
+          <li class="cs-card">
+            <span class="cs-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" /></svg></span>
+            <span class="cs-card__text"><span class="cs-card__label" data-i18n="locationTitle">Жайгашкан жери</span><span class="cs-card__value" data-i18n="locationText">Бишкек, Кыргызстан</span></span>
+          </li>
+          <li class="cs-card">
+            <span class="cs-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg></span>
+            <span class="cs-card__text"><span class="cs-card__label" data-i18n="emailTitle">Электрондук почта</span><a class="cs-card__value cs-card__link" href="mailto:linekginfo@gmail.com">linekginfo@gmail.com</a></span>
+          </li>
+          <li class="cs-card">
+            <span class="cs-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg></span>
+            <span class="cs-card__text"><span class="cs-card__label" data-i18n="phoneTitle">Телефон</span><a class="cs-card__value cs-card__link" href="tel:+996502001903">+996 502 001 903</a></span>
+          </li>
+          <li class="cs-card cs-card--social">
+            <span class="cs-card__text"><span class="cs-card__label" data-i18n="socialTitle">Байланышуу</span>
+              <span class="cs-social">
+                <a href="https://www.instagram.com/edu.moralvalues/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+                </a>
+                <a href="https://www.youtube.com/@moral-ed" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.5v-7l6 3.5-6 3.5z" /></svg>
+                </a>
+              </span>
+            </span>
+          </li>
+        </ul>
 
         <div class="cs-footer__bottom">
           <p>© <span data-year>2026</span> Moral Education. All rights reserved.</p>
