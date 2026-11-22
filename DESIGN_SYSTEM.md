@@ -166,6 +166,7 @@ Rakam şeridindeki değerler (9 değer · 1–11. sınıflar · 4 yaş bandı ·
 - Kullanıcı isteği: yapım aşaması sayfasında **orijinal sertifikalar ve üzerindeki yazılar görünmesin**. `#cs-certificates` bölümündeki iki PNG örneği yerine **metinsiz satır içi SVG** illüstrasyon: fildişi “Partner” ve lacivert “Distinguished” (altın çerçeve, guilloche, mühür/kurdele, yalnızca MoralEd işareti; ad/tarih/imza yazısı yok). Not ve alt metinler üç dilde “illüstrasyon, gerçek belge değil” olarak güncellendi.
 - Logo betiği yalnız işaret çıktısı da üretiyor: `moraled-mark.png` (`src/assets/logo/`, `coming-soon/assets/`).
 - Tam sitedeki `/verify-certificate` galerisi hâlâ orijinal PNG örneklerini kullanıyor (tam site yayında değil); illüstrasyona geçirilmesi kullanıcı kararı bekliyor. `coming-soon/assets/certificate-*.webp` kullanılmıyor, silme onayı bekliyor.
+- Commit `af845f5` + push. Canlı coming-soon'a **henüz yayımlanmadı** (deploy kullanıcı onayı bekliyor; canlıda 21:18'deki dış deploy'un orijinal örnekleri duruyor).
 - Sonraki iş: Contact formu (WORK_LOG açık iş 1).
 
 ### Sertifika merkezi ve coming-soon örnekleri — 22 Kasım 2026

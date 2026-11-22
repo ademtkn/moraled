@@ -6,7 +6,7 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 ## Güncel durum ve kalınan yer
 
-- **Son durum (K08, Claude, 22 Kasım ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit + push + coming-soon deploy. Sıradaki iş: açık iş 1 — Contact formu (kullanıcı onayladı).
+- **Son durum (K08, Claude, 22 Kasım ~22:00):** Coming-soon sertifika bölümünde kullanıcının orijinal belgeleri yerine metinsiz SVG illüstrasyonlar; commit `af845f5` + push; **deploy kullanıcı onayı bekliyor** (canlıda hâlâ orijinal örnekler var). Sıradaki iş: açık iş 1 — Contact formu (kullanıcı onayladı).
 - **Önceki durum (K07, Claude, 22 Kasım ~21:45):** K06 planının 1–2. adımları tamamlandı ve test edildi: hero düzeltildi; Codex'in işi `72e1f12` + `2bdef07` olarak commit'lenip `redesign/vite-coming-soon`'a push edildi, belgeler ayrı commit. 3. adım (www HTTPS) GitHub tarafında bekliyor: alan adı kaldırılıp yeniden eklendi, sertifika talebi `dns_changed`; arka planda 3 saatlik izleyici onaylanınca HTTPS'i zorunlu yapacak. 21:18'de Claude dışında biri (muhtemelen Codex) `npm run deploy` ile sertifika örnekli coming-soon'u yayımladı.
 - **Ürün:** Kırgızistan okullarına yönelik gerçek site, `src/`. Kullanıcının istediği takvim düzeltmesi ile raporun 2 ve 3. içerik işleri tamamlandı; kullanıcının yerel incelemesi bekleniyor.
 - **Son tamamlanan iş:** K05 — sertifika numarasıyla sorgu, okul listesi, belge görüntüleme/paylaşma, üç tasarım örneği ve coming-soon üzerinde iki örnek. Kullanıcının yerel incelemesine hazır; yeni aktif geliştirme yok.
@@ -191,7 +191,7 @@ Bu dosya, projeyi devralan kişinin tamamlanan işleri, değişen dosyaları, do
 
 **Kalan / karar bekleyen:** `coming-soon/assets/certificate-*.webp` artık kullanılmıyor (silme kullanıcı onayına bağlı). Tam sitedeki `/verify-certificate` örnek galerisi hâlâ kullanıcının orijinal PNG'lerini gösteriyor; orada da illüstrasyona geçilip geçilmeyeceği kullanıcıya sorulacak.
 
-**Commit / deploy:** Bu kayıtla birlikte commit + push; coming-soon `gh-pages`'e yayımlandı (orijinal belgeler canlı sayfadan kalkması için — 21:18'deki dış deploy bunları yayına almıştı). Sonuç aşağıdaki güncel durum satırında.
+**Commit / deploy:** Commit `af845f5` + push yapıldı. **Deploy yapılmadı:** `gh-pages` yayını izin denetimine takıldı (kural 7: kullanıcı onayı). Canlı coming-soon hâlâ 21:18'deki dış deploy'un orijinal sertifika örneklerini gösteriyor. Kullanıcı onaylarsa: `npm run deploy` (yalnız coming-soon; CNAME `www.moraled.com` korunur).
 
 ## Değişikliklerin dosya haritası
 
